@@ -194,7 +194,7 @@ namespace DowntownRP.Game.Commands
 
             if (user.adminLv == 5)
             {
-                if (type == 1 || type == 2 || type == 3)
+                if (type == 1 || type == 2 || type == 3 || type == 4 || type == 5)
                 {
                     //player.SetData<int>("CreateCompanyType", type);
                     //player.SetData<int>("CreateCompanyPrice", price);
@@ -203,6 +203,7 @@ namespace DowntownRP.Game.Commands
                     player.SetData("CreateCompanyPrice", price);
                     player.TriggerEvent("CompanyAddStreetName");
                 }
+                else Utilities.Notifications.SendNotificationERROR(player, "No existe ese tipo de empresa");
             }
         }
 
@@ -220,12 +221,61 @@ namespace DowntownRP.Game.Commands
                     user.company.blip.Delete();
                     user.company.marker.Delete();
                     user.company.shape.Delete();
+                    user.company = null;
 
                     await World.Companies.DbFunctions.DeleteCompany(user.company.id);
 
                     Utilities.Notifications.SendNotificationOK(player, $"Has borrado una empresa correctamente");
                 }
                 else Utilities.Notifications.SendNotificationERROR(player, "No estás en una empresa");
+            }
+            else player.SendChatMessage("<font color='red'>[ERROR]</font> El comando no existe. (/ayuda para mas información)");
+        }
+
+        // Business commands
+        [Command("crearnegocio")]
+        public void CMD_crearnegocio(Client player, int type, int price)
+        {
+            //var user = player.GetExternalData<Data.Entities.User>(0);
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+
+            if (user.adminLv == 5)
+            {
+                if (type == 1 || type == 2 || type == 3 || type == 4 || type == 5 || type == 6 || type == 7 || type == 8 || type == 9)
+                {
+                    //player.SetData<int>("CreateCompanyType", type);
+                    //player.SetData<int>("CreateCompanyPrice", price);
+
+                    player.SetData("CreateBusinessType", type);
+                    player.SetData("CreateBusinessPrice", price);
+                    player.TriggerEvent("BusinessAddStreetName");
+                }
+                else Utilities.Notifications.SendNotificationERROR(player, "No existe ese tipo de negocio");
+            }
+        }
+
+        [Command("borrarnegocio")]
+        public async Task CMD_borrarnegocio(Client player)
+        {
+            //var user = player.GetExternalData<Data.Entities.User>(0);
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+            if (user.adminLv == 5)
+            {
+                if (user.isInBusiness)
+                {
+                    user.business.label.Delete();
+                    user.business.blip.Delete();
+                    user.business.marker.Delete();
+                    user.business.shape.Delete();
+                    user.business = null;
+
+                    await World.Business.DbFunctions.DeleteBusiness(user.business.id);
+
+                    Utilities.Notifications.SendNotificationOK(player, $"Has borrado un negocio correctamente");
+                }
+                else Utilities.Notifications.SendNotificationERROR(player, "No estás en un negocio");
             }
             else player.SendChatMessage("<font color='red'>[ERROR]</font> El comando no existe. (/ayuda para mas información)");
         }

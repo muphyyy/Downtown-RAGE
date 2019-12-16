@@ -18,5 +18,6 @@ namespace DowntownRP.Data.Entities
         public TextLabel label { get; set; }
         public Marker marker { get; set; }
         public Blip blip { get; set; }
+        public ColShape shape { get; set; }
     }
 }

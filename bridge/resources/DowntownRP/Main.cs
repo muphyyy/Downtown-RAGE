@@ -19,18 +19,15 @@ namespace DowntownRP
         {
             await World.Banks.DatabaseFunctions.SpawnBank();
             await World.Companies.DbFunctions.SpawnCompanies();
+            await World.Business.DbFunctions.SpawnBusiness();
+
             await Task.Delay(1000);
             Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - -");
             Console.WriteLine($"{Data.Info.serverName} by Muphy || Versión {Data.Info.serverVersion}");
             Console.WriteLine($"=> {Data.Info.banksSpawned} bancos/atms spawneados en el mapa");
             Console.WriteLine($"=> {Data.Info.companiesSpawned} empresas spawneadas en el mapa");
+            Console.WriteLine($"=> {Data.Info.businessSpanwed} negocios spawneados en el mapa");
             Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - -");
-        }
-
-        [Command("libery")]
-        public void libery(Client player)
-        {
-            player.TriggerEvent("lolasote");
         }
     }
 }

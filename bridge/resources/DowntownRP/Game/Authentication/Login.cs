@@ -13,7 +13,7 @@ namespace DowntownRP.Game.Authentication
         public void OnPlayerConnected(Client player)
         {
             Data.Info.playersConnected += 1;
-            player.TriggerEvent("update_hud_players", Data.Info.playersConnected);
+            NAPI.ClientEvent.TriggerClientEventForAll("update_hud_players", Data.Info.playersConnected);
             player.TriggerEvent("ShowLoginWindow");
         }
 

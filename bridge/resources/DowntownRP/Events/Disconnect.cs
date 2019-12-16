@@ -12,7 +12,7 @@ namespace DowntownRP.Events
         public void Event_PlayerDisconnected(Client player, DisconnectionType type, string reason)
         {
             Data.Info.playersConnected = Data.Info.playersConnected - 1;
-            player.TriggerEvent("update_hud_players", Data.Info.playersConnected);
+            NAPI.ClientEvent.TriggerClientEventForAll("update_hud_players", Data.Info.playersConnected);
         }
     }
 }
