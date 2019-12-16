@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Downtown RP | Login</title>
+    <link rel='stylesheet' href='../libs/bootstrap.min.css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='../libs/jquery-3.3.1.min.js'></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0);
+        }
+        
+        .as-full {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .form-control {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        
+        .iconinput {
+            position: relative;
+            z-index: 1;
+            left: 10px;
+            top: -31px;
+            width: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container-fluid as-full">
+        <div class="row as-full d-flex justify-content-center">
+            <div class="col-7 align-self-center">
+                <center><img src="../img/bank.png" class="img-fluid img-responsive" style="height: 70px;"></img>
+                </center>
+                <br>
+                <br>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body text-white">
+                      <center>
+                        <b id="createUsername"></b><br>
+                      </center><br>
+                      <p>No tienes ninguna cuenta bancaria abierta, abrir una es muy fácil y es bastante recomendado en esta ciudad ya que muchos comercios y trabajos pagan a sus trabajadores por transferencias bancarias, por ejemplo...<br><br>
+                      Abrir una cuenta de banco tiene un coste de <font color="green">$100</font> (pago único), y la manutención de esta es de <font color="green">$5</font> <font color="grey">(por payday)</font>.<br><br>
+                      Al abrir tu cuenta debes de asignar un pin de 4 dígitos que usarás para poder ingresar a tu cuenta bancaria desde un cajero para realizar un movimiento. <font color="grey">(Siempre podrás recuperar el pin desde el PCU)</font></p>
+                      
+                <button id="btnCreate" class="btn btn-success btn-block">¡Abrir mi cuenta bancaria!</button>      
+                <button id="btnExit" class="btn btn-danger btn-block">Salir</button>
+            </div>
+
+        </div>
+    </div>
+    <!-- partial -->
+    <script>
+        function setBankCreateUsername(name) {
+          document.getElementById("createUsername").innerHTML = "¡Bienvenido al banco de San Andreas, " + name + "!";
+      }	
+
+      $('#btnCreate').click(() => {
+            mp.trigger('OpenCreateBankPin');
+        }); 
+
+     $('#btnExit').click(() => {
+            mp.trigger('DestroyCreateBankClick');
+        });
+    </script>
+    <script src='../libs/bootstrap.min.js'></script>
+</body>
+
+</html>

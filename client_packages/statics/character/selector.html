@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='assets/css/icons-fa.css'>
+    <link rel='stylesheet' href='assets/css/pcfw.css'>
+    <link rel='stylesheet' href='assets/css/gui.css'>
+    <link rel="stylesheet" href="assets/css/sweetalert.css">
+</head>
+
+<body id="main">
+    <div class="container-fluid">
+        <block class="charselector">
+            <header>
+                Seleciona tu personaje
+            </header>
+            <nochar>¡No tienes ningún personaje creado!</nochar>
+            <charlist>
+                <ul id="list">                    
+                </ul>
+            </charlist>
+        </block>
+        <selectchar>
+            <charinfo>
+            </charinfo>
+            <button id="playButton">
+                <i class="fa fa-play"></i> Jugar</button>
+        </selectchar>
+    </div>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/tether.js"></script>
+    <script src="assets/js/pcfw.js"></script>
+    <script src="assets/js/sweetalert.js"></script>
+    <script>
+        var characters = null;
+        var selected_character = 0;
+
+        function updateList(data) {
+            characters = data;
+            if (characters != null) {
+                $("#list").html("");
+                for (var i = 0; i < characters.length; i++) {
+                    var lastLogin = new Date(characters[i].lastLogin);
+
+                    $("#list").append('<li data-id="' + i + '">' +
+                        '<charname>' + characters[i].name + '</charname>' +
+                        (characters[i].lastLogin ? ('<lastlogin>jugado la última vez en ' + lastLogin.getDate() + '/' + (lastLogin.getMonth() + 1) + '/' + lastLogin.getFullYear() + '</lastlogin>') : '<lastlogin> </lastlogin>') +
+                        '<deletechar><i class="fa fa-trash"></i></deletechar>' +
+                        '</li>');
+                }
+
+                if (characters.length > 0) {
+                    $("selectchar").show();
+                    UpdateCharacterInfo(0);
+                    $('#list li:first-child').addClass("active");
+                }
+
+                if (characters.length < 3) // number of max characters
+                    $("#list").append('<li data-id="-1" class="addchar"><i class="fa fa-plus"></i> Agregar nuevo personaje</li>');
+            }
+            else {
+                $("#list").append('<li data-id="-1" class="addchar"><i class="fa fa-plus"></i> Agregar nuevo personaje</li>');
+            }
+        }
+
+        // Delete character button
+        $('charlist').on('click', 'deletechar', function () {
+            var id = $(this).parent().data("id");
+            swal(
+                {
+                    title: "¿Estás seguro?",
+                    text: "Esto no se puede deshacer.",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Borrar",
+                    cancelButtonText: "Espalda",
+                    closeOnConfirm: true
+                },
+                function () {
+                    $('selectchar').hide();
+                    mp.trigger("DeleteCharacter", id);
+                });
+        });
+
+        // Character list buttons
+        $('charlist').on('click', 'li', function () {
+            if (characters == null)
+                return;
+
+            selected_character = $(this).data("id");
+
+            // Select a character
+            if (selected_character >= 0) {
+                UpdateCharacterInfo(selected_character);
+
+                $(this).addClass('active').siblings().removeClass('active');
+
+                mp.trigger("ApplyCharacterFeatures", selected_character);
+            }
+            // Create new character
+            else {
+                mp.trigger("SendToCharacterCreator");
+            }
+            mp.trigger("resource.Sounds.PlaySelectSound");
+        });
+
+        // Spawn button
+        $('#playButton').click(function () {
+            mp.trigger("resource.Sounds.PlaySelectSound");
+            mp.trigger("SelectCharacterToPlay", selected_character);
+        });
+
+        $(document).ready(function () {
+            //mp.trigger("CharacterSelectorBrowserReady");
+        });
+
+        function UpdateCharacterInfo(i) {
+            var bank = characters[i].bank;
+            var money = characters[i].money;
+
+            $('charinfo').html('<item>' +
+                '<stat>Nivel</stat>' +
+                '<data>' + characters[i].level + '</data>' +
+                '</item>' +
+                '<item>' +
+                '<stat>Dinero</stat>' +
+                '<data class="money">$' + money + '</data>' +
+                '</item>' +
+                '<item>' +
+                '<stat>Banco</stat>' +
+                '<data class="money">$' + bank + '</data>' +
+                '</item>' +
+                '<item>' +
+                '<stat>Tiempo jugado</stat>' +
+                '<data>' + secondsToStr(characters[i].playedTime) + '</data>' +
+                '</item>');
+        }
+
+        function secondsToStr(seconds) {
+            function numberEnding(number) {
+                return (number > 1) ? 's' : ' ';
+            }
+
+            var temp = Math.floor(seconds);
+            var years = Math.floor(temp / 31536000);
+            if (years) {
+                return years + ' año' + numberEnding(years);
+            }
+
+            //TODO: Months! Maybe weeks?
+            var days = Math.floor((temp %= 31536000) / 86400);
+            if (days) {
+                return days + ' dia' + numberEnding(days);
+            }
+
+            var hours = Math.floor((temp %= 86400) / 3600);
+            if (hours) {
+                return hours + ' hora' + numberEnding(hours);
+            }
+
+            var minutes = Math.floor((temp %= 3600) / 60);
+            if (minutes) {
+                return minutes + ' minuto' + numberEnding(minutes);
+            }
+
+            var seconds = temp % 60;
+            if (seconds) {
+                return seconds + ' segundo' + numberEnding(seconds);
+            }
+            return 'sin registro.';
+        }
+
+        Date.prototype.addHours = function (h) {
+            this.setHours(this.getHours() + h);
+            return this;
+        }
+    </script>
+</body>
+
+</html>

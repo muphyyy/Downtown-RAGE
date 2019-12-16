@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='../libs/bootstrap.min.css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='../libs/jquery-3.3.1.min.js'></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../libs/colorpalettepicker.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0);
+        }
+        
+        .butt {
+            background-color: rgba(26, 25, 25, 0.8);
+            border: none;
+            /* Remove borders */
+            color: white;
+            /* White text */
+            padding: 12px 16px;
+            /* Some padding */
+            font-size: 16px;
+            /* Set a font size */
+            cursor: pointer;
+            /* Mouse pointer on hover */
+        }
+        /* Darker background on mouse-over */
+        
+        .butt:hover {
+            background-color: RoyalBlue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="alert alert-dark" role="alert">
+                    <b><i class="fa fa-archive" aria-hidden="true"></i> Inventario</b>
+                </div>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8);">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <div class="card" id="slot1" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <small><br></small>
+                                    <center>🚬</center>
+                                    <small><br></small>
+                                </div>
+                                <br>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <small><br></small>
+                                    <center>❌</center>
+                                    <small><br></small>
+                                </div>
+                                <br>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <small><br></small>
+                                    <center>❌</center>
+                                    <small><br></small>
+                                </div>
+                                <br>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <small><br></small>
+                                    <center>❌</center>
+                                    <small><br></small>
+                                </div>
+                                <br>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <small><br></small>
+                                    <center>❌</center>
+                                    <small><br></small>
+                                </div>
+                                <br>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <small><br></small>
+                                    <center>❌</center>
+                                    <small><br></small>
+                                </div>
+                                <br>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <small><br></small>
+                                    <center>❌</center>
+                                    <small><br></small>
+                                </div>
+                                <br>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <small><br></small>
+                                    <center>❌</center>
+                                    <small><br></small>
+                                </div>
+                                <br>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <small><br></small>
+                                    <center>❌</center>
+                                    <small><br></small>
+                                </div>
+                                <br>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <small><br></small>
+                                    <center>❌</center>
+                                    <small><br></small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <small><br></small>
+                                    <center>❌</center>
+                                    <small><br></small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <small><br></small>
+                                    <center>❌</center>
+                                    <small><br></small>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-3">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="alert alert-dark" role="alert">
+                        <b><i class="fa fa-car" aria-hidden="true"></i> Maletero</b>
+                    </div>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body text-white">
+                        <div class="row">
+                            
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                        <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                            <small><br></small>
+                                            <center>❌</center>
+                                            <small><br></small>
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="col-md-3 col-sm-4 col-xs-6">
+                                            <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                                <small><br></small>
+                                                <center>❌</center>
+                                                <small><br></small>
+                                            </div>
+                                            <br>
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 col-xs-6">
+                                                <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                                    <small><br></small>
+                                                    <center>❌</center>
+                                                    <small><br></small>
+                                                </div>
+                                                <br>
+                                            </div>
+                                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                                    <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                                        <small><br></small>
+                                                        <center>❌</center>
+                                                        <small><br></small>
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                                        <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                                            <small><br></small>
+                                                            <center>❌</center>
+                                                            <small><br></small>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-4 col-xs-6">
+                                                            <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                                                <small><br></small>
+                                                                <center>❌</center>
+                                                                <small><br></small>
+                                                            </div>
+                                                            <br>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-4 col-xs-6">
+                                                                <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                                                    <small><br></small>
+                                                                    <center>❌</center>
+                                                                    <small><br></small>
+                                                                </div>
+                                                                <br>
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                                                    <div class="card" id="camiseta" style="background-color: rgba(26, 25, 25, 0.8)">
+                                                                        <small><br></small>
+                                                                        <center>❌</center>
+                                                                        <small><br></small>
+                                                                    </div>
+                                                                    <br>
+                                                                </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+                <button id="exitBtn" class="btn btn-success btn-block">Salir</button>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+  <div class="modal fade text-white" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content" style="background-color: rgba(26, 25, 25, 0.8)">
+          
+            <!-- Modal Header -->
+            <div class="modal-header" style="background-color: rgba(26, 25, 25, 0.8)">
+              <h4 class="modal-title"></h4>
+              <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body" style="background-color: rgba(26, 25, 25, 0.8)">
+              <center>
+                  <img src="https://i.imgur.com/dETsWSl.png" class="img-fluid img-responsive" style="width: 250px;"/><br>
+                  <h4><b>Cigarro</b></h4><br>
+                  <button type="button" class="btn btn-success">Traspasar</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button><br>
+              </center>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+    <script>
+        $('#slot1').click(() => {
+            $("#myModal").modal();
+        });
+        $('#pj1').click(() => {
+            //$("#myModal").modal();
+        });
+        $('#pj2').click(() => {
+            alert("hola");
+        });
+        $('#pj3').click(() => {
+            alert("hola");
+        });
+        $('#pj4').click(() => {
+            alert("hola");
+        });
+        $('#pj5').click(() => {
+            alert("hola");
+        });
+        $('#pj6').click(() => {
+            alert("hola");
+        });
+    </script>
+    <!-- partial -->
+    <script src='../libs/bootstrap.min.js'></script>
+</body>
+
+</html>

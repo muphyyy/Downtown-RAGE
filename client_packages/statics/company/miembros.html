@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Downtown RP | Login</title>
+    <link rel='stylesheet' href='../libs/bootstrap.min.css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='../libs/jquery-3.3.1.min.js'></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0);
+        }
+        
+        .as-full {
+            width: 100%;
+            height: 100%;
+        }
+        
+        
+    </style>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container-fluid as-full">
+        <div class="row as-full d-flex justify-content-center">
+            <div class="col-6 align-self-center">
+                <br>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body text-white">
+                        <center>
+                            <h3><span class="badge badge-info">Miembros</span></h3><br>
+                            <table class="table table-striped table-dark" id="membersTable" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Rutas</th>
+                                        <th scope="col">Acción</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      
+                                    </tbody>
+                                  </table></center>
+                                <br>
+                                <button id="returnBtn" class="btn btn-primary btn-block">Volver</button>
+                                <button id="exitBtn" class="btn btn-danger btn-block">Salir</button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+      function setMember(name, routes, idpj){
+        $('#membersTable').append('<tr><td>' + name + '</td><td>' + routes + '</td><td><button id="despedirBtn" class="btn btn-danger btn-sm" value="' + idpj + '">Despedir</button> <button class="btn btn-info btn-sm" id="ascender" value="' + idpj + '">Ascender</button></td></tr>');
+      }
+
+    $('#exitBtn').click(() => {
+            mp.trigger('CloseMenuCompanyBrowser');
+        });
+
+    $('#returnBtn').click(() => { // este si funciona
+            mp.trigger('ReturnMainMenuCompany');
+        });
+
+        $('#despedirBtn').click(() => { // este si funciona
+            mp.trigger('ReturnMainMenuCompany');
+        });
+
+        </script>
+    <!-- partial -->
+    <script src='../libs/bootstrap.min.js'></script>
+</body>
+
+</html>

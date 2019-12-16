@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Downtown RP | Login</title>
+    <link rel='stylesheet' href='../libs/bootstrap.min.css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='../libs/jquery-3.3.1.min.js'></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0);
+        }
+        
+        .as-full {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .form-control {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        
+        .iconinput {
+            position: relative;
+            z-index: 1;
+            left: 10px;
+            top: -31px;
+            width: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container-fluid as-full">
+        <div class="row as-full d-flex justify-content-center">
+            <div class="col-7 align-self-center">
+                <br>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body text-white">
+                      <center><h3>Información del personaje</h3></center><br>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="card-body text-white">
+                              <center>Nivel<br>
+                                <h5><span class="badge badge-success">Nivel 12 (120h jugadas)</span></h5>
+                            </center>
+                        </div>
+                        </div>
+                        <br>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                          <div class="card-body text-white">
+                            <center>Trabajo<br>
+                              <h4><span class="badge badge-secondary">Sin empleo</span></h4>
+                          </center>
+                      </div>
+                      </div>
+                      <br>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                        <div class="card-body text-white">
+                          <center>Empresa<br>
+                          <h4><span class="badge badge-secondary">Sin empresa</span></h4>
+                        </center>
+                    </div>
+                    </div>
+                    <br>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                      <div class="card-body text-white">
+                        <center>Edad<br>
+                        <h4><span class="badge badge-primary">24 años</span></h4>
+                      </center>
+                  </div>
+                  </div>
+                  <br>
+                </div>
+                <div class="col-md-3">
+                  <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body text-white">
+                      <center>Número de teléfono<br>
+                      <h4><span class="badge badge-secondary">Sin teléfono</span></h4>
+                    </center>
+                </div>
+                </div>
+                <br>
+              </div>
+              <div class="col-md-3">
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                  <div class="card-body text-white">
+                    <center>DNI<br>
+                    <h4><span class="badge badge-secondary">Sin DNI</span></h4>
+                  </center>
+              </div>
+              </div>
+              <br>
+            </div>
+            <div class="col-md-3">
+              <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                <div class="card-body text-white">
+                  <center>Fecha de registro<br>
+                  <h4><span class="badge badge-primary">29/10/2019 17:35</span></h4>
+                </center>
+            </div>
+            </div>
+            <br>
+          </div>
+          <div class="col-md-3">
+            <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+              <div class="card-body text-white">
+                <center>Última conexión<br>
+                <h4><span class="badge badge-primary">29/10/2019 17:35</span></h4>
+              </center>
+          </div>
+          </div>
+          <br>
+        </div>
+                </div>
+
+                <br>
+                <button id="exitBtn" class="btn btn-danger btn-block">Salir</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+    $('#exitBtn').click(() => {
+            mp.trigger('OpenCharacterMenu');
+        });
+        </script>
+    <!-- partial -->
+    <script src='../libs/bootstrap.min.js'></script>
+</body>
+
+</html>

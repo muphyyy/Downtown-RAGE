@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Downtown RP | Login</title>
+    <link rel='stylesheet' href='../libs/bootstrap.min.css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='../libs/jquery-3.3.1.min.js'></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0);
+        }
+        
+        .as-full {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .form-control {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        
+        .iconinput {
+            position: relative;
+            z-index: 1;
+            left: 10px;
+            top: -31px;
+            width: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container-fluid as-full">
+        <div class="row as-full d-flex justify-content-center">
+            <div class="col-6 align-self-center">
+                <br>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body text-white">
+                        <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="card-body text-white">
+                              <center><h4 id="nombre"></h4>
+                                <h6>Caja fuerte <span class="badge badge-success" id="cajafuerte"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Trabajadores <span class="badge badge-primary" id="trabajadores"></span>&nbsp;<br>Porcentaje ganancias <span class="badge badge-primary" id="porcentaje"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subsidio <span class="badge badge-success" id="subsidio"></span></h6>
+                            </center>
+                        </div>
+                        </div><br>
+                <button id="configBtn" class="btn btn-primary btn-block">Configuración</button>
+                <button id="gestionBtn" class="btn btn-primary btn-block">Gestión</button>
+                <button id="miembrosBtn" class="btn btn-primary btn-block">Miembros</button>
+                <button id="safeBtn" class="btn btn-primary btn-block">Caja fuerte</button>
+                <button id="exitBtn" class="btn btn-danger btn-block">Salir</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+      function setStats(cajafuerte, trabajadores, porcentaje, subsidio, nombre){
+       document.getElementById("cajafuerte").innerHTML = "$" + cajafuerte;
+       document.getElementById("trabajadores").innerHTML = trabajadores;
+       document.getElementById("porcentaje").innerHTML = porcentaje + "%";
+       document.getElementById("subsidio").innerHTML = subsidio;
+       document.getElementById("nombre").innerHTML = nombre;
+      }
+
+    $('#exitBtn').click(() => {
+        mp.trigger('CloseMenuCompanyBrowser');
+    });
+
+    $('#gestionBtn').click(() => {
+         mp.trigger('OpenGestionMenuCompany');
+    });
+
+    $('#miembrosBtn').click(() => {
+         mp.trigger('OpenMembersMenuCompany');
+    });
+
+    $('#safeBtn').click(() => {
+         mp.trigger('OpenSafeMenuCompany');
+    });
+    
+    $('#configBtn').click(() => {
+        mp.trigger('OpenConfigMenuCompany');
+    });
+        
+        </script>
+    <!-- partial -->
+    <script src='../libs/bootstrap.min.js'></script>
+</body>
+
+</html>

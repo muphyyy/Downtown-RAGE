@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Downtown RP | Login</title>
+    <link rel='stylesheet' href='../libs/bootstrap.min.css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='../libs/jquery-3.3.1.min.js'></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0);
+        }
+        
+        .as-full {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .form-control {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        
+        .iconinput {
+            position: relative;
+            z-index: 1;
+            left: 10px;
+            top: -31px;
+            width: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container-fluid as-full">
+        <div class="row as-full d-flex justify-content-center">
+            <div class="col-6 align-self-center">
+                <br>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body text-white">
+                      <center><h4>Empresa en venta</h4>
+                      <p><small>¿Te gustaría montar tu propio negocio? ¡Compra tu empresa, contrata trabajadores y intenta destacarte por encima de las otras para hacerte con el mundo empresarial de San Andreas!</small></p></center>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="card-body text-white">
+                              <center>Tipo<br>
+                                <h3><span class="badge badge-primary" id="tipo"></span></h3>
+                            </center>
+                        </div>
+                        </div>
+                        <br>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                          <div class="card-body text-white">
+                            <center>Precio<br>
+                              <h3><span class="badge badge-success" id="precio"></span></h3>
+                          </center>
+                      </div>
+                      </div>
+                      <br>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                        <div class="card-body text-white">
+                          <center>Dirección<br>
+                            <h3><span class="badge badge-info" id="direccion"></span></h3>
+                        </center>
+                    </div>
+                    </div>
+                    <br>
+                  </div>
+                    
+                </div>
+                <button id="buyBtn" class="btn btn-success btn-block">Comprar</button>
+                <button id="exitBtn" class="btn btn-danger btn-block">Salir</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+      function setCompaniesInfo(tipo, precio, direccion){
+       document.getElementById("tipo").innerHTML = tipo;
+       document.getElementById("precio").innerHTML = "$" + precio;
+       document.getElementById("direccion").innerHTML = direccion;
+      }
+
+    $('#exitBtn').click(() => {
+            mp.trigger('CompanyCloseBrowserSS');
+        });
+
+    $('#buyBtn').click(() => {
+            mp.trigger('BuyCompanySS');
+        });
+        </script>
+    <!-- partial -->
+    <script src='../libs/bootstrap.min.js'></script>
+</body>
+
+</html>

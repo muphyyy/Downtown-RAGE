@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Downtown RP | Login</title>
+    <link rel='stylesheet' href='../libs/bootstrap.min.css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='../libs/jquery-3.3.1.min.js'></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0);
+        }
+        
+        .as-full {
+            width: 100%;
+            height: 100%;
+        }
+        
+        
+    </style>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container-fluid as-full">
+        <div class="row as-full d-flex justify-content-center">
+            <div class="col-6 align-self-center">
+                <br>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body text-white">
+
+                            <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                                    <div class="card-body text-white">
+                                      <center>
+                                            <h4><span class="badge badge-info">Información</span></h4>
+                                          <small>La compañía se queda con el 50% de las ganancias que obtenga el trabajador por cada paga como base en todas las empresas, pero este porcentaje se puede subir y bajar (dependiendo todo de la gestión del dueño de la empresa). También puedes controlar el subsidio que reciben los trabajadores cada payday. <b>Recuerda que todo el dinero sale de la caja fuerte de la empresa, y si no hay dinero en esta, tampoco hay para los trabajadores.</b> ¡Gestiona las ganancias con cabeza!</small>
+                                    </center>
+                                </div>
+                                </div>
+
+                                <br>
+                                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                                        <div class="card-body text-white">
+                                          <center>Porcentaje de ganancias del trabajador (%)<br>
+                                              <input type="number" class="form-control" id="ganancias" placeholder="Ej: 10"><br>
+                                              <button class="btn btn-success btn-sm btn-block" id="gananciasBtn">Ajustar</button>
+                                        </center>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                                        <div class="card-body text-white">
+                                          <center>Subsidio en el payday ($)<br>
+                                            <input type="number" class="form-control" id="subsidio" placeholder="Ej: 10"><br>
+                                            <button class="btn btn-success btn-sm btn-block" id="subsidioBtn">Ajustar</button>
+                                        </center>
+                                    </div>
+                                </div>
+                                <br>
+                                <button id="returnBtn" class="btn btn-primary btn-block">Volver</button>
+                                <button id="exitBtn" class="btn btn-danger btn-block">Salir</button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+      function setCompaniesInfo(tipo, precio, direccion){
+       document.getElementById("tipo").innerHTML = tipo;
+       document.getElementById("precio").innerHTML = "$" + precio;
+       document.getElementById("direccion").innerHTML = direccion;
+      }
+
+    $('#exitBtn').click(() => {
+            mp.trigger('CloseMenuCompanyBrowser');
+        });
+
+    $('#returnBtn').click(() => {
+            mp.trigger('ReturnMainMenuCompany');
+        });
+
+        $('#gananciasBtn').click(() => {
+            mp.trigger('GananciasMenuCompany', $('#ganancias').val());
+        });
+
+        $('#subsidioBtn').click(() => {
+            mp.trigger('SubsidioMenuCompany', $('#subsidio').val());
+        });
+        
+        </script>
+    <!-- partial -->
+    <script src='../libs/bootstrap.min.js'></script>
+</body>
+
+</html>

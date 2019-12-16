@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Downtown RP | Login</title>
+    <link rel='stylesheet' href='../libs/bootstrap.min.css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='../libs/jquery-3.3.1.min.js'></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0);
+        }
+        
+        .as-full {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .form-control {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        
+        .iconinput {
+            position: relative;
+            z-index: 1;
+            left: 10px;
+            top: -31px;
+            width: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container-fluid as-full">
+        <div class="row as-full d-flex justify-content-center">
+            <div class="col-5 align-self-center">
+                <center><img src="../img/bank.png" class="img-fluid img-responsive" style="height: 70px;"></img>
+                </center>
+                <br>
+                <br>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body text-white">
+                      <center>
+                        <b id="sueldo"></b> | <b id="iban"></b><hr color="white">
+                      </center>
+                      <center>
+                        <b id="createUsername">¿A qué cuenta bancaria quieres transferir dinero?</b><br>
+                        <small id="isatm"></small>
+                      </center><br>
+                      <input type="text" class="form-control" id="usernameInput" aria-describedby="emailHelp" placeholder="Escribe el IBAN de la cuenta a la que quieres transferir"><br>
+                      <input type="number" id="cantidad" class="form-control" placeholder="Escribe la cantidad que deseas transferir"><br>
+                <button id="btnTransferir" class="btn btn-success btn-block">Transferir</button>    
+                <button id="btnBack" class="btn btn-primary btn-block">Volver</button>     
+                <button id="btnExit" class="btn btn-danger btn-block">Salir</button>
+            </div>
+
+        </div>
+    </div>
+    <!-- partial -->
+    <script>
+         function setSueldoActual(sueldo) {
+          document.getElementById("sueldo").innerHTML = "Sueldo actual: <font color='green'>$</font>" + sueldo;
+      }	
+      function setIBAN(IBAN) {
+          document.getElementById("iban").innerHTML = "IBAN: <font color='#007bff'>" + IBAN + "</font>";
+      }	
+        function isATM(){
+            document.getElementById("isatm").innerHTML = "Cantidad máxima: <font color='green'>$1000</font>";
+        }
+        $('#btnExit').click(() => {
+            mp.trigger('DestroyCreateBankClick');
+        });
+        $('#btnBack').click(() => {
+            mp.trigger('GoBackMainBanco');
+        });
+        $('#btnTransferir').click(() => {
+            mp.trigger('TransferirBank', $('#usernameInput').val(), $('#cantidad').val());
+        });</script>
+    <script src='../libs/bootstrap.min.js'></script>
+</body>
+
+</html>

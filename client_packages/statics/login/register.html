@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Downtown RP | Login</title>
+    <link rel='stylesheet' href='../libs/bootstrap.min.css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='../libs/jquery-3.3.1.min.js'></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0);
+        }
+        
+        .as-full {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .form-control {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        
+        .iconinput {
+            position: relative;
+            z-index: 1;
+            left: 10px;
+            top: -31px;
+            width: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container-fluid as-full">
+        <div class="row as-full d-flex justify-content-center">
+            <div class="col-5 align-self-center">
+                <center><img src="../img/logo.png" class="img-fluid img-responsive" style="height: 200px;"></img>
+                </center>
+                <br>
+                <br>
+                <div class="alert alert-danger alert-dismissible fade show" id="errorMessage2" role="alert">
+                    <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ERROR </strong> El nombre de usuario ya existe
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="alert alert-danger alert-dismissible fade show" id="errorMessage3" role="alert">
+                    <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ERROR </strong> Ya hay una cuenta registrada con este e-mail
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="alert alert-danger alert-dismissible fade show" id="errorMessage4" role="alert">
+                    <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ERROR </strong> Las contraseñas no coinciden
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body">
+                        <center>
+                            <h5 class="card-title text-white">¡Crea tu cuenta!</h5></center>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="usernameInput" aria-describedby="emailHelp" placeholder="Ingresa tu usuario"><i class="iconinput fa fa-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico"><i class="iconinput fa fa-at"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="passwordInput" placeholder="Ingresa tu contraseña"><i class="iconinput fa fa-lock" aria-hidden="true"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password2Input" placeholder="Confirma tu contraseña"><i class="iconinput fa fa-lock" aria-hidden="true"></i>
+                        </div>
+                        <button type="submit" id="entrarRegister" class="col-md-12 btn btn-primary">Crear cuenta</button>
+                        <button type="submit" id="CargandoLogin" class="col-md-12 btn btn-primary" disabled>Cargando</button>
+
+                    </div>
+                </div>
+                <div class="card mt-1" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body">
+                        <small><font color="white"><i class="fa fa-child" aria-hidden="true"></i> ¿Ya tienes cuenta? ¡Puedes iniciar sesión haciendo <a id="clickLogin" href="#">click aquí</a>!</font></small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- script  -->
+    <script>
+        $("#errorMessage2").hide();
+        $("#errorMessage3").hide();
+        $("#errorMessage4").hide();
+        $("#CargandoLogin").hide();
+
+        $('#entrarRegister').click(() => {
+            $("#entrarRegister").hide();
+            $("#CargandoLogin").show();
+            mp.trigger('RegisterUser', $('#usernameInput').val(), $('#emailInput').val(), $('#passwordInput').val(), $('#password2Input').val());
+        });
+
+        $('#clickLogin').click(() => {
+            mp.trigger('SwitchLoginRegister', 1);
+        });
+
+        function ShowError2() {
+            $("#errorMessage2").show();
+            $("#entrarRegister").show();
+            $("#CargandoLogin").hide();
+        }
+
+        function ShowError3() {
+            $("#errorMessage3").show();
+            $("#entrarRegister").show();
+            $("#CargandoLogin").hide();
+        }
+
+        function ShowError4() {
+            $("#errorMessage4").show();
+            $("#entrarRegister").show();
+            $("#CargandoLogin").hide();
+        }
+    </script>
+    <!-- partial -->
+    <script src='../libs/bootstrap.min.js'></script>
+</body>
+
+</html>

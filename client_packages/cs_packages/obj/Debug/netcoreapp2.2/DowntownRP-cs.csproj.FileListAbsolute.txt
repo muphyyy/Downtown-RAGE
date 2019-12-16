@@ -1,0 +1,15 @@
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\bin\Debug\netcoreapp2.2\DowntownRP-cs.deps.json
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\bin\Debug\netcoreapp2.2\DowntownRP-cs.dll
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\bin\Debug\netcoreapp2.2\DowntownRP-cs.pdb
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\bin\Debug\netcoreapp2.2\rage-sharp.dll
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\bin\Debug\netcoreapp2.2\Microsoft.CodeAnalysis.dll
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\bin\Debug\netcoreapp2.2\Microsoft.CodeAnalysis.CSharp.dll
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\bin\Debug\netcoreapp2.2\NeoSmart.Hashing.dll
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\bin\Debug\netcoreapp2.2\xxHash.dll
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\bin\Debug\netcoreapp2.2\rage-sharp.xml
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\obj\Debug\netcoreapp2.2\DowntownRP-cs.csprojAssemblyReference.cache
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\obj\Debug\netcoreapp2.2\DowntownRP-cs.AssemblyInfoInputs.cache
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\obj\Debug\netcoreapp2.2\DowntownRP-cs.AssemblyInfo.cs
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\obj\Debug\netcoreapp2.2\DowntownRP-cs.csproj.CopyComplete
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\obj\Debug\netcoreapp2.2\DowntownRP-cs.dll
+F:\DOWNTOWN-V\DowntownRP-V-a3661e20051a0d854f57100cdece46b87a22c187\client_packages\cs_packages\obj\Debug\netcoreapp2.2\DowntownRP-cs.pdb

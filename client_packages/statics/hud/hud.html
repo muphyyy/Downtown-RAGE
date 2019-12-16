@@ -1,0 +1,548 @@
+
+
+<!-- 
+As Known as AxE
+ -->
+
+<head>
+<style>
+
+@font-face {
+    font-family: 'roboto';
+    src:url('Roboto-Light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+}
+
+.health-bar, .armour-bar {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 200px;
+  height: 20px;
+  padding: 5px;
+  background: #7d7c7c70;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  margin: 4px;
+}
+
+.hambre-bar, .sed-bar{
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 200px;
+  height: 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+
+}
+
+.hambresed {
+  display: flex;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 200px;
+  height: 20px;
+  background: #7d7c7c70;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  padding: 5px;
+  margin: 4px;
+}
+
+.bar {
+  background: #c54;
+  width: 100%;
+  height: 10px;
+  position: relative;
+  
+  transition: width .5s linear;
+}
+
+.bar-a {
+  background: #73748a;
+  width: 100%;
+  height: 10px;
+  position: relative;
+  
+  transition: width .5s linear;
+}
+
+
+.bar-e {
+  background: #b844cc;
+  width: 100%;
+  height: 10px;
+  position: relative;
+  
+  transition: width .5s linear;
+}
+
+.bar-h {
+  background: #64cc44;
+  width: 100%;
+  height: 10px;
+  position: relative;
+  flex: 50%;
+  float: left;
+  transition: width .5s linear;
+}
+
+.bar-s {
+  background: #448ccc;
+  width: 100%;
+  height: 10px;
+  position: relative;
+  transition: width .5s linear;
+  float: right;
+}
+
+.hit, .hit-a, .hit-h, .hit-s  {
+  background: rgba(255,255,255, 0.6);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 0px;
+  
+  transition: width .5s linear;
+}
+
+img {
+padding-top: 2px;
+}
+
+.contenedor {
+display: flex;
+margin-top: 6px;
+}
+
+.hud {
+    width: 248px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+	left: 350;
+    /*margin-left: auto;
+    margin-right: auto;*/
+}
+
+
+.dinero {
+font-family: 'roboto';
+    src:url('Roboto-Medium-webfont.woff') format('woff');
+font-weight: normal;
+font-style: normal;
+
+margin-top: 25px;
+font-size: 27px;
+color: rgba(255,255,255,0.8);
+font-weight: 700;
+text-decoration: none;
+font-style: normal;
+text-transform: none;
+width: 100%;
+text-align: right;
+white-space: nowrap;
+overflow: hidden;
+}
+
+.statsu {
+font-family: 'roboto';
+font-size: 17px;
+color: rgba(252, 252, 252, 0.7);
+text-decoration: none;
+text-transform: none;
+text-align: left;
+width: 100%;
+font-weight: 1;
+white-space: nowrap;
+overflow: hidden;
+}
+
+.infoydinero{
+	position: absolute;
+	right: 10px;
+	width: 250px;
+	opacity: 1;
+	transition: opacity 1s;
+}
+
+.infoydinero.fade {
+  opacity: 0;
+}
+
+.infolog {
+font-family: sans-serif;
+    font-size: 20px;
+    text-align: right;
+    color: #222222;
+    text-decoration: none;
+    font-style: normal;
+    text-transform: none;
+    text-shadow: 1px 1px 0 #969696, 1px 1px 2px #aba8a8;
+    width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	height: 100px;
+}
+
+.logod {
+width: 105.5px;
+position: absolute;
+left: 0;
+right: 0;
+margin-left: auto;
+margin-right: auto;
+}
+
+.copy {
+/*letter-spacing: 1px;
+font-family: 'Grand Hotel', cursive;*/
+font-size: 18px;
+color: rgba(255,255,255,.3);
+text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5);
+position: absolute;
+right: 5px;
+top: 0px;
+}
+
+body {
+	margin: 0;
+	opacity: 1;
+	transition: opacity 1s; 
+	overflow-y: hidden;
+    width: 100%;
+}
+
+body.fade {
+  opacity: 0;
+}
+
+</style>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body class="fade">
+<div class="copy">
+<!--Muphy & AxE-->
+</div>
+
+<div class="logod">
+<img src="vespucci.png" height="80px" width="auto">
+</div>
+
+<div class="screen">
+
+
+<div class="hud">
+
+<div class="stats">
+
+
+	<div class="contenedor">
+		<div class="statsu" id="microphonestatus">
+		</div><br>
+	</div>
+	<div class="contenedor">
+		<div class="statsu">
+			<i class="fa fa-certificate" aria-hidden="true"></i> Downtown <b>0.4.2</b><br>
+		</div>
+	</div>
+	<div class="contenedor">
+		<div class="statsu" id="playersonline">
+		</div>
+	</div>
+	<div class="contenedor">
+		<div class="statsu" id="idplayer">
+		</div><br>
+	</div>
+
+	<div class="contenedor">
+	<img src="burger.png" height="20px" width="auto">
+		<div class="hambresed">
+		<div class="hambre-bar" data-total="100" data-value="100">
+		  <div class="bar-h">
+			  <div class="hit-h"></div>
+		  </div>
+		</div> 
+		<div class="sed-bar" data-total="100" data-value="100"> 
+		   <div class="bar-s">
+			  <div class="hit-s"></div>
+		  </div>
+		</div>
+		</div>
+	<img id="imgsed" src="water.png" height="20px" width="auto">
+	<br>
+	</div>
+</div>
+
+<!-- $(".infolog").prepend("<br>log1"); -->
+<br>
+
+</div><!-- cierro hud -->
+
+<div class="infoydinero">
+		<div class="dinero">
+				<span id="mpcash"><b></b>$0</b></span> <font color="#12a64b"><i class="fa fa-money" aria-hidden="true"></i></font><br>
+				<span id="mpbank"></span> <font color="#1083c2"><i class="fa fa-credit-card" aria-hidden="true"></i></font>
+				</div>
+</div>
+
+</div><!-- cierro screen -->
+<script src="js/jquery.min.js"></script>
+<script>
+
+function updatePlayersOnline(players) {
+          if(players == 1){
+			document.getElementById("playersonline").innerHTML = "<i class='fa fa-users' aria-hidden='true'></i> <b>" + players + "</b> jugador conectado<br>";
+		  }
+		  else{
+			document.getElementById("playersonline").innerHTML = "<i class='fa fa-users' aria-hidden='true'></i> <b>" + players + "</b> jugadores conectados<br>";
+		  }
+	  }	
+
+function updatePlayerId(Id) {
+          document.getElementById("idplayer").innerHTML = "<i class='fa fa-user-circle-o' aria-hidden='true'></i> Tu id: <b>" + Id + "</b><br>";
+	  }	
+
+function updatePlayerBank(money) {
+		  document.getElementById("mpbank").innerHTML = "<b>$" + money+"</b>";
+	  }	
+
+function updateMicrophoneStatus(status){
+	
+	if(status == 0){
+		document.getElementById("microphonestatus").innerHTML = "<font color='red'><i class='fa fa-microphone-slash' aria-hidden='true'></i></font> Microfono desactivado"
+	}
+
+	if(status == 1){
+		document.getElementById("microphonestatus").innerHTML = "<font color='green'><i class='fa fa-microphone' aria-hidden='true'></i></font> Microfono activado"
+	}
+}
+	  
+function actHud(tipo,modo,valors){
+	
+	let valor = parseInt(valors);
+	if(tipo == "cash"){
+	
+		if (modo == "set"){			
+			$("#mpcash").text("$"+valor);
+		}else{
+			
+			switch (modo) {
+				case "resto":
+					let actCash = $("#mpcash").text();
+					let actCashN = Number(actCash.replace(/[^0-9.-]+/g,""));
+					let resultado = actCashN - valor;
+						if(resultado < 0){resultado = 0}
+					//let resF = "$"+ new Intl.NumberFormat("en-US", {maximumFractionDigits: 3}).format(resultado);
+					$("#mpcash").text("$"+resultado);
+					$(".infolog").prepend(" - $" + resultado +".00<br>");
+				break;
+				case "sumo":
+					let actCash2 = $("#mpcash").text();
+					let actCashN2 = Number(actCash2.replace(/[^0-9.-]+/g,""));
+					let resultado2 = actCashN2 + valor;
+						if(resultado2 > 999999){resultado2 = 999999}
+					// resF2 = "$"+ new Intl.NumberFormat("en-US", {maximumFractionDigits: 3}).format(resultado2);
+					$("#mpcash").text("$"+resultado2);
+					$(".infolog").prepend(" + $" + resultado2 + "<br>");
+				break;
+			}
+			
+		}
+	
+	}else{
+	
+	let damage = valor;
+	
+	switch (tipo) {
+		/*case "health":
+			hBar = $('.health-bar');
+			bar = hBar.find('.bar');
+			hit = hBar.find('.hit');		
+		break;
+		case "armour":
+			hBar = $('.armour-bar');
+			bar = hBar.find('.bar-a');
+			hit = hBar.find('.hit-a');
+		break;*/
+		case "hambre":
+			hBar = $('.hambre-bar');
+			bar = hBar.find('.bar-h');
+			hit = hBar.find('.hit-h');
+		break;
+		case "sed":
+			hBar = $('.sed-bar');
+			bar = hBar.find('.bar-s');
+			hit = hBar.find('.hit-s');
+		break;
+	
+	}
+
+    let total = hBar.data('total');
+    let value = hBar.data('value');
+
+if (modo == "resto"){
+
+    let newValue = value - damage; //100 - 30
+	if (newValue < 0) {newValue = 0};
+
+    let barWidth = (newValue / total) * 100; // 70 / 100 * 100 = 70
+    let hitWidth = (damage / value) * 100 + "%"; // 30%
+    
+	console.log("Resto -> "+tipo+"barra queda -> "+barWidth);
+	
+    hit.css('width', hitWidth);
+    hBar.data('value', newValue);
+    
+    setTimeout(function(){
+      hit.css({'width': '0'});
+      bar.css('width', barWidth + "%");
+    }, 500);
+    
+    if( value <= 0){
+	mp.trigger("muertodehambre");
+		switch (tipo){
+			case "sed":
+			$("#imgsed").attr("src","skull.png");
+			break;
+			case "hambre":
+			$("#imghambre").attr("src","skull.png");
+			break;
+		}      
+    }
+	
+  }
+  
+  if(modo == "sumo"){
+	if (value > 100) {
+		
+    }else{
+	
+		switch (tipo){
+			case "sed":
+			$("#imgsed").attr("src","water.png");
+			break;
+			case "hambre":
+			$("#imghambre").attr("src","burger.png");
+			break;
+		}
+		
+		if (value < 0) {
+			value = 0;
+		}
+	 
+		let newValue = value + damage; // 100 + 40 
+		if (newValue > 100){newValue = 100} // 100 
+		let barWidth = (newValue / total) * 100; // 100 / 100 * 100
+		console.log("Sumo -> "+tipo+"barra queda -> "+barWidth);
+		hBar.data('value', newValue);
+		
+		setTimeout(function(){
+		  hit.css({'width': '0'});
+		  bar.css('width', barWidth + "%");
+		}, 500);
+    }
+	
+  }
+  
+    if(modo == "set"){
+	console.log("Seteo valor -> "+valor+" value -> "+value);
+		
+		if (valor == value){
+		//console.log("Valores iguales no hago nada valor: "+valor +"- value: "+value);
+		}else{
+		
+			if (valor < value) {
+				let ctd = value - valor;
+				actHud(tipo,"resto",ctd);
+				//console.log("resto desde set: "+valor +"- cantidad que resto: "+ctd);
+			}
+			
+			if (valor > value) {
+				let ctd =  valor - value;
+				actHud(tipo,"sumo",ctd);
+				//console.log("sumo desde set: "+valor +"- cantidad que resto: "+ctd);
+			}
+		}
+	}
+ 
+} 
+};
+
+function infolog(texto){
+	$(".infolog").prepend(texto + "<br>");
+}
+
+function showHud()
+{
+	document.body.className = "";
+}
+			
+function hideHud()
+{
+	document.body.className = "fade";
+}
+
+function speedo_on(){
+	$(".infoydinero").addClass("fade");	
+	setTimeout(function(){$(".infoydinero").css("bottom", "325px");$(".infoydinero").removeClass("fade"); }, 2000);
+}
+
+function speedo_off(){
+	$(".infoydinero").addClass("fade");
+	setTimeout(function(){$(".infoydinero").css("bottom", "0px");$(".infoydinero").removeClass("fade"); }, 2000);
+}
+
+
+/*function health(valor){
+	let hBar = $('.health-bar');
+	let	bar = hBar.find('.bar');
+	let	hit = hBar.find('.hit');
+	let damage = valor;
+	let total = hBar.data('total');
+    let value = hBar.data('value');
+
+			hBar.data('value', damage);
+			
+			setTimeout(function(){
+			  hit.css({'width': '0'});
+			  bar.css('width', damage + "%");
+			}, 500);
+	
+}
+
+function armour(valor){
+	let hBar = $('.armour-bar');
+	let	bar = hBar.find('.bar-a');
+	let damage = valor;
+	let total = hBar.data('total');
+    let value = hBar.data('value');
+
+			hBar.data('value', damage);
+			
+			setTimeout(function(){
+			  bar.css('width', damage + "%");
+			}, 500);
+	
+}*/
+
+
+
+</script>
+</body>

@@ -1,0 +1,96 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 27/02/2017 10:30
+  	*/
+
+@font-face {
+  font-family: "clothes";
+  src: url("../fonts/clothes.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "clothes";
+    src: url("../fonts/clothes.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="clothes-"]:before, [class*=" clothes-"]:before,
+[class^="clothes-"]:after, [class*=" clothes-"]:after {
+    font-family: "clothes";
+    font-size: 20px;
+    font-style: normal;
+}
+
+.clothes-backpack:before { content: "\f100"; }
+.clothes-ballet-flats:before { content: "\f101"; }
+.clothes-basketball-jersey:before { content: "\f102"; }
+.clothes-bathrobe:before { content: "\f103"; }
+.clothes-belt:before { content: "\f104"; }
+.clothes-blouse:before { content: "\f105"; }
+.clothes-boot:before { content: "\f106"; }
+.clothes-boot-1:before { content: "\f107"; }
+.clothes-boot-2:before { content: "\f108"; }
+.clothes-bow-tie:before { content: "\f109"; }
+.clothes-brassiere:before { content: "\f10a"; }
+.clothes-cap:before { content: "\f10b"; }
+.clothes-coat:before { content: "\f10c"; }
+.clothes-dress:before { content: "\f10d"; }
+.clothes-dress-1:before { content: "\f10e"; }
+.clothes-dress-2:before { content: "\f10f"; }
+.clothes-dress-3:before { content: "\f110"; }
+.clothes-dress-4:before { content: "\f111"; }
+.clothes-glasses:before { content: "\f112"; }
+.clothes-gloves:before { content: "\f113"; }
+.clothes-hand-bag:before { content: "\f114"; }
+.clothes-hand-bag-1:before { content: "\f115"; }
+.clothes-hat:before { content: "\f116"; }
+.clothes-high-heels:before { content: "\f117"; }
+.clothes-high-hells:before { content: "\f118"; }
+.clothes-hoodie:before { content: "\f119"; }
+.clothes-jacket:before { content: "\f11a"; }
+.clothes-jacket-1:before { content: "\f11b"; }
+.clothes-jacket-2:before { content: "\f11c"; }
+.clothes-jacket-3:before { content: "\f11d"; }
+.clothes-jacket-4:before { content: "\f11e"; }
+.clothes-jacket-5:before { content: "\f11f"; }
+.clothes-jacket-6:before { content: "\f120"; }
+.clothes-jeans:before { content: "\f121"; }
+.clothes-mittens:before { content: "\f122"; }
+.clothes-necklace:before { content: "\f123"; }
+.clothes-overall:before { content: "\f124"; }
+.clothes-pamela:before { content: "\f125"; }
+.clothes-panties:before { content: "\f126"; }
+.clothes-pants:before { content: "\f127"; }
+.clothes-pijama:before { content: "\f128"; }
+.clothes-polo:before { content: "\f129"; }
+.clothes-portfolio:before { content: "\f12a"; }
+.clothes-pullover:before { content: "\f12b"; }
+.clothes-purse:before { content: "\f12c"; }
+.clothes-scarf:before { content: "\f12d"; }
+.clothes-shirt:before { content: "\f12e"; }
+.clothes-shirt-1:before { content: "\f12f"; }
+.clothes-shirt-2:before { content: "\f130"; }
+.clothes-shirt-3:before { content: "\f131"; }
+.clothes-shoe:before { content: "\f132"; }
+.clothes-shoe-1:before { content: "\f133"; }
+.clothes-shopping-bag:before { content: "\f134"; }
+.clothes-shorts:before { content: "\f135"; }
+.clothes-shorts-1:before { content: "\f136"; }
+.clothes-skirt:before { content: "\f137"; }
+.clothes-skirt-1:before { content: "\f138"; }
+.clothes-slipper:before { content: "\f139"; }
+.clothes-sneaker:before { content: "\f13a"; }
+.clothes-socks:before { content: "\f13b"; }
+.clothes-suitcase:before { content: "\f13c"; }
+.clothes-tie:before { content: "\f13d"; }
+.clothes-trench-coat:before { content: "\f13e"; }
+.clothes-umbrella:before { content: "\f13f"; }
+.clothes-underwear:before { content: "\f140"; }
+.clothes-underwear-1:before { content: "\f141"; }
+.clothes-vest:before { content: "\f142"; }
+.clothes-wallet:before { content: "\f143"; }
+.clothes-winter-hat:before { content: "\f144"; }
+.clothes-wristwatch:before { content: "\f145"; }

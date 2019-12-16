@@ -1,0 +1,51 @@
+@font-face {
+    src: url("OpenSans-Bold.ttf") format('truetype');
+    font-family: 'Open Sans Bold';
+    font-weight: bold;
+}
+@font-face {
+    src: url("OpenSans-BoldItalic.ttf") format('truetype');
+    font-family: 'Open Sans Bold Italic';
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    src: url("OpenSans-ExtraBold.ttf") format('truetype');
+    font-family: 'Open Sans Extra Bold';
+    font-weight: 900;
+}
+@font-face {
+    src: url("OpenSans-ExtraBoldItalic.ttf") format('truetype');
+    font-family: 'Open Sans Extra Bold Italic';
+    font-weight: 900;
+    font-style: italic;
+}
+@font-face {
+    src: url("OpenSans-Italic.ttf") format('truetype');
+    font-family: 'Open Sans Italic';
+    font-style: italic;
+}
+@font-face {
+    src: url("OpenSans-Light.ttf") format('truetype');
+    font-family: 'Open Sans Light';
+}
+@font-face {
+    src: url("OpenSans-LightItalic.ttf") format('truetype');
+    font-family: 'Open Sans Light Italic';
+    font-style: italic;
+}
+@font-face {
+    src: url("OpenSans-Regular.ttf") format('truetype');
+    font-family: 'Open Sans Regular';
+}
+@font-face {
+    src: url("OpenSans-SemiBold.ttf") format('truetype');
+    font-family: 'Open Sans SemiBold';
+    font-weight: 600;
+}
+@font-face {
+    src: url("OpenSans-SemiBoldItalic.ttf") format('truetype');
+    font-family: 'Open Sans SemiBold Italic';
+    font-weight: 600;
+    font-style: italic;
+}

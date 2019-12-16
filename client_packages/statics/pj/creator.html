@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Downtown RP | Login</title>
+    <link rel='stylesheet' href='../libs/bootstrap.min.css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='../libs/jquery-3.3.1.min.js'></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../libs/colorpalettepicker.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0);
+        }
+        .butt {
+        background-color: rgba(26, 25, 25, 0.8);
+        border: none; /* Remove borders */
+        color: white; /* White text */
+        padding: 12px 16px; /* Some padding */
+        font-size: 16px; /* Set a font size */
+        cursor: pointer; /* Mouse pointer on hover */
+        }
+
+        /* Darker background on mouse-over */
+        .butt:hover {
+        background-color: RoyalBlue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <br>
+                <center><img src="../img/logo.png" class="img-fluid img-responsive" style="height: 120px;"></center>
+                <br>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body text-white">
+                            <div class="form-group">
+                                    <label for="exampleInputEmail1">Elige un nombre para tu personaje:</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Formato: Nombre Apellido">
+                                    <small id="emailHelp" class="form-text text-muted">Las iniciales deben de estar en mayúscula.</small>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleInputPassword1">¿Qué edad tiene tu personaje?</label>
+                                    <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Ej: 21">
+                                  </div>
+                    </div>
+
+                </div>
+                <br>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                        <div class="card-body text-white">
+                                <button class="butt" id="pj-settings">👤</button>
+                                <button class="butt" id="face-settings">😶</button>
+                                <button class="butt" id="hair-settings">✂️</button>
+                                <button class="butt" id="lips-settings">👄</button>
+                                <button class="butt" id="shirt-settings">👕</button>
+                                <button class="butt" id="jeans-settings">👖</button>
+                                <button class="butt" id="shoes-settings">👟</button>
+                        </div>
+    
+                    </div>
+                    <br>
+                    <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="card-body text-white">
+                                            <label for="customRange3">Rotar personaje</label>
+                                            <input type="range" class="custom-range" min="0" max="5" step="0.5" id="rotarPersonaje">
+                                                <label for="customRange3">Alejar/acercar</label>
+                                                <input type="range" class="custom-range" min="0" max="5" step="0.5" id="alejarPersonaje">
+                                                    <label for="customRange3">Subir/bajar</label>
+                                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="subirPersonaje">
+                            </div>
+        
+                        </div><br>
+                        <button id="crearBtn" class="btn btn-success btn-block">Crear personaje</button>
+                        <button id="volverBtn" class="btn btn-danger btn-block">Volver al selector de personajes</button>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-3">
+                <br>
+               <div id="creator-pj">
+                    <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="alert alert-primary" role="alert">
+                                    Género
+                                  </div>
+                            <div class="card-body text-white">
+                                    <center><button class="btn btn-primary" id="btnHombre">♂️ Hombre</button>
+                                        <button class="btn btn-primary" id="btnMujer">♀️ Mujer</button></center>
+                            </div>
+                            
+                      </div><br>
+                      <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="alert alert-primary" role="alert">
+                                    Genética
+                                  </div>
+                            <div class="card-body text-white">
+                                    <label for="customRange3">Genes paternos</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="genesPaternos">
+                                    <label for="customRange3">Genes maternos</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="genesMaternos">
+                                    <label for="customRange3">Mix</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="genesMix">
+                            </div>
+                      </div>
+                      <br>
+                      <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="alert alert-primary" role="alert">
+                                    Etnia
+                                  </div>
+                            <div class="card-body text-white">
+                                    <label for="customRange3">Etnia paterna</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="etniaPaterna">
+                                    <label for="customRange3">Etnia materna</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="etniaMaterna">
+                                    <label for="customRange3">Mix</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="etniaMix">
+                            </div>
+                            
+                      </div>
+               </div>
+
+               <div id="creator-face">
+                      <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="alert alert-primary" role="alert">
+                                    Nariz
+                                  </div>
+                            <div class="card-body text-white">
+                                    <label for="customRange3">Ancho</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="narizAncho">
+                                    <label for="customRange3">Alto</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="narizAlto">
+                                    <label for="customRange3">Largo</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="narizLargo">
+                                    <label for="customRange3">Punta</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="narizPunta">
+                                    <label for="customRange3">Dorso</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="narizDorso">
+                            </div>
+                      </div>
+                      <br>
+                      <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="alert alert-primary" role="alert">
+                                    Pómulos
+                                  </div>
+                            <div class="card-body text-white">
+                                    <label for="customRange3">Tamaño</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="pomulosTamaño">
+                                    <label for="customRange3">Ancho</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="pomulosAncho">
+                                    <label for="customRange3">Alto</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="pomulosAlto">
+                            </div>
+                      </div>
+                      <br>
+                      <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="alert alert-primary" role="alert">
+                                    Mandíbula
+                                  </div>
+                            <div class="card-body text-white">
+                                    <label for="customRange3">Tamaño</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="mandibulaTamaño">
+                                    <label for="customRange3">Ancho</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="mandibulaAncho">
+                            </div>
+                      </div>
+                      <br>
+                      <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="alert alert-primary" role="alert">
+                                    Barbilla
+                                  </div>
+                            <div class="card-body text-white">
+                                    <label for="customRange3">Tamaño</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="barbillaTamaño">
+                                    <label for="customRange3">Ancho</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="barbillaAncho">
+                                    <label for="customRange3">Alto</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="barbillaAlto">
+                                    <label for="customRange3">Curva</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="barbillaCurva">
+                            </div>
+                      </div>
+                      <br>
+               </div>
+
+               <div id="creator-hair">
+                    <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                          <div class="alert alert-primary" role="alert">
+                                  Pelo
+                                </div>
+                          <div class="card-body text-white">
+                                  <label for="customRange3">Tipo</label>
+                                  <input type="range" class="custom-range" min="0" max="5" step="0.5" id="peloTipo">
+                                  <label for="customRange3">Brillo</label>
+                                  <input type="range" class="custom-range" min="0" max="5" step="0.5" id="peloBrillo">
+                                  <label for="customRange3">Color</label>
+                                  <div id="colorPeloPaleta"></div>
+                          </div>
+                    </div>
+                    <br>
+                    <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="alert alert-primary" role="alert">
+                                    Barba
+                                  </div>
+                            <div class="card-body text-white">
+                                    <label for="customRange3">Tipo</label>
+                                  <input type="range" class="custom-range" min="0" max="5" step="0.5" id="barbaTipo">
+                                  <label for="customRange3">Brillo</label>
+                                  <input type="range" class="custom-range" min="0" max="5" step="0.5" id="barbaBrillo">
+                                  <label for="customRange3">Color</label>
+                                  <div id="colorBarbaPaleta"></div>
+                            </div>
+                      </div>
+                    <br>
+             </div>
+             <div id="creator-lips">
+                    <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="alert alert-primary" role="alert">
+                                    Labios
+                                  </div>
+                            <div class="card-body text-white">
+                                    <label for="customRange3">Grosor</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="labiosGrosor">
+                                    <label for="customRange3">Labial</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="labiosLabial">
+                                    <label for="customRange3">Opacidad</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="labiosOpacidad">
+                                    <label for="customRange3">Color</label>
+                                    <div id="colorLabiosPaleta"></div>
+                            </div>
+                      </div>
+                      <br>
+                      <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="alert alert-primary" role="alert">
+                                    Maquillaje
+                                  </div>
+                            <div class="card-body text-white">
+                                    <label for="customRange3">Tipo</label>
+                                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="maquillajeTipo">
+                                    <label for="customRange3">Color</label>
+                                    <div id="colorMaquillajePaleta"></div>
+                            </div>
+                      </div>
+                      <br>
+             </div>
+             <div id="creator-shirt">
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                        <div class="alert alert-primary" role="alert">
+                                Parte de arriba
+                              </div>
+                        <div class="card-body text-white">
+                                <label for="customRange3">Tipo</label>
+                                <input type="range" class="custom-range" min="0" max="5" step="0.5" id="camisaTipo">
+                                <label for="customRange3">Color</label>
+                                <div id="colorCamisaPaleta"></div>
+                        </div>
+                  </div>
+                  <br>
+                  <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                        <div class="alert alert-primary" role="alert">
+                                Conjunto
+                              </div>
+                        <div class="card-body text-white">
+                                <label for="customRange3">Parte inferior</label>
+                                <input type="range" class="custom-range" min="0" max="5" step="0.5" id="conjuntoAbajo">
+                                <label for="customRange3">Color</label>
+                                <div id="colorAbajoPaleta"></div><br>
+                                <label for="customRange3">Parte superior</label>
+                                <input type="range" class="custom-range" min="0" max="5" step="0.5" id="conjuntoArriba">
+                                <label for="customRange3">Color</label>
+                                <div id="colorArribaPaleta"></div>
+                        </div>
+                  </div>
+                  <br>
+         </div>
+         <div id="creator-jeans">
+            <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="alert alert-primary" role="alert">
+                            Pantalones
+                          </div>
+                    <div class="card-body text-white">
+                            <label for="customRange3">Tipo</label>
+                            <input type="range" class="custom-range" min="0" max="5" step="0.5" id="pantalonesTipo">
+                            <label for="customRange3">Color</label>
+                            <div id="colorPantalonesPaleta"></div>
+                    </div>
+              </div>
+              <br>
+     </div>
+     <div id="creator-shoes">
+        <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                <div class="alert alert-primary" role="alert">
+                        Zapatos
+                      </div>
+                <div class="card-body text-white">
+                        <label for="customRange3">Tipo</label>
+                        <input type="range" class="custom-range" min="0" max="5" step="0.5" id="zapatosTipo">
+                        <label for="customRange3">Color</label>
+                        <div id="colorShoesPaleta"></div>
+                </div>
+          </div>
+          <br>
+ </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade text-white" id="modalError">
+        <div class="modal-dialog">
+          <div class="modal-content" style="background-color: rgba(26, 25, 25, 0.8)">
+          
+            <!-- Modal Header -->
+            <div class="modal-header" style="background-color: rgba(26, 25, 25, 0.8)">
+              <h4 class="modal-title"><font color="#FF4136">Error</font></h4>
+              <button type="button" class="close" data-dismiss="modal"><font color="#FF4136">×</font></button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body" style="background-color: rgba(26, 25, 25, 0.8)">
+              <center>
+                  <p id="mensajeError"></p>
+                  <center><button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Salir</button></center>
+              </center>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+    <script>
+        var current;
+
+        function showError(error){
+            document.getElementById("mensajeError").innerHTML = error;
+            $("#modalError").modal();
+        }
+
+        $("#creator-pj").hide();
+        $("#creator-face").hide();
+        $("#creator-hair").hide();
+        $("#creator-lips").hide();
+        $("#creator-shirt").hide();
+        $("#creator-jeans").hide();
+        $("#creator-shoes").hide();
+
+        $('#pj-settings').click(() => {
+            if(current == null){
+                $("#creator-pj").show();
+                current = "#creator-pj";
+            }else{
+                $(current).hide();
+                $("#creator-pj").show();
+                current = "#creator-pj";
+            }
+        });
+
+        $('#face-settings').click(() => {
+            if(current == null){
+                $("#creator-face").show();
+                current = "#creator-face";
+            }else{
+                $(current).hide();
+                $("#creator-face").show();
+                current = "#creator-face";
+            }
+        });
+
+        $('#hair-settings').click(() => {
+            if(current == null){
+                $("#creator-hair").show();
+                current = "#creator-hair";
+            }else{
+                $(current).hide();
+                $("#creator-hair").show();
+                current = "#creator-hair";
+            }
+        });
+
+        $('#lips-settings').click(() => {
+            if(current == null){
+                $("#creator-lips").show();
+                current = "#creator-lips";
+            }else{
+                $(current).hide();
+                $("#creator-lips").show();
+                current = "#creator-lips";
+            }
+        });
+
+        $('#shirt-settings').click(() => {
+            if(current == null){
+                $("#creator-shirt").show();
+                current = "#creator-shirt";
+            }else{
+                $(current).hide();
+                $("#creator-shirt").show();
+                current = "#creator-shirt";
+            }
+        });
+
+        $('#jeans-settings').click(() => {
+            if(current == null){
+                $("#creator-jeans").show();
+                current = "#creator-jeans";
+            }else{
+                $(current).hide();
+                $("#creator-jeans").show();
+                current = "#creator-jeans";
+            }
+        });
+
+        $('#shoes-settings').click(() => {
+            if(current == null){
+                $("#creator-shoes").show();
+                current = "#creator-shoes";
+            }else{
+                $(current).hide();
+                $("#creator-shoes").show();
+                current = "#creator-shoes";
+            }
+        });
+
+        $('#colorLabiosPaleta').colorPalettePicker({
+			lines:4,
+			onSelected: function(color){
+				console.log(color);
+			}
+        });
+
+        $('#colorPeloPaleta').colorPalettePicker({
+			lines:4,
+			onSelected: function(color){
+				console.log(color);
+			}
+        });
+        $('#colorBarbaPaleta').colorPalettePicker({
+			lines:4,
+			onSelected: function(color){
+				console.log(color);
+			}
+        });
+        $('#colorMaquillajePaleta').colorPalettePicker({
+			lines:4,
+			onSelected: function(color){
+				console.log(color);
+			}
+		});
+        $('#colorCamisaPaleta').colorPalettePicker({
+			lines:4,
+			onSelected: function(color){
+				console.log(color);
+			}
+		});
+        $('#colorAbajoPaleta').colorPalettePicker({
+			lines:4,
+			onSelected: function(color){
+				console.log(color);
+			}
+		});
+        $('#colorArribaPaleta').colorPalettePicker({
+			lines:4,
+			onSelected: function(color){
+				console.log(color);
+			}
+		});
+        $('#colorPantalonesPaleta').colorPalettePicker({
+			lines:4,
+			onSelected: function(color){
+				console.log(color);
+			}
+		});
+        $('#colorShoesPaleta').colorPalettePicker({
+			lines:4,
+			onSelected: function(color){
+				console.log(color);
+			}
+        });
+        
+        $('#rotarPersonaje').click(() => {
+            console.log($('#rotarPersonaje').val());
+        });
+
+        $('#alejarPersonaje').click(() => {
+            console.log($('#alejarPersonaje').val());
+        });
+
+        $('#subirPersonaje').click(() => {
+            console.log($('#subirPersonaje').val());
+        });
+        
+        $('#btnHombre').click(() => {
+            console.log("hombre");
+        });
+
+        $('#btnMujer').click(() => {
+            console.log("mujer");
+        });
+
+        $('#genesPaternos').click(() => {
+            console.log($('#genesPaternos').val());
+        });
+
+        $('#genesMaternos').click(() => {
+            console.log($('#genesMaternos').val());
+        });
+
+        $('#genesMix').click(() => {
+            console.log($('#genesMix').val());
+        });
+
+        $('#etniaPaterna').click(() => {
+            console.log($('#etniaPaterna').val());
+        });
+
+        $('#etniaMaterna').click(() => {
+            console.log($('#etniaMaterna').val());
+        });
+
+        $('#etniaMix').click(() => {
+            console.log($('#etniaMix').val());
+        });
+
+        $('#narizAncho').click(() => {
+            console.log($('#narizAncho').val());
+        });
+
+        $('#narizAlto').click(() => {
+            console.log($('#narizAlto').val());
+        });
+
+        $('#narizLargo').click(() => {
+            console.log($('#narizLargo').val());
+        });
+
+        $('#narizPunta').click(() => {
+            console.log($('#narizPunta').val());
+        });
+
+        $('#narizDorso').click(() => {
+            console.log($('#narizDorso').val());
+        });
+
+        $('#pomulosTamaño').click(() => {
+            console.log($('#pomulosTamaño').val());
+        });
+
+        $('#pomulosAncho').click(() => {
+            console.log($('#pomulosAncho').val());
+        });
+
+        $('#pomulosAlto').click(() => {
+            console.log($('#pomulosAlto').val());
+        });
+
+        $('#mandibulaTamaño').click(() => {
+            console.log($('#mandibulaTamaño').val());
+        });
+
+        $('#mandibulaAncho').click(() => {
+            console.log($('#mandibulaAncho').val());
+        });
+
+        $('#barbillaTamaño').click(() => {
+            console.log($('#barbillaTamaño').val());
+        });
+
+        $('#barbillaAncho').click(() => {
+            console.log($('#barbillaAncho').val());
+        });
+
+        $('#barbillaAlto').click(() => {
+            console.log($('#barbillaAlto').val());
+        });
+
+        $('#barbillaCurva').click(() => {
+            console.log($('#barbillaCurva').val());
+        });
+
+        $('#peloTipo').click(() => {
+            console.log($('#peloTipo').val());
+        });
+
+        $('#peloBrillo').click(() => {
+            console.log($('#peloBrillo').val());
+        });
+
+        $('#barbaTipo').click(() => {
+            console.log($('#barbaTipo').val());
+        });
+
+        $('#barbaBrillo').click(() => {
+            console.log($('#barbaBrillo').val());
+        });
+
+        $('#labiosGrosor').click(() => {
+            console.log($('#labiosGrosor').val());
+        });
+
+        $('#labiosLabial').click(() => {
+            console.log($('#labiosLabial').val());
+        });
+
+        $('#labiosOpacidad').click(() => {
+            console.log($('#labiosOpacidad').val());
+        });
+
+        $('#maquillajeTipo').click(() => {
+            console.log($('#maquillajeTipo').val());
+        });
+
+        $('#camisaTipo').click(() => {
+            console.log($('#camisaTipo').val());
+        });
+
+        $('#conjuntoAbajo').click(() => {
+            console.log($('#conjuntoAbajo').val());
+        });
+
+        $('#conjuntoArriba').click(() => {
+            console.log($('#conjuntoArriba').val());
+        });
+        
+        $('#pantalonesTipo').click(() => {
+            console.log($('#pantalonesTipo').val());
+        });
+
+        $('#zapatosTipo').click(() => {
+            console.log($('#zapatosTipo').val());
+        });
+
+        $('#crearBtn').click(() => {
+            $("#modalError").modal();
+        });
+
+        $('#volverBtn').click(() => {
+            console.log("volver");
+        });
+
+    </script>
+    <!-- partial -->
+    <script src='../libs/bootstrap.min.js'></script>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Downtown RP | Login</title>
+    <link rel='stylesheet' href='../libs/bootstrap.min.css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='../libs/jquery-3.3.1.min.js'></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0);
+        }
+        
+        .as-full {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .form-control {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        
+        .iconinput {
+            position: relative;
+            z-index: 1;
+            left: 10px;
+            top: -31px;
+            width: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container-fluid as-full">
+        <div class="row as-full d-flex justify-content-center">
+            <div class="col-7 align-self-center">
+                <br>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body text-white">
+                      <center><h3>Configuración</h3></center><br>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                            <div class="card-body text-white">
+                              <center>Ajustes de voz<br>
+                              <button type="button" id="keymode" class="btn btn-warning btn-sm">Por tecla</button>
+                              <button type="button" id="normalmode" class="btn btn-success btn-sm">Continua</button>
+                            </center>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                          <div class="card-body text-white">
+                            <center>Mensajes privados<br>
+                            <button type="button" id="mpactive" class="btn btn-success btn-sm">Activados</button>
+                            <button type="button" id="mpdisable" class="btn btn-danger btn-sm">Desactivados</button>
+                          </center>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                        <div class="card-body text-white">
+                          <center>Radar<br>
+                          <button type="button" id="radaractive" class="btn btn-success btn-sm">Activado</button>
+                          <button type="button" id="radardisable" class="btn btn-danger btn-sm">Desactivado</button>
+                        </center>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                      <div class="card-body text-white">
+                        <center>HUD<br>
+                        <button type="button" id="hudactive" class="btn btn-success btn-sm">Activado</button>
+                        <button type="button" id="huddisable" class="btn btn-danger btn-sm">Desactivado</button>
+                      </center>
+                  </div>
+                  </div>
+                </div>
+                </div><br>
+                <center><small>Para configuración mas avanzada como cambio de contraseña, dirígete al panel de control del usuario</small><br>
+                <a href="#">https://v.downtown-rp.es/</a></center><br>
+                <button id="btnExit" class="btn btn-danger btn-block">Salir</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+    $('#btnExit').click(() => {
+            mp.trigger('OpenCharacterMenu');
+        });
+    $('#keymode').click(() => {
+            mp.trigger('VoiceChangeType', 1);
+    });
+    $('#normalmode').click(() => {
+            mp.trigger('VoiceChangeType', 0);
+    });
+    $('#mpactive').click(() => {
+            mp.trigger('PMChangeStatus', 0);
+    });
+    $('#mpdisable').click(() => {
+            mp.trigger('PMChangeStatus', 1);
+    });
+    $('#radaractive').click(() => {
+            mp.trigger('RadarChangeStatus', 0);
+    });
+    $('#radardisable').click(() => {
+            mp.trigger('RadarChangeStatus', 1);
+    });
+    $('#hudactive').click(() => {
+            mp.trigger('HudChangeStatus', 0);
+    });
+    $('#huddisable').click(() => {
+            mp.trigger('HudChangeStatus', 1);
+    });
+        </script>
+    <!-- partial -->
+    <script src='../libs/bootstrap.min.js'></script>
+</body>
+
+</html>

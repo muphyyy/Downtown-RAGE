@@ -1,0 +1,2997 @@
+/******************************************************************************/
+/*   General                                                                 */
+/****************************************************************************/
+body {
+    background-color: transparent !important;
+    color: #fff;
+    font-family: "Segoe UI";
+    font-weight: 100;
+    font-size: 15px;
+    width:100%;
+    height:100%;
+    user-select: none;
+}
+
+html
+{
+    width:100%;
+    height:100%;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+hr {
+    margin: 10px 0px 10px 0px;
+}
+
+b {
+    font-weight: 400;
+    color: #fff;
+}
+
+b.dev-color { color: #009587 !important; }
+b.admin-color { color: #F34336 !important; }
+b.mod-color { color: #EDA500 !important; }
+
+button:focus, input:focus, textarea:focus { outline:0 !important; }
+
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-track {
+    width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.container-fluid {
+    width: 100%;
+    height: 100%;
+}
+
+/******************************************************************************/
+/*   Fonts                                                                   */
+/******************************************************************************/
+@font-face {
+    font-family: "Roboto";
+    src: url('../fonts/Roboto.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: "Logo";
+    src: url('../fonts/logo.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: "Five";
+    src: url('../fonts/five.ttf') format("truetype");
+}
+
+/******************************************************************************/
+/*   Groups                                                                   */
+/******************************************************************************/
+group {
+    display: block;
+    position: relative;
+}
+
+group.inputButton input {
+    display: inline-block;
+    position: relative;
+    left: 0px;
+}
+
+group.inputButton button {
+    display: inline-block;
+    position: absolute;
+    right: 1px;
+    top:1px;
+    height: 36px;
+    padding: 7px 15px 7px 15px;
+}
+
+/******************************************************************************/
+/*   Buttons                                                                  */
+/******************************************************************************/
+button {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 0px;
+    padding: 8px 15px 8px 15px;
+    color: #fff;
+    font-size: 15px;
+    font-family: "Roboto";
+    text-transform: uppercase;
+}
+
+button:disabled {
+    opacity: .2;
+}
+
+button:active {
+    box-shadow: inset 0 0 3px #000;
+}
+
+button:not(:disabled):hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+}
+
+button.blue {
+    background-color: rgba(25, 117, 209, 0.2);
+}
+
+button.blue:hover {
+    background-color: rgba(25, 117, 209, 0.6);
+}
+
+button.red {
+    background-color: rgba(210, 47, 47, 0.2);
+}
+
+button.red:hover {
+    background-color: rgba(210, 47, 47, 0.6);
+}
+
+/******************************************************************************/
+/*   Testing environment                                                      */
+/******************************************************************************/
+.test-enabled {
+    background-image: url('../img/bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+/******************************************************************************/
+/*   Blocks                                                                   */
+/******************************************************************************/
+block {
+    display: block;
+    background-color: rgba(72, 5, 78, 0.773);
+    border: 1px solid rgba(70, 4, 76, 0.314);
+    position: relative;
+}
+
+block close {
+    display: block;
+    position: absolute;
+    right: 8px;
+    top: 6px;
+    background-color: rgba(210, 47, 47, 0.2);
+    border: 0px;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 15px;
+    font-family: "Roboto";
+    text-transform: uppercase;
+}
+
+block close:hover {
+    cursor: pointer;
+    background-color: rgba(210, 47, 47, 0.6);
+    color: #fff;
+}
+
+block header {
+    padding: 10px;
+    z-index: -1;
+}
+
+block content {
+    display: block;
+    padding: 10px;
+    margin: 4px;
+    background-color: rgba(0, 0, 0, 0.3);
+    overflow-y: hidden;
+}
+
+block footer {
+    display: flex;
+    padding: 5px 10px 10px 10px;
+}
+
+block footer.right {
+    float: right;
+    text-align: right;
+}
+
+block footer button {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 0px;
+    padding: 8px 15px 8px 15px;
+    color: #fff;
+    font-size: 15px;
+    font-family: "Roboto";
+    text-transform: uppercase;
+    border-radius: 25px;
+}
+
+block footer button:disabled {
+    opacity: .2;
+}
+
+block footer button:active {
+    box-shadow: inset 0 0 3px #000;
+}
+
+block footer button:not(:disabled):hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+}
+
+block footer button.blue {
+    background-color: rgba(25, 117, 209, 0.2);
+}
+
+block footer button.blue:hover {
+    background-color: rgba(25, 117, 209, 0.6);
+}
+
+block footer button.red {
+    background-color: rgba(210, 47, 47, 0.2);
+}
+
+block footer button.red:hover {
+    background-color: rgba(210, 47, 47, 0.6);
+}
+
+block footer error {
+    display: none;
+    position: absolute;
+    left: 10px;
+    bottom: 20px;
+    color: #D22F2F;
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+block footer error b {
+    color: #FF2F2F;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+block footer loading {
+    display: none;
+    position: absolute;
+    left: 45%;
+    bottom: 6px;
+    color: #fff;
+    font-size: 30px;
+}
+
+block username {
+    color: #03A8F3;
+}
+
+block lastlogin {
+    font-weight: 600;
+}
+
+body.animated block {
+    opacity: 0;
+    animation: opacity 2s ease-in-out 1s 1 alternate;
+    animation-fill-mode: forwards;
+}
+
+/******************************************************************************/
+/*   Page title                                                               */
+/******************************************************************************/
+pagetitle {
+    width: 100%;
+    height: 100%;
+    display: block;
+    top: 5%;
+    left: 71%;
+    position: fixed;
+    animation: movetorighttitle 2s ease-in-out 1 alternate;
+    animation-fill-mode: forwards;
+    font-size: 6vh;
+    text-shadow: 0px 0px 20px #000;
+    color: rgba(161, 2, 175, 0.773);
+}
+
+/******************************************************************************/
+/*   Launchpage                                                               */
+/******************************************************************************/
+launchpage {
+    width: 100%;
+    height: 100%;
+    display: block;
+    top: 45%;
+    left: 34%;
+    position: fixed;
+    animation: movetoleft 1s ease-in-out 4s 1 alternate;
+    animation-fill-mode: forwards;
+}
+
+launchpage logo {
+    display: block;
+    font-family: "Five";
+    font-size: 400%;
+    text-shadow: 0px 0px 20px #000;
+    color: #fff;
+    text-align: left;
+    white-space: nowrap;
+    animation: opacity 2s ease-in-out;
+}
+
+launchpage underlogo {
+    display: block;
+    overflow: hidden;
+    width: 0;
+    font-family: "Segoe UI";
+    text-align: left;
+    color: #444;
+    font-size: 12px;
+    padding: 0px;
+    font-weight: 500;
+    top: 63px;
+    left: 53px;
+    position: absolute;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation:
+    typing 1.5s steps(40, end);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+}
+
+@keyframes opacity {
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+
+@keyframes movetoleft {
+    from { left : 34% }
+    to { left: 10%; }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100% }
+}
+
+/******************************************************************************/
+/*   Signin                                                                   */
+/******************************************************************************/
+signin, signup {
+    display: block;
+}
+
+block.signin {
+    opacity: 0;
+    width: 35%;
+    top: 25%;
+    left: 58%;
+    position: fixed;
+    animation: opacity 1s ease-in-out 5s 1 alternate;
+    animation-fill-mode: forwards;
+}
+
+/******************************************************************************/
+/*   Signup                                                                   */
+/******************************************************************************/
+block.signup {
+    opacity: 0;
+    width: 35%;
+    top: 23%;
+    left: 58%;
+    position: fixed;
+    animation: opacity 1s ease-in-out 5s 1 alternate;
+    animation-fill-mode: forwards;
+}
+
+/******************************************************************************/
+/*   Selector                                                                 */
+/******************************************************************************/
+block.charselector {
+    width: 28%;
+    top: 15%;
+    left: 68%;
+    position: fixed;
+    border-radius: 25px;
+}
+
+block.charselector content {
+    padding: 0px;
+}
+
+block.charselector nochar {
+    display: none;
+    padding: 10px;
+}
+
+block.charselector charname {
+    font-size: 20px;
+}
+
+block.charselector lastlogin {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #777;
+}
+
+block.charselector sep {
+    height: 100%;
+    border-right: 1px solid #333;
+    margin: 0px 8px 0px 5px;
+}
+
+charlist ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+charlist ul li {
+    height: 70px;
+    color: #757575;
+    padding: 7px 5px 5px 10px;
+    background-color: rgba(69, 69, 69, 0.4);
+}
+
+charlist ul li:not(:first-child) {
+    border-top: 1px solid #2A2A2A;
+}
+
+charlist ul li.addchar {
+    text-align: center;
+    padding-top: 22px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 18px;
+    background-color: rgba(7, 149, 0, 0.7);
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+charlist ul li.addchar.active {
+    background-color: rgba(0, 76, 67, 0.7);
+}
+
+charlist ul li.addchar:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: rgba(7, 149, 0, 0.9);
+}
+
+charlist ul li.addchar:hover i {
+    color: #fff;
+}
+
+charlist ul li.addchar i {
+    color: #fff;
+    margin-right: 15px;
+}
+
+charlist ul li:not(.active):not(.addchar):hover {
+    cursor: pointer;
+    background-color: rgba(69, 69, 69, 0.8);
+    color: #ddd;
+}
+
+charlist ul li:not(.active):not(.addchar):hover deletechar {
+    display: block;
+}
+
+charlist ul li:not(.active):not(.addchar):hover lastlogin {
+    color: #fff;
+}
+
+charlist ul li.active {
+    opacity: 1;
+    color: #fff;
+    background-color: rgba(34, 34, 34, 0.8);
+}
+
+charlist ul li.active deletechar {
+    display: block;
+}
+
+charlist ul li.active lastlogin {
+    color: #757575;
+}
+
+charlist ul li deletechar {
+    display: none;
+    position: absolute;
+    right: 30px;
+    margin-top: -41px;
+}
+
+charlist ul li deletechar i {
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+}
+
+charlist ul li deletechar i:hover {
+    background-color: rgba(210, 47, 47, 0.6);
+}
+charlist ul li deletechar i:active {
+    box-shadow: inset 0 0 3px #000;
+}
+
+/******************************************************************************/
+/*   Select char                                                              */
+/******************************************************************************/
+selectchar {
+    width: 300px;
+    display: none;
+    position: fixed;
+    bottom: 40%;
+    left: 18%;
+    padding-top: 6px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid #000;
+}
+
+charinfo item {
+    display: block;
+    color: #fff;
+    font-family: "Roboto";
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+charinfo item data.money::first-letter {
+    color: #059500;
+}
+
+charinfo item:last-child {
+    margin-bottom: 6px;
+}
+
+charinfo item stat {
+    display: inline-block;
+    text-align: left;
+    padding-left: 6px;
+    font-weight: 400;
+}
+
+charinfo item data {
+    text-align: right;
+    float: right;
+    padding-right: 6px;
+    color: #ccc;
+}
+
+selectchar button {
+    width: 100%;
+    display: block;
+    background-color: #056d00;
+    border: 0px;
+    padding: 8px 15px 8px 15px;
+    color: #ddd;
+    font-size: 15px;
+    font-family: "Roboto";
+    text-transform: uppercase;
+}
+
+selectchar button i {
+    margin-right: 10px;
+}
+
+selectchar button:hover {
+    cursor: pointer;
+    background-color: #059500!important;
+    color: #fff;
+}
+
+/******************************************************************************/
+/*   Char creator                                                             */
+/******************************************************************************/
+block.charcreator {
+    width: 28%;
+    top: 15%;
+    left: 68%;
+    position: fixed;
+    border-radius: 25px;
+}
+
+block.charcreator content {
+    padding: 0px;
+    background-color: #48054e96;
+    border-radius: 25px;
+}
+
+block.charcreator content form {
+    padding: 10px;
+}
+
+/******************************************************************************/
+/*  Gender selection                                                          */
+/******************************************************************************/
+block.charcreator gender {
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+block.charcreator gender item.active {
+    box-shadow: 0px 0px 2px #000;
+}
+
+block.charcreator gender item.error {
+    border: 1px solid rgba(210, 47, 47, 0.9);
+    color: #D22F2F;
+}
+
+block.charcreator gender item.male:hover desc, block.charcreator gender item.female:hover desc {
+    background-color: rgba(69, 69, 69, 0.3);
+    color: #fff;
+    cursor: pointer;
+}
+
+block.charcreator gender item.male.active desc, block.charcreator gender item.female.active desc {
+    background-color: rgba(69, 5, 75, 0.902);
+    color: #fff;
+    text-shadow: 0px 0px 9px #000;
+}
+
+/*male*/
+block.charcreator gender item.male {
+    display: inline-block;
+    width: 49%;
+}
+
+block.charcreator gender item.male i {
+    position: absolute;
+    left: 14px;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    color: #666;
+    padding: 10px 10px 10px 17px;
+    background-color: rgba(2, 135, 208, 0.1);
+    color: rgba(178, 228, 251, 0.2);
+}
+
+block.charcreator gender item.male desc {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    padding: 14px 14px 14px 64px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #666;
+    text-transform: uppercase;
+}
+
+block.charcreator gender item.male:hover {
+    cursor: pointer;
+}
+
+block.charcreator gender item.male:not(.active):hover i {
+    background-color: rgba(2, 135, 208, 0.5);
+    color: rgba(178, 228, 251, 0.6);
+}
+
+block.charcreator gender item.male.active i {
+    background-color: rgba(2, 135, 208, 0.8);
+    color: rgba(178, 228, 251, 0.9);
+}
+
+/*female*/
+block.charcreator gender item.female {
+    display: inline-block;
+    float: right;
+    width: 49%;
+}
+
+block.charcreator gender item.female i {
+    position: absolute;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    color: #666;
+    padding: 10px 10px 10px 14px;
+    background-color: rgba(122, 31, 161, 0.1);
+    color: rgba(224, 189, 230, 0.2);
+}
+
+block.charcreator gender item.female desc {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    padding: 14px 14px 14px 64px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #666;
+    text-transform: uppercase;
+}
+
+block.charcreator gender item.female:hover {
+    cursor: pointer;
+}
+
+block.charcreator gender item.female:not(.active):hover i {
+    background-color: rgba(122, 31, 161, 0.5);
+    color: rgba(224, 189, 230, 0.6);
+}
+
+block.charcreator gender item.female.active i {
+    background-color: rgba(122, 31, 161, 0.8);
+    color: rgba(224, 189, 230, 0.9);
+}
+
+/******************************************************************************/
+/*   Customization Accord                                                     */
+/******************************************************************************/
+customization {
+    display: block;
+}
+
+customization category {
+    display: block;
+    margin: 7px 4px 4px 4px;
+}
+
+customization category header {
+    display: block;
+    height: 35px;
+    padding: 6px 18px 3px 14px;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+}
+
+customization category header:hover {
+    background-color: rgba(69, 69, 69, 0.5);
+    cursor: pointer;
+}
+
+customization category.active header {
+    background-color: rgba(69, 69, 69, 0.9);
+}
+
+customization category header i {
+    float: right;
+    padding-top: 4px;
+}
+
+customization category container {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/******************************************************************************/
+/*   Customization Items                                                      */
+/******************************************************************************/
+customization item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    color: #666;
+    background-color: rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    clear: both;
+    margin-right: 10px;
+}
+
+customization item:hover {
+    color: #fff;
+    cursor: pointer;
+    background-color: rgba(69, 69, 69, 0.3);
+}
+
+customization item.active {
+    background-color: rgba(69, 69, 69, 0.9);
+    color: #fff;
+    text-shadow: 0px 0px 9px #000;
+}
+
+customization item i.fa {
+    font-size: 30px;
+}
+
+customization item img {
+    height: 30px;
+    opacity: .5;
+}
+
+customization item:hover img, customization item.active img {
+    opacity: 1;
+}
+
+customization item i[class^="bodyparts-"]:before, customization item i[class^="clothes-"]:before {
+    font-size: 30px;
+    margin: 0px;
+}
+
+customization item desc {
+    display: block;
+    position: relative;
+    bottom: 60px;
+}
+
+/******************************************************************************/
+/*   Char configurator                                                        */
+/******************************************************************************/
+configurators {
+    display: block;
+    width: 197px;
+    top: 30%;
+    left: 8%;
+    padding: 10px;
+    height: 30%;
+    position: fixed;
+}
+
+configurators config {
+    margin-top: 20px;
+    display: block;
+}
+
+config button.counter {
+    background-color: #82038d!important;
+    text-align: center;
+    vertical-align: middle;
+    font-family: "Roboto";
+    color: #fff;
+    width: 86px;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+config button {
+    display: inline-block;
+    vertical-align: top;
+    background-color: #571e5c;
+    color: #ddd;
+    text-transform: uppercase;
+    padding: 10px 20px 10px 20px;
+    border: 0px;
+}
+
+config button.counter:hover {
+    cursor: default;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+config button:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+config desc {
+    display: block;
+    position: inherit;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    top: 0px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: "Roboto";
+    padding: 5px;
+}
+
+/******************************************************************************/
+/*   Char  Sliders                                                            */
+/******************************************************************************/
+block.sliders {
+    width: 25%;
+    top: 15%;
+    left: 5%;
+    position: fixed;
+}
+
+/******************************************************************************/
+/*   Forms                                                                    */
+/******************************************************************************/
+form {
+    margin: 0px;
+}
+
+label {
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    color: #fff;
+}
+
+input {
+    display: block;
+    width: 100%;
+    padding: .5rem .75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #fff;
+    background-color: rgba(72, 5, 78, 0.588);
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 25px;
+}
+
+input:read-only {
+    background-color: #222;
+}
+
+input:focus + help {
+    display: block;
+}
+
+input.error {
+    border: 1px solid rgba(210, 47, 47, 0.9);
+    color: #D22F2F;
+    background-color: rgba(210, 47, 47, 0.2);
+}
+
+form help {
+    display: none;
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #999;
+    margin-top: 2px;
+}
+
+form field error {
+    display: none;
+    float: right;
+    color: #D22F2F;
+}
+
+form field error b {
+    color: #D22F2F;
+    font-weight: 600;
+}
+
+form help a {
+    color: #fff;
+}
+
+form help a:hover {
+    color: #999;
+    text-decoration: none;
+}
+
+form field {
+    display: block;
+    margin-top: 3px;
+    height: 75px;
+}
+
+form field:first-child {
+    margin-top: 0px;
+}
+
+/******************************************************************************/
+/*   Blank                                                                    */
+/******************************************************************************/
+block.blank {
+    width: 28%;
+    top: 15%;
+    left: 68%;
+    position: fixed;
+}
+
+/******************************************************************************/
+/*   Rewards                                                                  */
+/******************************************************************************/
+reward {
+    display: block;
+    position: fixed;
+    left: 55%;
+    top: 60%;
+    margin-left: -256px;
+}
+
+reward tit {
+    display: block;
+    font-family: "Five";
+    font-size: 400%;
+    text-shadow: 0px 0px 20px #000;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+}
+
+reward container {
+    display: table;
+    background-color: rgba(10, 10, 10, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 8px 10px 8px 10px;
+    margin: auto;
+    align-items: center;
+}
+
+reward container row {
+    display: flex;
+    padding: 0px;
+}
+
+reward container item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    color: #666;
+    background-color: rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    clear: both;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+reward container item:not(:last-child) {
+    margin-right: 10px;
+}
+
+reward container item i {
+    text-shadow: 0px 0px 4px #000;
+    color: #fff;
+}
+
+reward container item badge {
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    padding: 1px 8px 1px 8px;
+    font-size: 9px;
+}
+
+reward container item badge.added {
+    background-color: #1975D1;
+}
+
+reward container item badge.unlocked {
+    background-color: #009587;
+}
+
+reward container item desc {
+    display: block;
+    width: auto;
+    align-items: center;
+    height: auto;
+    position: absolute;
+    bottom: 1px;
+    font-size: 9px;
+    color: #fff;
+}
+
+reward container item desc.money::first-letter {
+    color: #009587;
+}
+
+/******************************************************************************/
+/*   Sweetalert customization                                                 */
+/******************************************************************************/
+.sweet-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+    z-index: 10000;
+}
+
+
+.sweet-alert {
+    background-color: rgba(30, 30, 30, 1);
+    font-family: 'Segoe UI';
+    width: 478px;
+    border-radius: 0px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -256px;
+    margin-top: -200px;
+    overflow: hidden;
+    display: none;
+    z-index: 99999;
+    max-width: 478px;
+    border: 1px solid #2A2A2A;
+}
+
+.sweet-alert h2 {
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    font-weight: 400;
+    text-transform: none;
+    position: relative;
+    line-height: 40px;
+    display: block;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+}
+
+.sweet-alert p {
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 300;
+    position: relative;
+    float: none;
+    margin: 5px;
+    padding: 0;
+    line-height: normal;
+}
+
+.sweet-alert fieldset {
+    border: none;
+    position: relative;
+}
+
+.sweet-alert .sa-icon {
+    width: 80px;
+    height: 80px;
+    border: 4px solid gray;
+    -webkit-border-radius: 40px;
+    border-radius: 40px;
+    border-radius: 50%;
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    box-sizing: content-box;
+}
+
+.sweet-alert button {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 0px;
+    padding: 8px 15px 8px 15px;
+    color: #fff;
+    font-size: 15px;
+    font-family: "Roboto";
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.sweet-alert .sa-button-container::before {
+    border-top: 1px solid rgba(0, 0, 0, 1);
+}
+
+.sweet-alert .sa-button-container {
+    display: flex;
+    padding: 10px 10px 10px 10px;
+    text-align: right;
+    float: right;
+}
+
+.sweet-alert button:not(:disabled):hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+}
+
+.sweet-alert button.confirm[disabled] {
+    opacity: .2;
+}
+
+.sweet-alert button.confirm {
+    background-color: rgba(25, 117, 209, 0.2) !important;
+    box-shadow: none !important;
+}
+
+.sweet-alert button.confirm:not(:disabled):hover {
+    background-color: rgba(25, 117, 209, 0.6) !important;
+    box-shadow: none !important;
+}
+
+.sweet-alert button:not(:disabled):hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+}
+
+.sweet-alert button.confirm[disabled] {
+    opacity: .2;
+}
+
+.sweet-alert button:active {
+    box-shadow: inset 0 0 3px #000 !important;
+}
+
+/******************************************************************************/
+/*   NPC                                                                      */
+/******************************************************************************/
+npc {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 26%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+}
+
+npc header {
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    height: 60px;
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+    border-bottom: 1px solid #2A2A2A;
+}
+
+npc header button {
+    position: relative;
+    display: inline-flex;
+    margin-right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0px;
+    width: 180px;
+    padding: 8px 8px 8px 8px;
+    text-align: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 15px;
+    font-family: "Roboto";
+    text-transform: uppercase;
+}
+
+npc button:disabled {
+    opacity: .2;
+}
+
+npc button:active {
+    box-shadow: inset 0 0 3px #000;
+}
+
+npc button:not(:disabled):hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+}
+
+npc button i {
+    padding-top: 2px;
+    position: absolute;
+    left: 12px;
+}
+
+npc header button i.missionNot {
+    display: none;
+    padding-top: 3px;
+    position: absolute;
+    right: -140px;
+}
+
+npc header button.hasMission {
+    background-color: rgba(250, 191, 45, 0.4);
+    color: #FEF8C3;
+}
+
+npc header button.hasMission i.missionNot {
+    display: inline-block;
+}
+
+npc button.hasMission:hover {
+    background-color: rgba(250, 191, 45, 0.7);
+}
+
+npc button.back {
+    background-color: rgba(25, 117, 209, 0.2);
+}
+
+npc button.back:hover {
+    background-color: rgba(25, 117, 209, 0.6);
+}
+
+npc phrase {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-self: center;
+    padding-top: 10px;
+    font-size: 2vh;
+    color: #fff;
+    text-shadow: 0px 0px 10px #000;
+    font-family: "Roboto";
+    text-overflow: ellipsis;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+npc answers {
+    display: flex;
+    justify-content: center;
+}
+
+npc answers button {
+    position: relative;
+    display: block;
+    margin-right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0px;
+    width: 22%;
+    padding: 10px 10px 10px 10px;
+    color: #aaa;
+    font-size: 15px;
+    font-family: "Roboto";
+    text-transform: uppercase;
+    margin-top: 1%;;
+}
+
+/******************************************************************************/
+/*   Inventory                                                                */
+/******************************************************************************/
+block.inventory {
+    display: block;
+    position: fixed;
+    left: 78%;
+    top: 62%;
+    width: 29%;
+    margin-left: -256px;
+    z-index: -1;
+}
+
+block.inventory header {
+    z-index: -1;
+}
+
+block.inventory content {
+    padding-right: 0px;
+    padding-top: 0px;
+    overflow: visible;
+    z-index: -5;
+    position: relative;
+}
+
+
+inventory {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: visible;
+    height: auto;
+}
+
+inventory item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 50px;
+    height: 55px;
+    color: #666;
+    background-color: rgba(0, 0, 0, 0.3);
+    clear: both;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+    flex: 1;
+    flex-basis: 57px;
+    margin-top: 10px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 1600px) {
+    inventory item {
+        flex-basis: 45px;
+        height: 42px;
+    }
+
+    block.inventory {
+        left: 81%;
+        top: 60%;
+        width: 29%;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    inventory item {
+        flex-basis: 45px;
+        height: 42px;
+    }
+
+    block.inventory {
+        left: 75%;
+        top: 60%;
+        width: 34%;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    inventory item {
+        flex-basis: 41px;
+        height: 38px;
+    }
+
+    block.inventory {
+        left: 74%;
+        top: 60%;
+        width: 42%;
+    }
+}
+
+inventory::before, inventory::after {
+    content: "";
+    display: table;
+}
+
+inventory::before {
+    clear: both;
+}
+
+inventory item.stack counter {
+    display: block;
+    width: auto;
+    height: auto;
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    padding: 1px 5px 1px 5px;
+    background-color: #2A2A2A;
+    color: #fff;
+    font-size: 10px;
+}
+
+inventory item:hover container, inventory item:hover spacer {
+    display: block;
+}
+
+inventory item:hover {
+    color: #aaa;
+    cursor: pointer;
+    background-color: rgba(69, 69, 69, 0.9);
+}
+
+inventory item:hover i {
+    color: #fff;
+}
+
+inventory item i {
+    text-shadow: 0px 0px 4px #000;
+    color: #aaa;
+}
+
+inventory item desc.money::first-letter {
+    color: #009587;
+}
+
+block.inventory footer {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+block.inventory footer money {
+    font-family: "Roboto";
+    margin-left: 3px;
+    padding-top: 1px;
+}
+
+block.inventory footer money::first-letter {
+    margin-left: 3px;
+    color: #009587;
+}
+
+block.inventory footer separator {
+    border-right: 1px solid #2A2A2A;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Item rarity */
+inventory item.legendary {
+    background-color: rgba(253, 122, 22, 0.3);
+}
+
+inventory item.legendary:hover {
+    background-color: rgba(253, 122, 22, 0.6);
+}
+
+inventory item.legendary container {
+    border: 3px solid rgba(253, 122, 22, 1);
+}
+
+inventory item.legendary container:after {
+    border-top: solid 20px rgba(253, 122, 22, 1);
+}
+
+inventory item.legendary container header {
+    background-color: rgba(253, 122, 22, 0.6);
+}
+
+inventory item.legendary container header badge {
+    display: block;
+    background-color: rgba(253, 122, 22, 1);
+}
+
+inventory item.legendary container desc {
+    background-color: rgba(253, 122, 22, 0.3);
+}
+
+inventory item.legendary commands {
+    background-color: rgba(253, 122, 22, 0.6);
+    border-width: 0px;
+}
+
+inventory item.legendary container icon {
+    background-color: rgba(253, 122, 22, 0.6);
+}
+
+inventory item.rare {
+    background-color: rgba(103, 58, 182, 0.3);
+}
+
+inventory item.rare:hover {
+    background-color: rgba(103, 58, 182, 0.6);
+}
+
+inventory item.rare container {
+    border: 3px solid rgba(103, 58, 182, 1);
+}
+
+inventory item.rare container:after {
+    border-top: solid 20px rgba(103, 58, 182, 1);
+}
+
+inventory item.rare container header {
+    background-color: rgba(103, 58, 182, 0.6);
+}
+
+inventory item.rare container header badge {
+    display: block;
+    background-color: rgba(103, 58, 182, 1);
+}
+
+inventory item.rare container desc {
+    background-color: rgba(103, 58, 182, 0.3);
+}
+
+inventory item.rare commands {
+    background-color: rgba(103, 58, 182, 0.6);
+    border-width: 0px;
+}
+
+inventory item.rare container icon {
+    background-color: rgba(103, 58, 182, 0.6);
+}
+
+inventory item.uncommon {
+    background-color: rgba(0, 95, 87, 0.3);
+}
+
+inventory item.uncommon:hover {
+    background-color: rgba(0, 95, 87, 0.6);
+}
+
+inventory item.uncommon container {
+    border: 3px solid rgba(0, 95, 87, 1);
+}
+
+inventory item.uncommon container header badge {
+    display: block;
+    background-color: rgba(0, 95, 87, 1);
+}
+
+inventory item.uncommon container:after {
+    border-top: solid 20px rgba(0, 95, 87, 1);
+}
+
+inventory item.activable container commands, inventory item.usable container commands {
+    display: block;
+}
+
+/***************
+    container
+****************/
+inventory item container {
+    display: none;
+    position: absolute;
+    background-color: #000;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    height: auto;
+    width: 250px;
+    color: #fff;
+    bottom: 58px;
+    cursor: default;
+    overflow: visible;
+    pointer-events: none;
+    box-shadow: 0px 0px 4px #000;
+}
+
+inventory item container:after {
+    content:'';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -20px;
+    width: 0;
+    height: 0;
+    border-top: solid 20px rgba(0, 0, 0, 1);
+    border-left: solid 20px transparent;
+    border-right: solid 20px transparent;
+}
+
+inventory item container header {
+    display: block;
+    position: relative;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+inventory item container header info {
+    display: inline-block;
+    vertical-align: top;
+    font-family: "Roboto";
+}
+
+inventory item container header badge {
+    display: none;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    padding: 10px 5px 5px 5px;
+}
+
+inventory item container header tit {
+    display: inline-block;
+    padding: 0px;
+    font-size: 15px;
+}
+
+inventory item container header subtit {
+    display: block;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #aaa;
+}
+
+inventory item container desc {
+    display: block;
+    font-size: 12px;
+    font-family: "Roboto";
+    padding: 10px 5px 10px 5px;
+}
+
+inventory item container stats {
+    display: block;
+    font-size: 12px;
+    font-family: "Roboto";
+    padding: 10px 5px 10px 5px;
+}
+
+inventory item container stats tit {
+    color: #666;
+    font-family: "Roboto";
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+inventory item container stats ul {
+    list-style-type: none;
+    padding: 0px 0px 0px 15px;
+    margin: 0px;
+    width: 40%;
+}
+
+inventory item container stats ul li data {
+    display: inline-block;
+    float: right;
+}
+
+inventory item container stats ul li data.positive {
+    color: green;
+}
+
+inventory item container stats ul li data.negative {
+    color: red;
+}
+
+inventory item container icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: #696969;
+    clear: both;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+    margin-right: 5px;
+    font-size: 15px;
+}
+
+inventory item container header icon i:before {
+    color: #fff;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+
+}
+
+inventory item commands {
+    display: none;
+    text-align: center;
+    border: 1px solid #2A2A2A;
+    background-color: rgba(100, 100, 100, 0.4);
+    width: 100%;
+    color: #aaa;
+    padding: 3px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+inventory item commands i:before {
+    color: #999;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.ui-state-highlight {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid cyan !important;
+}
+
+/******************************************************************************/
+/*   Chat                                                                     */
+/******************************************************************************/
+chat {
+    display: block;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 38%;
+    height: 45%;
+}
+
+chat container {
+    display: block;
+    height: 50%;
+}
+
+chat container messages {
+    display: none;
+    opacity: .5;
+    min-height: 100%;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 2px 5px 4px 5px;
+}
+
+chat container messages.selected {
+    display: block;
+}
+
+chat container messages.selected.active {
+    display: block;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+chat msg {
+    display: block;
+    font-family: "Roboto";
+    color: #fff;
+    word-break: break-all;
+    font-size: 1.5vh;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+chat input {
+    font-family: "Roboto";
+    display: none;
+    margin-top: 40px;
+}
+
+/*tabs*/
+chat ul {
+    display: flex;
+    margin-bottom: 0;
+    list-style: none;
+    padding-left: 0px;
+}
+
+chat ul li {
+    display: block;
+    padding: .5em 1em;
+    margin-bottom: -1px;
+    font-family: 'Segoe UI';
+    font-weight: 700;
+    font-size: 1.1vh;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    color: #ccc;
+    opacity: .4;
+    width: 100%;
+    text-align: center;
+}
+
+chat ul li.active {
+    opacity: .8;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+chat ul li.active:not(.selected):hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+chat ul li.selected {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #07d7ff;
+}
+
+chat ul li.selected.active {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/******************************************************************************/
+/*   Help                                                                    */
+/******************************************************************************/
+.block-help {
+    position: fixed;
+    top: 15%;
+    height: 100%;
+}
+
+block.help content {
+    display: none;
+    vertical-align: top;
+    background-color: transparent;
+    width: 71%;
+    position: relative;
+    left: 29.6%;
+    min-height: 500px;
+    max-height: 500px;
+}
+
+block.help content p {
+    max-height: 451px;
+    padding-left: 20px;
+    padding-right: 28px;
+    overflow-y: auto;
+}
+
+block.help content.selected {
+    display: inline-block;
+}
+
+block.help menu {
+    display: inline-block;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 30%;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+block.help menu opt {
+    display: block;
+    position: relative;
+    line-height: 30px;
+    width: 100%;
+    color: #666;
+}
+
+block.help menu opt:not(:last-child) {
+    border-bottom: 1px solid #2A2A2A;
+}
+
+block.help menu opt icon {
+    position: absolute;
+    right: 20px;
+    top: 16px;
+}
+
+block.help menu opt i:before {
+    font-size: 20px;
+    color: #444;
+}
+
+block.help menu opt tit {
+    display: inline-block;
+    padding: 15px 10px 15px 15px;
+    font-size: 1.5vh;
+}
+
+block.help menu opt:hover {
+    background-color: rgba(69, 69, 69, 0.3);
+    color: #aaa;
+    cursor: pointer;
+}
+
+block.help menu opt:hover i::before {
+    color: #aaa;
+}
+
+block.help menu opt.selected {
+    background-color: rgba(69, 69, 69, 0.9);
+    color: #fff;
+    text-shadow: 0px 0px 9px #000;
+}
+
+block.help menu opt.selected i::before {
+    color: #fff;
+}
+
+block.help content hr {
+    border: 0;
+    height: 1px;
+    width: 98%;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+}
+
+block.help content tit {
+    display: block;
+    font-family: "Segoe UI";
+    font-weight: 200;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+}
+
+/******************************************************************************/
+/*   Quest tracker                                                            */
+/******************************************************************************/
+block.questtracker {
+    width: 58%;
+    top: 15%;
+    left: 20%;
+    position: fixed;
+}
+
+block.questtracker content {
+    display: inline-block;
+    vertical-align: top;
+    background-color: transparent;
+    width: 73.5%;
+    position: relative;
+    left: 40%;
+    min-height: 500px;
+    max-height: 500px;
+}
+
+block.questtracker content p {
+    display: block;
+    max-height: 250px;
+    padding-left: 20px;
+    padding-right: 28px;
+    overflow-y: auto;
+}
+
+block.questtracker questlist {
+    display: inline-block;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 40%;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+/*containers*/
+block.questtracker content quest {
+    display: none;
+}
+
+block.questtracker content quest.selected {
+    display: inline-block;
+    width: 82%;
+}
+
+block.questtracker content quest hr {
+    border: 0;
+    height: 1px;
+    width: 98%;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+}
+
+block.questtracker content quest tit {
+    display: block;
+    font-family: "Segoe UI";
+    font-weight: 200;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+}
+
+content quest objectives {
+    display: block;
+    margin: 2px 10px 5px 0px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #666;
+    max-height: 126px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+content quest objectives ul {
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+content quest objectives ul li {
+    color: #C7E5C8;
+    position: relative;
+    margin-left: 35px;
+}
+
+content quest objectives ul li i {
+    color: #4CAE50;
+    margin-right: 5px;
+    position: absolute;
+    top: 4px;
+    left: -23px;
+}
+
+content quest objectives ul li.actual {
+    color: #B1EAF1;
+}
+
+content quest objectives ul li.actual i {
+    color: #03A8F3;
+    padding-left: 1px;
+}
+
+/*quests*/
+block.questtracker quests {
+    display: none;
+    margin-top: 1px;
+    max-height: 95%;
+    overflow-y: auto;
+}
+
+block.questtracker quests.selected {
+    display: block;
+}
+
+block.questtracker collector {
+    display: block;
+    position: relative;
+}
+
+block.questtracker collector desc {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 7px;
+    font-size: 1.3vh;
+    text-align: right;
+    border: 0px;
+}
+
+block.questtracker collector b {
+    float: left;
+}
+
+collector quest {
+    display: block;
+    margin: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 9px;
+    color: #666;
+}
+
+collector quest:hover {
+    background-color: rgba(69, 69, 69, 0.3);
+    cursor: pointer;
+    color: #aaa;
+}
+
+collector quest:hover tit {
+    color: #ddd;
+}
+
+collector quest.selected {
+    background-color: rgba(69, 69, 69, 0.9);
+    color: #ddd;
+}
+
+collector quest.selected tit {
+    color: #fff;
+}
+
+collector quest.tracking {
+    opacity: 1;
+    background-color: rgba(33, 149, 242, 0.5);
+}
+
+collector quest.tracking:hover {
+    background-color: rgba(33, 149, 242, 0.2);
+}
+
+collector quest.tracking tit, collector quest.tracking subtit {
+    color: #BADDFA;
+}
+
+collector quest tit {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #aaa;
+    font-family: "Roboto";
+}
+
+collector quest subtit {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 11px;
+    font-family: "Segoe UI";
+    font-weight: 400;
+}
+
+quests noquest {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    font-family: "Roboto";
+    color: #fff;
+}
+
+content noquest {
+    display: block;
+    font-family: "Roboto";
+    color: #fff;
+    position: absolute;
+    left: 30%;
+    top: 45%;
+    text-align: center;
+}
+
+/*tabs*/
+questlist ul {
+    display: flex;
+    margin-bottom: 0;
+    list-style: none;
+    padding-left: 0px;
+}
+
+questlist ul li {
+    display: block;
+    padding: .5em 1em;
+    margin-bottom: -1px;
+    font-family: 'Segoe UI';
+    font-weight: 700;
+    font-size: 1.1vh;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    color: #444;
+    width: 100%;
+    text-align: center;
+}
+
+questlist ul li.selected {
+    background-color: transparent;
+    color: #fff;
+}
+
+questlist ul li:not(.selected):hover {
+    color: #aaa;
+    cursor: pointer;
+    background-color: rgba(69, 69, 69, 0.2);
+}
+
+questlist ul li:not(.selected) {
+    background-color: rgba(69, 69, 69, 0.1);
+}
+
+/******************************************************************************/
+/*   Notification                                                             */
+/******************************************************************************/
+notifications {
+    display: flex;
+    flex-direction: row-reverse;
+    position: fixed;
+    flex-wrap: wrap-reverse;
+    bottom: 0px;
+    right: 0;
+    width: 22%;
+}
+
+@media screen and (max-width: 1024px) {
+    notifications {
+        width: 30%;
+    }
+}
+
+notifications not {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+notifications not icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 95%;
+    font-size: 70px;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+    color: #ccc;
+}
+
+notifications not content {
+    border-left: 1px solid #000;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 90%;
+    padding: 8px;
+}
+
+notifications not content tit {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: "Roboto";
+}
+
+notifications not content desc {
+    display: block;
+    width: 100%;
+    max-height: 40px;
+    margin-top: -2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    color: #aaa;
+    font-family: "Segoe UI";
+}
+
+notifications not content desc b {
+    color: #BABABA;
+    font-weight: 500;
+}
+
+notifications not content help {
+    display: block;
+    font-size: 10px;
+    color: #555;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    font-family: "Roboto";
+}
+
+notifications not content help key {
+    color: #888;
+    text-decoration: underline;
+}
+
+/******************************************************************************/
+/*   Email                                                                    */
+/******************************************************************************/
+.block-email {
+    position: fixed;
+    top: 15%;
+    height: 100%;
+}
+
+block.email unreaded, block.email readed  {
+    display: block;
+    position: relative;
+}
+
+block.email unreaded divider, block.email readed divider {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 7px 7px 7px;
+    font-size: 1.3vh;
+    text-align: left;
+    border: 0px;
+}
+
+block.email count {
+    float: right;
+}
+
+block.email maillist {
+    display: inline-block;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 30%;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+maillist nomails {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    font-family: "Roboto";
+    color: #fff;
+}
+
+/* container */
+block.email content {
+    display: inline-block;
+    vertical-align: top;
+    background-color: transparent;
+    width: 70.5%;
+    position: relative;
+    left: 30%;
+    min-height: 500px;
+    max-height: 500px;
+    margin-bottom: 5px;
+}
+
+block.email content p {
+    display: block;
+    margin-top: 10px;
+    max-height: 358px;
+    padding-left: 20px;
+    padding-right: 28px;
+    overflow-y: auto;
+}
+
+block.email content mail {
+    display: none;
+}
+
+block.email content mail.selected {
+    display: inline-block;
+}
+
+block.email content info {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+    width: 98%;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+}
+
+block.email content info sender {
+    color: #fff;
+    display: inline-block;
+}
+
+block.email content info date {
+    color: #666;
+    display: inline-block;
+    font-size: 12px;
+    padding-top: 3px;
+    float: right;
+}
+
+block.email content info subject {
+    color: #BADDFA;
+    display: block;
+    font-size: 12px;
+}
+
+/* email item */
+block.email maillist mail {
+    display: block;
+    position: relative;
+    line-height: 18px;
+    width: 100%;
+    color: #aaa;
+    padding: 10px 10px 10px 10px;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #2A2A2A;
+}
+
+block.email maillist mail sender {
+    display: block;
+    font-size: 1.2vh;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 60%;
+}
+
+block.email maillist mail tit {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.2vh;
+}
+
+block.email maillist mail desc {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.2vh;
+    color: #666;
+}
+
+block.email maillist mail desc b {
+    color: #666;
+}
+
+block.email maillist mail date {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2vh;
+    color: #666;
+}
+
+block.email maillist mail:hover {
+    background-color: rgba(69, 69, 69, 0.3);
+    cursor: pointer;
+}
+
+block.email maillist mail.selected {
+    background-color: rgba(69, 69, 69, 0.9);
+}
+
+block.email maillist mail.selected desc, block.email maillist mail.selected desc b {
+    color: #888;
+}
+
+/* unreaded email item */
+block.email maillist unreaded mail {
+    background-color: rgba(25, 117, 209, 0.3);
+    color: #BADDFA;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+}
+
+block.email maillist unreaded mail:not(:last-child) {
+    border-bottom: 1px solid #222;
+}
+
+block.email maillist unreaded mail desc {
+    color: #9EAAB8;
+}
+
+block.email maillist unreaded mail desc b {
+    color: #BAC9D2;
+}
+
+block.email maillist unreaded mail date {
+    color: #BAC9D2;
+}
+
+block.email maillist unreaded mail:hover {
+    background-color: rgba(25, 117, 209, 0.2);
+}
+
+block.email maillist unreaded mail.selected {
+    background-color: rgba(25, 117, 209, 0.8);
+}
+
+block.email maillist unreaded mail.selected desc, block.email maillist mail.selected desc b {
+    color: #BAC9D2;
+}
+
+block.email content mail footer mailbuttons {
+    display: flex;
+    position: absolute;
+    right: 20px;
+}
+
+block.email content mail footer {
+    display: flex;
+    padding-right: 10px;
+}
+
+/* New email */
+newmail {
+    display: none;
+    padding-right: 15px;
+}
+
+newmail footer {
+    padding-right: 0px;
+}
+
+newmail input:not(:first-child) {
+    margin-top: 10px;
+}
+
+newmail textarea {
+    margin-top: 10px;
+    resize: none;
+    display: block;
+    width: 100%;
+    padding: .5rem .75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #fff;
+    margin-bottom: 5px;
+    background-color: rgba(69, 69, 69, 0.8);
+    background-image: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .15);
+    height: 340px;
+}
+
+/* No mail */
+nomail {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 480px;
+    flex-wrap: wrap;
+}
+
+nomail text {
+    display: flex;
+    width: 30%;
+}
+
+/******************************************************************************/
+/*   Options                                                                  */
+/******************************************************************************/
+block.options {
+    width: 28%;
+    top: 15%;
+    left: 68%;
+    position: fixed;
+}
+
+block.options content {
+    padding: 0px;
+}
+
+block.options container form {
+    padding: 10px;
+}
+
+/*tabs*/
+block.options navbar ul {
+    display: flex;
+    margin-bottom: 0;
+    list-style: none;
+    padding-left: 0px;
+}
+
+block.options navbar ul li {
+    display: block;
+    padding: 1em 1em;
+    margin-bottom: -1px;
+    font-family: 'Segoe UI';
+    font-weight: 700;
+    font-size: 1.1vh;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    color: #444;
+    width: 100%;
+    text-align: center;
+}
+
+block.options navbar ul li.selected {
+    background-color: transparent;
+    color: #fff;
+}
+
+block.options navbar ul li:not(.selected):hover {
+    color: #aaa;
+    cursor: pointer;
+    background-color: rgba(69, 69, 69, 0.2);
+}
+
+block.options navbar ul li:not(.selected) {
+    background-color: rgba(69, 69, 69, 0.1);
+}
+
+/******************************************************************************/
+/*   Menus                                                                    */
+/******************************************************************************/
+menu {
+    display: block;
+    background-color: rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 15%;
+    top: 30%;
+    left: 43%;
+    padding: 0px;
+    margin: 0px;
+}
+
+menu ul {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none
+}
+
+menu ul li {
+    background-color: rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+    text-align: center;
+    font-family: 'Roboto';
+    color: #666;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: 12px;
+    line-height: 40px;
+}
+
+menu li.disabled {
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: .1;
+}
+
+menu li.disabled:hover {
+    color: #666;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: default;
+}
+
+menu li:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    cursor: pointer;
+}
+
+menu ul li:not(:last-child) {
+    border-bottom: 1px solid #2A2A2A;
+}
+
+/******************************************************************************/
+/*   Navbars                                                                  */
+/******************************************************************************/
+navbar ul {
+    display: flex;
+    margin-bottom: 0;
+    list-style: none;
+    padding-left: 0px;
+}
+
+navbar ul li {
+    display: block;
+    padding: 1em 1em;
+    margin-bottom: -1px;
+    font-family: 'Segoe UI';
+    font-weight: 700;
+    font-size: 1.1vh;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    color: #444;
+    width: 100%;
+    text-align: center;
+}
+
+navbar ul li.selected {
+    background-color: transparent;
+    color: #fff;
+}
+
+navbar ul li:not(.selected):hover {
+    color: #aaa;
+    cursor: pointer;
+    background-color: rgba(69, 69, 69, 0.2);
+}
+
+navbar ul li:not(.selected) {
+    background-color: rgba(69, 69, 69, 0.1);
+}
+
+/******************************************************************************/
+/*   Playerlist                                                               */
+/******************************************************************************/
+.block-adminplayerlist {
+    position: fixed;
+    top: 15%;
+    height: 100%;
+}
+
+block.adminplayerlist  {
+    display: block;
+    padding: 0px;
+    position: relative;
+}
+
+block.adminplayerlist content {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0px;
+    margin: 0px;
+    background-color: transparent;
+    width: 75%;
+    position: relative;
+    left: 25%;
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: hidden;
+}
+
+block.adminplayerlist content p {
+    display: block;
+    max-height: 250px;
+    padding-left: 20px;
+    padding-right: 28px;
+    overflow-y: auto;
+}
+
+adminplayerlist search {
+    display: block;
+    position: relative;
+    font-size: 2vh;
+}
+
+adminplayerlist search input {
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #2A2A2A;
+    box-shadow: inset 0 0 2px #000;
+    padding: 10px 15px 10px 15px;
+}
+
+adminplayerlist search input:focus + i {
+    color: #ddd;
+}
+
+adminplayerlist search i {
+    position: absolute;
+    top: 11px;
+    right: 10px;
+    color: #555;
+    text-shadow: 0px 0px 8px #000;
+}
+
+block.adminplayerlist adminplayerlist {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    width: 25%;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    border-right: 1px solid #000;
+}
+
+adminplayerlist players {
+    display: none;
+    max-height: 84.8%;
+    overflow-x: auto;
+}
+
+adminplayerlist players.selected {
+    display: block;
+}
+
+adminplayerlist player {
+    display: block;
+    position: relative;
+    width: 100%;
+    color: #aaa;
+    padding: 7px 10px 10px 10px;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #2A2A2A;
+}
+
+adminplayerlist player name {
+    display: block;
+    font-size: 2vh;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 60%;
+    text-shadow: 0px 0px 8px #000;
+}
+
+adminplayerlist player stats {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.2vh;
+    text-shadow: 0px 0px 8px #000;
+}
+
+adminplayerlist desc {
+    display: block;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 7px 7px 7px;
+    font-size: 1.3vh;
+    text-align: right;
+    border: 0px;
+    border-bottom: 1px solid #2A2A2A;
+    box-shadow: inset 0 0 4px #000;
+}
+
+adminplayerlist desc:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+adminplayerlist desc b {
+    float: left;
+}
+
+adminplayerlist player:hover {
+    background-color: rgba(69, 69, 69, 0.3);
+    cursor: pointer;
+}
+
+adminplayerlist player name { color: #aaa; }
+adminplayerlist player:hover name{ color: #ddd; }
+adminplayerlist player.selected name { color: #fff; }
+
+adminplayerlist player stats { color: #666; }
+adminplayerlist player:hover stats { color: #888; }
+adminplayerlist player.selected stats { color: #aaa; }
+
+adminplayerlist player stats b { color: #666; }
+adminplayerlist player:hover stats b { color: #999; }
+adminplayerlist player.selected stats b { color: #ccc; }
+
+adminplayerlist player.selected {
+    border-left: 5px solid #0079C8;
+    background-color: rgba(69, 69, 69, 0.2);
+    border-bottom: 0px;
+    padding-bottom: 11px;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+adminplayerlist noplayerfound {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    font-family: "Roboto";
+    color: #fff;
+}
+
+.adminplayerlist content container {
+    display: none;
+    max-height: 465px;
+    min-height: 465px;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.adminplayerlist content container.selected {
+    display: block;
+}
+
+/*form*/
+.adminplayerlist content container form tit {
+    display: block;
+    color: #fff;
+    font-family: "Roboto";
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.adminplayerlist content container form subtit {
+    display: block;
+    color: #aaa;
+    font-family: "Roboto";
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.adminplayerlist form field {
+    padding: 15px;
+    margin-bottom: 35px;
+}
+
+.adminplayerlist form field input {
+    display: inline-block;
+}
+
+.adminplayerlist form field.warning input {
+    width: 100%;
+}
+
+noplayerselected {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 480px;
+    flex-wrap: wrap;
+    font-family: "Roboto";
+    color: #fff;
+}
+
+activepunishment {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 465px;
+    flex-wrap: wrap;
+}
+
+activepunishment text {
+    display: flex;
+    width: 50%;
+    font-family: "Roboto";
+    color: #fff;
+}
+
+/*logs*/
+.adminplayerlist content container logs {
+    display: block;
+    padding: 10px;
+    font-family: "Courier New";
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+    min-height: 465px;
+}
+
+.adminplayerlist content container entry {
+    display: block;
+    color: #fff;
+}
+
+.adminplayerlist content container entry time {
+    color: #AAA;
+    margin-right: 5px;
+}

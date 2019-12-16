@@ -1,0 +1,690 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel='stylesheet' href='assets/css/pcfw.css'>
+        <link rel='stylesheet' href='assets/css/gui.css'>
+        <link rel='stylesheet' href='assets/css/icons-fa.css'>
+        <link rel='stylesheet' href='assets/css/icons-clothes.css'>
+        <link rel='stylesheet' href='assets/css/icons-bodyparts.css'>
+        <link rel="stylesheet" href="assets/css/sweetalert.css">
+    </head>
+    <body id="main">
+        <div class="container-fluid">
+            <pagetitle>Nuevo personaje</pagetitle>
+            <block class="charcreator">
+                <header style="text-align: center">
+                    ¡Personaliza tu personaje!                        
+                </header>
+                <content>
+                    <form>
+                        <field>
+                            <label>Nombre del personaje</label>
+                            <input type="text" id="charname" placeholder="Nombre" max="24" maxlength="24" required>
+                            <help>Formato OBLIGATORIO: Nombre Apellidos (Sin _) ¡Para usar mayúsuculas usa SHIFT!</help>
+                        </field>
+                        <gender>
+                            <item class="male">
+                                <i class="fa fa-male"></i>
+                                <desc>Hombre</desc>
+                            </item>
+                            <item class="female">
+                                <i class="fa fa-female"></i>
+                                <desc>Mujer</desc>
+                            </item>
+                        </gender>
+                    </form>
+                </content>
+                <customization>
+                    <category>
+                        <header data-id="0">Rasgos <i class="fa fa-caret-down"></i></header>
+                        <container>
+                            <item data-id="13">
+                                <i class="bodyparts-face-of-a-woman-outline"></i>
+                            </item>
+                            <item data-id="14">
+                                <i class="bodyparts-eye-variant-with-enlarged-pupil"></i>
+                            </item>
+                            <item class="male" data-id="15">
+                                <i class="bodyparts-young-male-black-short-hair-shape"></i>
+                            </item>
+                            <item class="male" data-id="16">
+                                <i class="bodyparts-mustache-curled-tip-variant"></i>
+                            </item>
+                            <item class="female" data-id="15">
+                                <i class="bodyparts-brunette-female-woman-long-hair"></i>
+                            </item>
+                            <item class="female" data-id="16">
+                                <i class="bodyparts-human-lips"></i>
+                            </item>
+                            <item data-id="17">
+                                <i class="bodyparts-standing-human-body-silhouette"></i>
+                            </item>
+                            <item data-id="18">
+                                <img src="eyebrows.png" />
+                            </item>
+                        </container>
+                    </category>
+                    <category>
+                        <header data-id="1">Torso <i class="fa fa-caret-down"></i></header>
+                        <container>
+                            <item class="male" data-id="0">
+                                <i class="clothes-shirt"></i>
+                            </item>
+                            <item class="male" data-id="1">
+                                <i class="clothes-hoodie"></i>
+                            </item>
+                            <item class="male" data-id="2">
+                                <i class="clothes-vest"></i>
+                            </item>
+                            <item class="female" data-id="0">
+                                <i class="clothes-shirt-2"></i>
+                            </item>
+                            <item class="female" data-id="1">
+                                <i class="clothes-dress-3"></i>
+                            </item>
+                            <item class="female" data-id="2">
+                                <i class="clothes-trench-coat"></i>
+                            </item>
+                        </container>
+                    </category>
+                    <category>
+                        <header data-id="2">Piernas <i class="fa fa-caret-down"></i></header>
+                        <container>
+                            <item class="male" data-id="3">
+                                <i class="clothes-jeans"></i>
+                            </item>
+                            <item class="male" data-id="4">
+                                <i class="clothes-shorts"></i>
+                            </item>
+                            <item class="female" data-id="3">
+                                <i class="clothes-jeans"></i>
+                            </item>
+                            <item class="female" data-id="4">
+                                <i class="clothes-shorts-1"></i>
+                            </item>
+                        </container>
+                    </category>
+                    <category>
+                        <header data-id="3">Pies <i class="fa fa-caret-down"></i></header>
+                        <container>
+                            <item class="male" data-id="5">
+                                <i class="clothes-boot"></i>
+                            </item>
+                            <item class="male" data-id="6">
+                                <i class="clothes-sneaker"></i>
+                            </item>
+                            <item class="male" data-id="7">
+                                <i class="clothes-slipper"></i>
+                            </item>
+                            <item class="female" data-id="5">
+                                <i class="clothes-high-heels"></i>
+                            </item>
+                            <item class="female" data-id="6">
+                                <i class="clothes-sneaker"></i>
+                            </item>
+                            <item class="female" data-id="7">
+                                <i class="clothes-slipper"></i>
+                            </item>
+                        </container>
+                    </category>
+                    <category>
+                        <header data-id="-1">Accesorios <i class="fa fa-caret-down"></i></header>
+                        <container>
+                                <item class="male" data-id="8">
+                                    <i class="clothes-tie"></i>
+                                </item>
+                                <item class="male" data-id="9">
+                                    <i class="clothes-scarf"></i>
+                                </item>
+                                <item class="male" data-id="10">
+                                    <i class="clothes-necklace"></i>
+                                </item>
+                                <item class="male" data-id="11">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </item>
+                                <item class="female" data-id="8">
+                                    <i class="clothes-tie"></i>
+                                </item>
+                                <item class="female" data-id="9">
+                                    <i class="clothes-scarf"></i>
+                                </item>
+                                <item class="female" data-id="10">
+                                    <i class="clothes-necklace"></i>
+                                </item>
+                                <item class="female" data-id="11">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </item>
+                            </container>
+                    </category>
+                </customization>
+                <footer class="right">
+                    <error></error>
+                    <loading><i class="fa fa-spinner faa-spin animated"></i></loading>
+                    <button class="red" id="backBtn"><i class="fa fa-arrow-left"></i></button>
+                    <button type="submit" id="submit">Crear</button>
+                </footer>
+            </block>
+            <configurators>
+                <config id="config1">
+                    <desc>Superior</desc>
+                    <div class="btn-group">
+                        <button id="decreaseItem"><i class="fa fa-caret-left"></i></button>
+                        <button class="counter" id="counter1" disabled>0/0</button>
+                        <button id="increaseItem"><i class="fa fa-caret-right"></i></button>
+                    </div>
+                </config>
+                <config id="config2">
+                    <desc>Inferior</desc>
+                    <div class="btn-group">
+                        <button id="decreaseItem2"><i class="fa fa-caret-left"></i></button>
+                        <button class="counter" id="counter2" disabled>0/0</button>
+                        <button id="increaseItem2"><i class="fa fa-caret-right"></i></button>
+                    </div>
+                </config>
+            </configurators>
+            <configurators id="traits-configurator">
+                <config id="config-traits-1">
+                    <desc>Herencia paterna</desc>
+                    <div class="btn-group">
+                        <button id="decrease-config-traits-1"><i class="fa fa-caret-left"></i></button>
+                        <button class="counter" id="counter-config-traits-1" disabled>0/0</button>
+                        <button id="increase-config-traits-1"><i class="fa fa-caret-right"></i></button>
+                    </div>
+                </config>
+                <config id="config-traits-2">
+                    <desc>Herencia materna</desc>
+                    <div class="btn-group">
+                        <button id="decrease-config-traits-2"><i class="fa fa-caret-left"></i></button>
+                        <button class="counter" id="counter-config-traits-2" disabled>0/0</button>
+                        <button id="increase-config-traits-2"><i class="fa fa-caret-right"></i></button>
+                    </div>
+                </config>
+                <config id="config-traits-3">
+                    <desc>Mezcla</desc>
+                    <div class="btn-group">
+                        <button id="decrease-config-traits-3"><i class="fa fa-caret-left"></i></button>
+                        <button class="counter" id="counter-config-traits-3" disabled>0/0</button>
+                        <button id="increase-config-traits-3"><i class="fa fa-caret-right"></i></button>
+                    </div>
+                </config>
+            </configurators>
+        </div>
+        <script src="assets/js/slider.js"></script>
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/tether.js"></script>
+        <script src="assets/js/pcfw.js"></script>
+        <script src="assets/js/character-clothes.js"></script>
+        <script src="assets/js/sweetalert.js"></script>
+        <script>
+
+            // ------------- item selection -------------
+
+            var gender = 0;
+            var selected_item_type = null;
+
+            // Clothes
+            var current_item_variation = 0;
+            var current_item_last_index = 0;
+
+            var config2_item = 0;
+            var config2_last = 0;
+
+            // Traits
+            var config_traits_1_count = 0;
+            var config_traits_2_count = 0;
+            var config_traits_3_count = 0;
+
+            var config_traits_1_max = 0;
+            var config_traits_2_max = 0;
+            var config_traits_3_max = 0;
+
+            $("#config1").hide();
+            $("#config2").hide();
+            $('#config1 desc').hide();
+            $('#config2 desc').hide();
+
+            $('#traits-configurator').hide();
+
+            $("item").click(function ()
+            {
+                $(this).addClass('active').siblings().removeClass('active');
+
+                $(this).parent().parent().siblings()
+                    .find('container item')
+                    .removeClass('active');
+
+                if ($(this).data("id") == undefined)
+                    return;
+
+                selected_item_type = $(this).data("id");
+                if ($(this).data("id") < 13)
+                {
+                    // Seleção de Roupas
+                    current_item_variation = 0;
+                    current_item_last_index = character_components[gender][selected_item_type].length - 1;
+
+                    $("#counter1").html((current_item_variation + 1) + "/" + (current_item_last_index + 1));
+
+                    if (!$("#config1").is(":visible"))
+                        $("#config1").show();
+
+                    if (selected_item_type == 2 && !$("#config2").is(":visible"))
+                    {
+                        config2_item = 0;
+                        config2_last = character_components[gender][12].length - 1;
+
+                        $("#counter2").html((config2_item + 1) + "/" + (config2_last + 1));
+                        $("#config2").show();
+                        $('#config1 desc').show();
+                        $('#config2 desc').show();
+                    }
+                    else if (selected_item_type != 2 && $("#config2").is(":visible"))
+                    {
+                        $("#config2").hide();
+                        $('#config1 desc').hide();
+                        $('#config2 desc').hide();
+                    }
+
+                    mp.trigger("SelectCharacterClothes", JSON.stringify(character_components[gender][selected_item_type][current_item_variation]));
+                }
+                else
+                {
+                    // Seleção de traços
+                    $('#traits-configurator').show();
+                    selected_item_type = $(this).data("id");
+                    switch (selected_item_type)
+                    {
+                        // Face
+                        case 13:
+                            {
+                                config_traits_1_count = 0;
+                                config_traits_2_count = 0;
+                                config_traits_3_count = 0;
+
+                                config_traits_1_max = 45;
+                                config_traits_2_max = 45;
+                                config_traits_3_max = 9;
+
+                                $('#config-traits-1 desc').text("Rostro primario");
+                                $('#config-traits-2 desc').text("Rostro secundario");
+                                $('#config-traits-3 desc').text("Mix");
+
+                                $("#counter-config-traits-1").html((config_traits_1_count + 1) + "/" + (config_traits_1_max + 1));
+                                $("#counter-config-traits-2").html((config_traits_2_count + 1) + "/" + (config_traits_2_max + 1));
+                                $("#counter-config-traits-3").html((config_traits_3_count + 1) + "/" + (config_traits_3_max + 1));
+
+                                $('#config-traits-1').show();
+                                $('#config-traits-2').show();
+                                $('#config-traits-3').show();
+                                break;
+                            }
+                        // Eyes
+                        case 14:
+                            {
+                                $('#config-traits-2').hide();
+                                $('#config-traits-3').hide();
+
+                                config_traits_1_count = 0;
+                                config_traits_1_max = 31;
+
+                                $("#counter-config-traits-1").html((config_traits_1_count + 1) + "/" + (config_traits_1_max + 1));
+
+                                $('#config-traits-1 desc').text("Ojos");
+                                $('#config-traits-1').show();
+                                break;
+                            }
+                        // Hair
+                        case 15:
+                            {
+                                config_traits_1_count = 0;
+                                config_traits_2_count = 0;
+                                config_traits_3_count = 0;
+
+                                config_traits_1_max = gender ? 38 : 36;
+                                config_traits_2_max = 63;
+                                config_traits_3_max = 63;
+
+                                $('#config-traits-1 desc').text("Pelo");
+                                $('#config-traits-2 desc').text("Color");
+                                $('#config-traits-3 desc').text("Brillo");
+
+                                $("#counter-config-traits-1").html((config_traits_1_count + 1) + "/" + (config_traits_1_max + 1));
+                                $("#counter-config-traits-2").html((config_traits_2_count + 1) + "/" + (config_traits_2_max + 1));
+                                $("#counter-config-traits-3").html((config_traits_3_count + 1) + "/" + (config_traits_3_max + 1));
+
+                                $('#config-traits-1').show();
+                                $('#config-traits-2').show();
+                                $('#config-traits-3').show();
+                                break;
+                            }
+                        // Beard or Makeup
+                        case 16:
+                            {
+                                $('#config-traits-3').hide();
+
+                                config_traits_1_count = 0;
+                                config_traits_2_count = 0;
+
+                                config_traits_1_max = gender ? 12 : 29;
+                                config_traits_2_max = 64;
+
+                                $('#config-traits-1 desc').text("Estilo");
+                                $('#config-traits-2 desc').text("Color");
+
+                                $("#counter-config-traits-1").html((config_traits_1_count + 1) + "/" + (config_traits_1_max + 1));
+                                $("#counter-config-traits-2").html((config_traits_2_count + 1) + "/" + (config_traits_2_max + 1));
+
+                                $('#config-traits-1').show();
+                                $('#config-traits-2').show();
+                                break;
+                            }
+                        // Skin color
+                        case 17:
+                            {
+                                config_traits_1_count = 0;
+                                config_traits_2_count = 0;
+                                config_traits_3_count = 0;
+
+                                config_traits_1_max = 45;
+                                config_traits_2_max = 45;
+                                config_traits_3_max = 9;
+
+                                $('#config-traits-1 desc').text("Color primario");
+                                $('#config-traits-2 desc').text("Color secundario");
+                                $('#config-traits-3 desc').text("Mix");
+
+                                $("#counter-config-traits-1").html((config_traits_1_count + 1) + "/" + (config_traits_1_max + 1));
+                                $("#counter-config-traits-2").html((config_traits_2_count + 1) + "/" + (config_traits_2_max + 1));
+                                $("#counter-config-traits-3").html((config_traits_3_count + 1) + "/" + (config_traits_3_max + 1));
+
+                                $('#config-traits-1').show();
+                                $('#config-traits-2').show();
+                                $('#config-traits-3').show();
+                                break;
+                            }
+                        // Eyebrows
+                        case 18:
+                            {
+                                $('#config-traits-3').hide();
+
+                                config_traits_1_count = 0;
+                                config_traits_2_count = 0;
+
+                                config_traits_1_max = 33;
+                                config_traits_2_max = 64;
+
+                                $('#config-traits-1 desc').text("Estilo");
+                                $('#config-traits-2 desc').text("Color");
+
+                                $("#counter-config-traits-1").html((config_traits_1_count + 1) + "/" + (config_traits_1_max + 1));
+                                $("#counter-config-traits-2").html((config_traits_2_count + 1) + "/" + (config_traits_2_max + 1));
+
+                                $('#config-traits-1').show();
+                                $('#config-traits-2').show();
+                                break;
+                            }
+                    }
+                }
+            });
+
+            // Clothes
+            $("#decreaseItem").click(function ()
+            {
+                current_item_variation--;
+                if (current_item_variation < 0)
+                    current_item_variation = current_item_last_index;
+
+                $("#counter1").html((current_item_variation + 1) + "/" + (current_item_last_index + 1));
+
+                mp.trigger("resource.Sounds.PlaySelectSound");
+                mp.trigger("SelectCharacterClothes", JSON.stringify(character_components[gender][selected_item_type][current_item_variation]));
+
+                if (selected_item_type == 2)
+                    mp.trigger("SelectCharacterClothes", JSON.stringify(character_components[gender][12][config2_item]));
+            });
+
+            $("#increaseItem").click(function ()
+            {
+                current_item_variation++;
+                if (current_item_variation > current_item_last_index)
+                    current_item_variation = 0;
+
+                $("#counter1").html((current_item_variation + 1) + "/" + (current_item_last_index + 1));
+
+                mp.trigger("resource.Sounds.PlaySelectSound");
+                mp.trigger("SelectCharacterClothes", JSON.stringify(character_components[gender][selected_item_type][current_item_variation]));
+
+                if (selected_item_type == 2)
+                    mp.trigger("SelectCharacterClothes", JSON.stringify(character_components[gender][12][config2_item]));
+            });
+
+            $("#decreaseItem2").click(function ()
+            {
+                config2_item--;
+                if (config2_item < 0)
+                    config2_item = config2_last;
+
+                $("#counter2").html((config2_item + 1) + "/" + (config2_last + 1));
+
+                mp.trigger("resource.Sounds.PlaySelectSound");
+                mp.trigger("SelectCharacterClothes", JSON.stringify(character_components[gender][12][config2_item]));
+            });
+
+            $("#increaseItem2").click(function ()
+            {
+                config2_item++;
+                if (config2_item > config2_last)
+                    config2_item = 0;
+
+                $("#counter2").html((config2_item + 1) + "/" + (config2_last + 1));
+
+                mp.trigger("resource.Sounds.PlaySelectSound");
+                mp.trigger("SelectCharacterClothes", JSON.stringify(character_components[gender][12][config2_item]));
+            });
+
+            // Traits
+            $("#decrease-config-traits-1").click(function ()
+            {
+                config_traits_1_count--;
+                if (config_traits_1_count < 0)
+                    config_traits_1_count = config_traits_1_max;
+                else if (selected_item_type == 15 && config_traits_1_count == 23)
+                    config_traits_1_count--;
+
+                $("#counter-config-traits-1").html((config_traits_1_count + 1) + "/" + (config_traits_1_max + 1));
+                mp.trigger("resource.Sounds.PlaySelectSound");
+                mp.trigger("SelectCharacterComponent", JSON.stringify({ type: selected_item_type, config1: config_traits_1_count, config2: config_traits_2_count, config3: config_traits_3_count }));
+            });
+
+            $("#increase-config-traits-1").click(function ()
+            {
+                config_traits_1_count++;
+                if (config_traits_1_count > config_traits_1_max)
+                    config_traits_1_count = 0;
+                else if (selected_item_type == 15 && config_traits_1_count == 23)
+                    config_traits_1_count++;
+
+                $("#counter-config-traits-1").html((config_traits_1_count + 1) + "/" + (config_traits_1_max + 1));
+                mp.trigger("resource.Sounds.PlaySelectSound");
+                mp.trigger("SelectCharacterComponent", JSON.stringify({ type: selected_item_type, config1: config_traits_1_count, config2: config_traits_2_count, config3: config_traits_3_count }));
+            });
+
+            $("#decrease-config-traits-2").click(function ()
+            {
+                config_traits_2_count--;
+                if (config_traits_2_count < 0)
+                    config_traits_2_count = config_traits_2_max;
+
+                $("#counter-config-traits-2").html((config_traits_2_count + 1) + "/" + (config_traits_2_max + 1));
+                mp.trigger("resource.Sounds.PlaySelectSound");
+                mp.trigger("SelectCharacterComponent", JSON.stringify({ type: selected_item_type, config1: config_traits_1_count, config2: config_traits_2_count, config3: config_traits_3_count }));
+            });
+
+            $("#increase-config-traits-2").click(function ()
+            {
+                config_traits_2_count++;
+                if (config_traits_2_count > config_traits_2_max)
+                    config_traits_2_count = 0;
+
+                $("#counter-config-traits-2").html((config_traits_2_count + 1) + "/" + (config_traits_2_max + 1));
+                mp.trigger("resource.Sounds.PlaySelectSound");
+                mp.trigger("SelectCharacterComponent", JSON.stringify({ type: selected_item_type, config1: config_traits_1_count, config2: config_traits_2_count, config3: config_traits_3_count }));
+            });
+
+            $("#decrease-config-traits-3").click(function ()
+            {
+                config_traits_3_count--;
+                if (config_traits_3_count < 0)
+                    config_traits_3_count = config_traits_3_max;
+
+                $("#counter-config-traits-3").html((config_traits_3_count + 1) + "/" + (config_traits_3_max + 1));
+                mp.trigger("resource.Sounds.PlaySelectSound");
+                mp.trigger("SelectCharacterComponent", JSON.stringify({ type: selected_item_type, config1: config_traits_1_count, config2: config_traits_2_count, config3: config_traits_3_count }));
+            });
+
+            $("#increase-config-traits-3").click(function ()
+            {
+                config_traits_3_count++;
+                if (config_traits_3_count > config_traits_3_max)
+                    config_traits_3_count = 0;
+
+                $("#counter-config-traits-3").html((config_traits_3_count + 1) + "/" + (config_traits_3_max + 1));
+                mp.trigger("resource.Sounds.PlaySelectSound");
+                mp.trigger("SelectCharacterComponent", JSON.stringify({ type: selected_item_type, config1: config_traits_1_count, config2: config_traits_2_count, config3: config_traits_3_count }));
+            });
+
+            // ------------- item selection -------------
+
+            $("category container").hide();
+            $("error").hide();
+            $("customization").hide();
+
+            $('input').keyup(function ()
+            {
+                if ($(this).hasClass('error'))
+                {
+                    $("error").hide();
+                    $(this).removeClass('error');
+                }
+            });
+
+            $('category header').click(function ()
+            {
+                $(this).parent().siblings().find('container').slideUp();
+                $(this).parent().toggleClass('active');
+                $("i", this).toggleClass('fa-caret-down fa-caret-up');
+                $(this).siblings('container').slideToggle();
+                $(this).parent().siblings().removeClass('active');
+                $(this).parent().siblings().find('header i').addClass('fa-caret-down').removeClass('fa-caret-up');
+
+                if ($("#config1").is(":visible"))
+                    $("#config1").hide();
+
+                if ($("#config2").is(":visible"))
+                    $("#config2").hide();
+
+                if ($("#traits-configurator").is(":visible"))
+                    $("#traits-configurator").hide();
+
+                $('#config1 desc').hide();
+                $('#config2 desc').hide();
+
+                if ($(this).data("id") != undefined)
+                {
+                    mp.trigger("resource.Sounds.PlaySelectSound");
+                    mp.trigger("MoveCameraPosition", $(this).data("id"));
+                }
+            });
+
+            // var regx = /^[A-Z][a-z]+\s[A-Z][a-z]+$/; // Nome Sobrenome
+            var regx = /^[A-Z][-'a-zA-Z]+,?\s[A-Z][-'a-zA-Z]{0,19}$/; // /^[A-Z][a-z]+$/; // Nome
+            $('#submit').click(function ()
+            {
+                if($("#charname").val().length < 4)
+                    ShowError("Usar al menos <b>4</b> caracteres.", "#charname");
+
+                else if(!regx.test($("#charname").val()))
+                    ShowError("Use el formato <b>N</b>ombre <b>A</b>apellidos.", "#charname");
+
+                else if (!$("gender item").hasClass("active"))
+                    ShowError("Selecciona el género.", "gender item");
+
+                else
+                {
+                    mp.trigger("resource.Sounds.PlaySelectSound");
+                    swal(
+                    {
+                        title: "¿Quieres crear este personaje?",
+                        text: "Estás a punto de crear un personaje.",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#BCEE68",
+                        confirmButtonText: "Crear",
+                        cancelButtonText: "Regresar",
+                        closeOnConfirm: false
+                    },
+                    function ()
+                    {
+                        mp.trigger("finishCharacterCreation", $("#charname").val());
+                    });
+                }
+            });
+
+            $('gender item').on('click', function ()
+            {
+                $(this).addClass('active').siblings().removeClass('active');
+                $("customization").slideDown();
+
+                if ($("#config1").is(":visible"))
+                    $("#config1").hide();
+
+                if ($("#config2").is(":visible"))
+                    $("#config2").hide();
+
+                if ($("#traits-configurator").is(":visible"))
+                    $('#traits-configurator').hide();
+
+                $('category').removeClass('active');
+                $('category header i').addClass('fa-caret-down').removeClass('fa-caret-up');
+                $('category container').slideUp();
+                $('category container item').removeClass('active');
+
+                if ($(this).hasClass('male'))
+                {
+                    $('category container item.female').hide();
+                    $('category container item.male').show();
+
+                    gender = 0;
+                    mp.trigger("ChangeCharacterGender", 0);
+                }
+                else
+                {
+                    $('category container item.male').hide();
+                    $('category container item.female').show();
+
+                    gender = 1;
+                    mp.trigger("ChangeCharacterGender", 1);
+                }
+
+                mp.trigger("resource.Sounds.PlaySelectSound");
+            });
+
+            $('#backBtn').click(function ()
+            {
+                mp.trigger("resource.Sounds.PlaySelectSound");
+                mp.trigger("GoBackToSelection");
+            });
+
+            function ShowError(message, input)
+            {
+                $('loading').hide();
+                isSubmitting = false;
+
+                $("error").html(message);
+                $("error").show();
+                $(input).addClass('error');
+            }
+        </script>
+    </body>
+</html>

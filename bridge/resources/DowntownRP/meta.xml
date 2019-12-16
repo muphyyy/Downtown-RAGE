@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<meta>
+  <info name="Downtown" author="Muphy" type="gamemode"/>
+  
+  <!-- Gamemode library -->
+  <script src="bin/Debug/netcoreapp2.2/DowntownRP.dll" />
+
+  <!-- Database connection settings -->
+<settings>
+    <!-- Database host, 120.0.0.1 if localhost -->
+    <setting name="host" value="127.0.0.1"/>
+    <!-- Database username -->
+    <setting name="username" value="root"/>
+    <!-- Database password -->
+    <setting name="password" value=""/>
+    <!-- Database name -->
+    <setting name="database" value="downtown"/>
+    <!-- Can take NONE or REQUIRED values -->
+    <setting name="ssl" value="none"/>
+  </settings>
+
+</meta>

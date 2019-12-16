@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Downtown RP | Login</title>
+    <link rel='stylesheet' href='../libs/bootstrap.min.css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='../libs/jquery-3.3.1.min.js'></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../libs/colorpalettepicker.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0);
+        }
+        .butt {
+        background-color: rgba(26, 25, 25, 0.8);
+        border: none; /* Remove borders */
+        color: white; /* White text */
+        padding: 12px 16px; /* Some padding */
+        font-size: 16px; /* Set a font size */
+        cursor: pointer; /* Mouse pointer on hover */
+        }
+
+        /* Darker background on mouse-over */
+        .butt:hover {
+        background-color: RoyalBlue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-3">
+                <br><br><br>
+                <center><img src="../img/logo.png" class="img-fluid img-responsive" style="height: 120px;"></center>
+                <br>
+                <div class="card" style="background-color: rgba(26, 25, 25, 0.8)">
+                    <div class="card-body text-white">
+                        <center><h5><b>Selecciona un personaje</b></h5></center><br>
+                        <button class="btn btn-primary btn-block" id="pj1"></button>
+                        <button class="btn btn-primary btn-block" id="pj2"></button>
+                        <button class="btn btn-primary btn-block" id="pj3"></button>
+                    </div>
+
+                </div>
+                    <br>
+                    <button id="exitBtn" class="btn btn-success btn-block">Crear personaje</button>
+                    <br>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+    var idpj1;
+    var idpj2;
+    var idpj3;
+
+    $("#pj1").hide();
+    $("#pj2").hide();
+    $("#pj3").hide();
+
+    function setPj1(id, name){
+        idpj1 = id;
+        document.getElementById("pj1").innerHTML = '<i class="fa fa-user-circle-o" aria-hidden="true"></i> ' + name;
+        $("#pj1").show();
+    } 
+    function setPj2(id, name){
+        idpj2 = id;
+        document.getElementById("pj2").innerHTML = '<i class="fa fa-user-circle-o" aria-hidden="true"></i> ' + name;
+        $("#pj2").show();
+    }  
+    function setPj3(id, name){
+        idpj3 = id;
+        document.getElementById("pj3").innerHTML = '<i class="fa fa-user-circle-o" aria-hidden="true"></i> ' + name;
+        $("#pj3").show();
+    }
+
+    $('#pj1').click(() => {
+            mp.trigger('ShowCharacterIS', idpj1);
+        });
+
+    $('#pj2').click(() => {
+            mp.trigger('ShowCharacterIS', idpj2);
+        });
+
+    $('#pj3').click(() => {
+            mp.trigger('ShowCharacterIS', idpj3);
+        });
+          
+    </script>
+    <!-- partial -->
+    <script src='../libs/bootstrap.min.js'></script>
+</body>
+
+</html>
