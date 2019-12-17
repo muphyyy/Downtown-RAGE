@@ -65,7 +65,6 @@ namespace DowntownRP_cs.game.company
 
         private void ChangeNameMenuCompany(object[] args)
         {
-            Events.CallRemote("debuginv", args[0].ToString());
             Events.CallRemote("MenuCompanyChangeName", args[0].ToString());
         }
 

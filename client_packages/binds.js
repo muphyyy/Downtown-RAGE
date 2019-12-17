@@ -16,6 +16,7 @@ mp.keys.bind(0x54, false, () => { // T
 
 mp.keys.bind(0x75, false, () => { // F6
     mp.events.callRemote('ActionMenuCompany');
+    mp.events.callRemote('ActionOpenBuyBusiness');
 });
 
 mp.keys.bind(0x74, false, () => { // F5

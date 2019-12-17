@@ -1,0 +1,75 @@
+
+html{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    /*background-image: url(https://www.alfabetajuega.com/wp-content/uploads/2019/01/gta-v.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;*/
+    background-color: rgba(0,0,0,0);
+    width: 100%;
+    height: 100%;
+}
+
+#chat{
+    width: 30%;
+}
+
+.bg-downtown{
+    background-color:rgba(12, 12, 12, 0.62) !important;
+}
+
+.outline-none{
+    outline: none;
+}
+
+/* COLORES */
+.chat-purple{ color: purple; }
+.chat-grey{ color: grey; }
+.chat-greenlime{ color: rgb(54, 255, 47); }
+.chat-green{ color: green; }
+.chat-blue{ color: rgb(44, 100, 255); }
+.chat-brown{ color: brown; }
+.chat-yellow{ color: yellow; }
+.chat-red{ color: red; }
+.chat-orange{ color: orange; }
+
+/* CUSTO SCROLLBAR */
+
+.scrollbar
+{
+	max-height: 300px;
+	width: 100%;
+	overflow-y: scroll;
+}
+
+.force-overflow
+{
+	min-height: 450px;
+}
+
+/*
+ *  STYLE 1
+ */
+
+ .style-1::-webkit-scrollbar-track
+ {
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+     border-radius: 10px;
+     background-color: #F5F5F5;
+ }
+ 
+ .style-1::-webkit-scrollbar
+ {
+     width: 12px;
+     background-color: #F5F5F5;
+ }
+ 
+ .style-1::-webkit-scrollbar-thumb
+ {
+     border-radius: 10px;
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+     background-color: #555;
+ }

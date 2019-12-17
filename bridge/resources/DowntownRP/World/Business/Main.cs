@@ -13,7 +13,7 @@ namespace DowntownRP.World.Business
         {
             //var business = shape.GetExternalData<Data.Entities.Business>(0);
             if (!shape.HasData("BUSINESS_CLASS")) return;
-            Data.Entities.Business business = shape.GetData("COMPANY_CLASS");
+            Data.Entities.Business business = shape.GetData("BUSINESS_CLASS");
 
             //var user = player.GetExternalData<Data.Entities.User>(0);
             if (!player.HasData("USER_CLASS")) return;
@@ -21,7 +21,7 @@ namespace DowntownRP.World.Business
 
             if (business != null)
             {
-
+                if (business.owner == 0) player.TriggerEvent("displayBusinessVenta");
                 user.isInBusiness = true;
                 user.business = business;
             }
@@ -32,7 +32,7 @@ namespace DowntownRP.World.Business
         {
             //var business = shape.GetExternalData<Data.Entities.Business>(0);
             if (!shape.HasData("BUSINESS_CLASS")) return;
-            Data.Entities.Business business = shape.GetData("COMPANY_CLASS");
+            Data.Entities.Business business = shape.GetData("BUSINESS_CLASS");
             //var user = player.GetExternalData<Data.Entities.User>(0);
             if (!player.HasData("USER_CLASS")) return;
             Data.Entities.User user = player.GetData("USER_CLASS");
@@ -114,6 +114,103 @@ namespace DowntownRP.World.Business
                         buss.SetData("BUSINESS_CLASS", business);
                     }
                 }
+            }
+        }
+
+        [RemoteEvent("ActionOpenBuyBusiness")]
+        public void RE_ActionOpenBuyBusiness(Client player)
+        {
+            if (!player.HasData("USER_CLASS")) return;
+
+            Data.Entities.User user = player.GetData("USER_CLASS");
+            if (user.isInBusiness)
+            {
+                if(user.business.owner == 0)
+                {
+                    if (!user.isBusinessCefOpen)
+                    {
+                        player.TriggerEvent("OpenBusinessBuyBrowser", GetNameTypeBusiness(user.business.type), user.business.price, $"{user.business.area}, {user.business.number}");
+                        user.isBusinessCefOpen = true;
+                        return;
+                    }
+                    else
+                    {
+                        player.TriggerEvent("DestroyBusinessBuyBrowser");
+                        user.isBusinessCefOpen = false;
+                    }
+                }
+            }
+        }
+
+        [RemoteEvent("CloseBrowserBuyBusiness")]
+        public void RE_CloseBrowserBuyBusiness(Client player)
+        {
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+
+            player.TriggerEvent("DestroyBusinessBuyBrowser");
+            user.isBusinessCefOpen = false;
+        }
+
+        [RemoteEvent("BuyBusiness")]
+        public async Task RE_BuyBusiness(Client player)
+        {
+            //var user = player.GetExternalData<Data.Entities.User>(0);
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+
+            if (user.business != null)
+            {
+                if (await Game.Money.MoneyModel.SubMoney(player, (double)user.business.price))
+                {
+                    await DbFunctions.UpdateBusinessOwner(user.business.id, user.idpj);
+                    player.TriggerEvent("DestroyBusinessBuyBrowser");
+                    user.isBusinessCefOpen = false;
+
+                    user.business.owner = user.idpj;
+                    user.business.label.Text = $"Negocio~n~Pulsa ~y~F5 ~w~para interactuar~n~{user.business.area}, {user.business.number}";
+
+                    player.TriggerEvent("chat_goal", "¡Felicidades!", "Ahora eres propietario de un negocio");
+                    await Task.Delay(2000);
+                    Utilities.Notifications.SendNotificationINFO(player, "Para configurar tu negocio presiona ~g~F6");
+                }
+                else Utilities.Notifications.SendNotificationERROR(player, "No tienes suficiente dinero para comprar este negocio");
+            }
+        }
+
+        public static string GetNameTypeBusiness(int type)
+        {
+            switch (type)
+            {
+                case 1:
+                    return "Supermarket";
+
+                case 2:
+                    return "Tienda de ropa";
+
+                case 3:
+                    return "Gasolinera";
+
+                case 4:
+                    return "Tatuador";
+
+                case 5:
+                    return "Peluquero";
+
+                case 6:
+                    return "Renta";
+
+                case 7:
+                    return "Concesionario";
+
+                case 8:
+                    return "Concesionario empresas";
+
+                case 9:
+                    return "Bar";
+
+                default:
+                    return "N/A";
             }
         }
     }

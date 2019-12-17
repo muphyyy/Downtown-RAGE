@@ -45,7 +45,7 @@ namespace DowntownRP.World.Business
                         NAPI.Task.Run(() =>
                         {
                             ColShape shape = NAPI.ColShape.CreateCylinderColShape(position.Subtract(new Vector3(0, 0, 1)), 2, 2);
-                            TextLabel label = NAPI.TextLabel.CreateTextLabel($"{nombre}~n~Pulsa ~y~F5 ~w~para interactuar~n~{area}, {number}", position.Subtract(new Vector3(0, 0, 1)), 1, 1, 0, new Color(255, 255, 255));
+                            TextLabel label = NAPI.TextLabel.CreateTextLabel($"{nombre}~n~Pulsa ~y~F5 ~w~para interactuar~n~{area}, {number}", position, 1, 1, 0, new Color(255, 255, 255));
                             Marker marker = NAPI.Marker.CreateMarker(0, position.Subtract(new Vector3(0, 0, 0.1)), new Vector3(), new Vector3(), 1, new Color(251, 244, 1));
                             Blip blip = NAPI.Blip.CreateBlip(position);
                             blip.Color = 3;
@@ -125,7 +125,7 @@ namespace DowntownRP.World.Business
                 await connection.OpenAsync().ConfigureAwait(false);
                 MySqlCommand command = connection.CreateCommand();
                 command.CommandText = "INSERT INTO business (name, type, price, x, y, z, area, number) VALUES (@name, @type, @price, @x, @y, @z, @area, @number)";
-                command.Parameters.AddWithValue("@name", "Compañía en venta");
+                command.Parameters.AddWithValue("@name", "NO");
                 command.Parameters.AddWithValue("@type", type);
                 command.Parameters.AddWithValue("@price", price);
                 command.Parameters.AddWithValue("@x", player.Position.X);
@@ -175,6 +175,20 @@ namespace DowntownRP.World.Business
                 }
             }
             return 0;
+        }
+
+        public async static Task UpdateBusinessOwner(int id, int owner)
+        {
+            using (MySqlConnection connection = new MySqlConnection(Data.DatabaseHandler.connectionHandle))
+            {
+                await connection.OpenAsync().ConfigureAwait(false);
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "UPDATE business SET owner = @owner WHERE id = @id";
+                command.Parameters.AddWithValue("@owner", owner);
+                command.Parameters.AddWithValue("@id", id);
+
+                await command.ExecuteNonQueryAsync().ConfigureAwait(false);
+            }
         }
     }
 

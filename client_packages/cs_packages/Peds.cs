@@ -12,12 +12,6 @@ namespace DowntownRP_cs
         public Peds()
         {
             Events.OnGuiReady += OnGuiReadyEvent;
-            Events.Add("lolasote", lolasote);
-        }
-
-        private void lolasote(object[] args)
-        {
-            RAGE.Elements.Player.LocalPlayer.Vehicle.SetLivery(3);
         }
 
         private void OnGuiReadyEvent()

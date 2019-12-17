@@ -128,7 +128,7 @@ namespace DowntownRP.World.Companies
                 await connection.OpenAsync().ConfigureAwait(false);
                 MySqlCommand command = connection.CreateCommand();
                 command.CommandText = "INSERT INTO companies (name, type, price, x, y, z, area, number) VALUES (@name, @type, @price, @x, @y, @z, @area, @number)";
-                command.Parameters.AddWithValue("@name", "Compañía en venta");
+                command.Parameters.AddWithValue("@name", "NO");
                 command.Parameters.AddWithValue("@type", type);
                 command.Parameters.AddWithValue("@price", price);
                 command.Parameters.AddWithValue("@x", player.Position.X);
