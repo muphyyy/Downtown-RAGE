@@ -1,3 +1,5 @@
+const instructions = require('betterInstructions/better_instructions');
+
 mp.game.audio.setAudioFlag("LoadMPData", true);
 
 mp.events.add('NotificationSound', () => {
@@ -13,12 +15,25 @@ mp.events.add('testPaydayLevel', (texto) => {
 });
 
 mp.events.add('displayBusinessVenta', () => {
-  mp.events.callRemote('debuginv', 'lol');
-  const instructions = require('betterInstructions/better_instructions');
-
   const horizontalInstructionList = new instructions(-1);
 
   horizontalInstructionList.addButton('Negocio en venta, para mas información presiona ', 'F6');
+
+  if(!horizontalInstructionList.isActive()) {
+    horizontalInstructionList.toggleHud(true);
+  }
+
+  setTimeout( () => {
+    if(horizontalInstructionList.isActive()) {
+      horizontalInstructionList.toggleHud(false);
+    }
+  }, 5000);
+});
+
+mp.events.add('adviceBuyVehicle', () => {
+  const horizontalInstructionList = new instructions(-1);
+
+  horizontalInstructionList.addButton('Para comprar un vehículo, súbete a el pulsando la tecla ', 'F');
 
   if(!horizontalInstructionList.isActive()) {
     horizontalInstructionList.toggleHud(true);

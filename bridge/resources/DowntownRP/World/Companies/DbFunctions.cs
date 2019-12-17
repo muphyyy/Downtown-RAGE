@@ -52,7 +52,7 @@ namespace DowntownRP.World.Companies
                             // Exterior entities
 
                             ColShape company = NAPI.ColShape.CreateCylinderColShape(position.Subtract(new Vector3(0, 0, 1)), 2, 2);
-                            TextLabel label = NAPI.TextLabel.CreateTextLabel($"{nombre}~n~Pulsa ~y~F5 ~w~para interactuar~n~{area}, {number}", position, 5, 1, 0, new Color(255, 255, 255));
+                            TextLabel label = NAPI.TextLabel.CreateTextLabel($"{nombre}~n~Pulsa ~y~F5 ~w~para interactuar~n~~p~{area}, {number}", position, 5, 1, 0, new Color(255, 255, 255));
                             Marker marker = NAPI.Marker.CreateMarker(0, position.Subtract(new Vector3(0, 0, 0.1)), new Vector3(), new Vector3(), 1, new Color(251, 244, 1));
                             Blip blip = NAPI.Blip.CreateBlip(position);
                             blip.Color = 3;

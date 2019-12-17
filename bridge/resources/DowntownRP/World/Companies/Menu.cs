@@ -54,7 +54,7 @@ namespace DowntownRP.World.Companies
                 await DbFunctions.UpdateCompanyName(user.companyInterior.id, name);
                 user.companyInterior.name = name;
                 user.companyInterior.blip.Name = name;
-                user.companyInterior.label.Text = $"{name}~n~~r~Cerrado~n~{user.companyInterior.area}, {user.companyInterior.number}";
+                user.companyInterior.label.Text = $"{name}~n~~r~Cerrado~n~~p~{user.companyInterior.area}, {user.companyInterior.number}";
 
                 Utilities.Notifications.SendNotificationOK(player, $"Has cambiado el nombre de la empresa a {name}");
             }

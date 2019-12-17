@@ -42,10 +42,10 @@ namespace DowntownRP.World.Business
                         if (name == "NO") nombre = "Negocio en venta";
                         else nombre = name;
 
-                        NAPI.Task.Run(() =>
+                        NAPI.Task.Run(async () =>
                         {
                             ColShape shape = NAPI.ColShape.CreateCylinderColShape(position.Subtract(new Vector3(0, 0, 1)), 2, 2);
-                            TextLabel label = NAPI.TextLabel.CreateTextLabel($"{nombre}~n~Pulsa ~y~F5 ~w~para interactuar~n~{area}, {number}", position, 1, 1, 0, new Color(255, 255, 255));
+                            TextLabel label = NAPI.TextLabel.CreateTextLabel($"{nombre}~n~Pulsa ~y~F5 ~w~para interactuar~n~~p~{area}, {number}", position, 3, 1, 0, new Color(255, 255, 255));
                             Marker marker = NAPI.Marker.CreateMarker(0, position.Subtract(new Vector3(0, 0, 0.1)), new Vector3(), new Vector3(), 1, new Color(251, 244, 1));
                             Blip blip = NAPI.Blip.CreateBlip(position);
                             blip.Color = 3;
@@ -75,14 +75,17 @@ namespace DowntownRP.World.Business
 
                                 case 6:
                                     blip.Sprite = 135;
+                                    label.Text = $"{nombre}~n~~p~{area}, {number}";
                                     break;
 
                                 case 7:
                                     blip.Sprite = 135;
+                                    label.Text = $"{nombre}~n~~p~{area}, {number}";
                                     break;
 
                                 case 8:
                                     blip.Sprite = 135;
+                                    label.Text = $"{nombre}~n~~p~{area}, {number}";
                                     break;
 
                                 case 9:
@@ -110,6 +113,8 @@ namespace DowntownRP.World.Business
                             shape.SetData("BUSINESS_CLASS", business);
 
                             Data.Info.businessSpanwed++;
+
+                            await SpawnVehicleBusiness(business);
                         });
                     }
                 }
@@ -189,6 +194,130 @@ namespace DowntownRP.World.Business
 
                 await command.ExecuteNonQueryAsync().ConfigureAwait(false);
             }
+        }
+
+        public static async Task SpawnVehicleBusiness(Data.Entities.Business business)
+        {
+            using (MySqlConnection connection = new MySqlConnection(Data.DatabaseHandler.connectionHandle))
+            {
+                await connection.OpenAsync().ConfigureAwait(false);
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT * FROM vehicles_business WHERE business = @business";
+                command.Parameters.AddWithValue("@business", business.id);
+
+                DbDataReader reader = await command.ExecuteReaderAsync().ConfigureAwait(false);
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32(reader.GetOrdinal("id"));
+                        string type = reader.GetString(reader.GetOrdinal("type"));
+                        int price = reader.GetInt32(reader.GetOrdinal("price"));
+                        int color1 = reader.GetInt32(reader.GetOrdinal("color1"));
+                        int color2 = reader.GetInt32(reader.GetOrdinal("color2"));
+                        string numberplate = reader.GetString(reader.GetOrdinal("numberplate"));
+
+                        double x = reader.GetDouble(reader.GetOrdinal("x"));
+                        double y = reader.GetDouble(reader.GetOrdinal("y"));
+                        double z = reader.GetDouble(reader.GetOrdinal("z"));
+                        double rot = reader.GetDouble(reader.GetOrdinal("rot"));
+
+                        bool isCompanySelling = false;
+                        bool isRentSelling = false;
+                        bool isNormalSelling = false;
+
+                        switch (business.type)
+                        {
+                            case 6:
+                                isRentSelling = true;
+                                break;
+
+                            case 7:
+                                isNormalSelling = true;
+                                break;
+
+                            case 8:
+                                isCompanySelling = true;
+                                break;
+                        }
+
+                        Vector3 position = new Vector3(x, y, z);
+
+                        NAPI.Task.Run(() =>
+                        {
+                            uint hash = NAPI.Util.GetHashKey(type);
+                            Vehicle vehicle = NAPI.Vehicle.CreateVehicle(hash, position, (float)rot, color1, color2, numberplate, 255, true, false);
+                            TextLabel label = NAPI.TextLabel.CreateTextLabel($"~y~{type}~n~~w~Precio: ~g~${price}", position, 3, 1, 0, new Color(255, 255, 255));
+                            vehicle.NumberPlate = numberplate;
+
+                            Data.Entities.VehicleBusiness veh = new Data.Entities.VehicleBusiness()
+                            {
+                                id = id,
+                                vehicle = vehicle,
+                                business = business,
+                                price = price,
+                                isRentSelling = isRentSelling,
+                                isNormalSelling = isNormalSelling,
+                                isCompanySelling = isCompanySelling,
+                                label = label
+
+                            };
+
+                            vehicle.SetData("VEHICLE_BUSINESS_DATA", veh);
+                        });
+                    }
+                }
+
+
+            }
+        }
+
+        public async static Task<int> CreateBusinessVehicle(int id_business, string model, int price, int color1, int color2, string numberplate, double x, double y, double z, double rot)
+        {
+            using (MySqlConnection connection = new MySqlConnection(Data.DatabaseHandler.connectionHandle))
+            {
+                await connection.OpenAsync().ConfigureAwait(false);
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "INSERT INTO vehicles_business (business, type, price, color1, color2, numberplate, x, y, z, rot) VALUES (@id_business, @model, @price, @color1, @color2, @numberplate, @x, @y, @z, @rot)";
+                command.Parameters.AddWithValue("@id_business", id_business);
+                command.Parameters.AddWithValue("@model", model);
+                command.Parameters.AddWithValue("@price", price);
+                command.Parameters.AddWithValue("@color1", color1);
+                command.Parameters.AddWithValue("@color2", color2);
+                command.Parameters.AddWithValue("@numberplate", numberplate);
+                command.Parameters.AddWithValue("@x", x);
+                command.Parameters.AddWithValue("@y", y);
+                command.Parameters.AddWithValue("@z", z);
+                command.Parameters.AddWithValue("@rot", rot);
+
+
+                await command.ExecuteNonQueryAsync().ConfigureAwait(false);
+                return (int)command.LastInsertedId;
+            }
+        }
+
+        public async static Task<int> GetBusinessTypeById(int businessid)
+        {
+            using (MySqlConnection connection = new MySqlConnection(Data.DatabaseHandler.connectionHandle))
+            {
+                await connection.OpenAsync().ConfigureAwait(false);
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT * FROM business WHERE id = @id";
+                command.Parameters.AddWithValue("@id", businessid);
+
+                DbDataReader reader = await command.ExecuteReaderAsync().ConfigureAwait(false);
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32(reader.GetOrdinal("id"));
+                        connection.Close();
+                        return id;
+                    }
+
+                }
+            }
+            return 0;
         }
     }
 

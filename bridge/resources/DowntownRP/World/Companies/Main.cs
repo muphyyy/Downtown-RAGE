@@ -129,7 +129,7 @@ namespace DowntownRP.World.Companies
                     user.isCompanyCefOpen = false;
 
                     user.company.owner = user.idpj;
-                    user.company.label.Text = $"Empresa~n~~r~Cerrado~n~{user.company.area}, {user.company.number}";
+                    user.company.label.Text = $"Empresa~n~~r~Cerrado~n~~p~{user.company.area}, {user.company.number}";
 
                     player.TriggerEvent("chat_goal", "¡Felicidades!", "Ahora eres propietario de una empresa");
                     await Task.Delay(2000);
@@ -164,7 +164,7 @@ namespace DowntownRP.World.Companies
 
                         ColShape empresa = NAPI.ColShape.CreateCylinderColShape(player.Position, 2, 2);
                         Marker marker = NAPI.Marker.CreateMarker(0, player.Position, new Vector3(), new Vector3(), 1, new Color(248, 218, 79));
-                        TextLabel label = NAPI.TextLabel.CreateTextLabel($"Compañía en venta~n~Pulsa ~y~F5 ~w~para interactuar~n~{name}, {streetid}", player.Position, 5, 1, 0, new Color(255, 255, 255));
+                        TextLabel label = NAPI.TextLabel.CreateTextLabel($"Compañía en venta~n~Pulsa ~y~F5 ~w~para interactuar~n~~p~{name}, {streetid}", player.Position, 5, 1, 0, new Color(255, 255, 255));
                         Blip blip = NAPI.Blip.CreateBlip(player.Position);
                         blip.Color = 3;
                         blip.Name = "Compañía en venta";

@@ -22,6 +22,11 @@ namespace DowntownRP.World.Business
             if (business != null)
             {
                 if (business.owner == 0) player.TriggerEvent("displayBusinessVenta");
+                else
+                {
+                    if (business.type == 6 || business.type == 7 || business.type == 8) player.TriggerEvent("adviceBuyVehicle");
+                }
+
                 user.isInBusiness = true;
                 user.business = business;
             }
@@ -69,7 +74,7 @@ namespace DowntownRP.World.Business
 
                         ColShape buss = NAPI.ColShape.CreateCylinderColShape(player.Position, 2, 2);
                         Marker marker = NAPI.Marker.CreateMarker(0, player.Position, new Vector3(), new Vector3(), 1, new Color(248, 218, 79));
-                        TextLabel label = NAPI.TextLabel.CreateTextLabel($"Negocio en venta~n~Pulsa ~y~F5 ~w~para interactuar~n~{name}, {streetid}", player.Position, 5, 1, 0, new Color(255, 255, 255));
+                        TextLabel label = NAPI.TextLabel.CreateTextLabel($"Negocio en venta~n~Pulsa ~y~F5 ~w~para interactuar~n~~p~{name}, {streetid}", player.Position, 5, 1, 0, new Color(255, 255, 255));
                         Blip blip = NAPI.Blip.CreateBlip(player.Position);
                         blip.Color = 3;
                         blip.Name = "Negocio en venta";
@@ -93,6 +98,25 @@ namespace DowntownRP.World.Business
                                 break;
 
                             case 5:
+                                blip.Sprite = 135;
+                                break;
+
+                            case 6:
+                                blip.Sprite = 135;
+                                label.Text = $"Negocio en venta~n~~p~{name}, {streetid}";
+                                break;
+
+                            case 7:
+                                blip.Sprite = 135;
+                                label.Text = $"Negocio en venta~n~~p~{name}, {streetid}";
+                                break;
+
+                            case 8:
+                                blip.Sprite = 135;
+                                label.Text = $"Negocio en venta~n~~p~{name}, {streetid}";
+                                break;
+
+                            case 9:
                                 blip.Sprite = 135;
                                 break;
                         }

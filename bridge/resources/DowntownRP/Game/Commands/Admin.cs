@@ -105,6 +105,21 @@ namespace DowntownRP.Game.Commands
             player.Position = new Vector3(x, y, z);
         }
 
+        [Command("getid")]
+        public void CMD_getid(Client player)
+        {
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+            if (user.adminLv == 5)
+            {
+                player.SendChatMessage("<font color='yellow'>INFO:</font> si no sale ninguna información es porque no se pudo obtener la id");
+                if (user.isInBank) player.SendChatMessage($"La id del banco es {user.bankEntity.id}");
+                if (user.isInBusiness) player.SendChatMessage($"La id del negocio es {user.business.id}");
+                if (user.isInCompany) player.SendChatMessage($"La id de la empresa es {user.company.id}");
+            }
+            else player.SendChatMessage("<font color='red'>[ERROR]</font> El comando no existe. (/ayuda para mas información)");
+        }
+
         // Bank commands
         [Command("crearbanco")]
         public async Task CMD_crearnegocio(Client player, int type)
@@ -276,6 +291,81 @@ namespace DowntownRP.Game.Commands
                     Utilities.Notifications.SendNotificationOK(player, $"Has borrado un negocio correctamente");
                 }
                 else Utilities.Notifications.SendNotificationERROR(player, "No estás en un negocio");
+            }
+            else player.SendChatMessage("<font color='red'>[ERROR]</font> El comando no existe. (/ayuda para mas información)");
+        }
+
+        [Command("crearvehiculosnegocio")]
+        public void CMD_crearvehiculosnegocio(Client player)
+        {
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+            if (user.adminLv == 5)
+            {
+                if (user.isInBusiness)
+                {
+                    player.SetData("CREATE_VEHICLE_BUSINESS", user.business);
+                    Utilities.Notifications.SendNotificationOK(player, "Ahora puedes usar /crearnegocioveh en el sitio donde quieras crearlo");
+                }
+                else Utilities.Notifications.SendNotificationERROR(player, "No estás en un negocio");
+            }
+            else player.SendChatMessage("<font color='red'>[ERROR]</font> El comando no existe. (/ayuda para mas información)");
+        }
+
+        [Command("crearnegocioveh")]
+        public async Task CMD_crearnegocioveh(Client player, string model, int price, int color1, int color2, string numberplate)
+        {
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+            if (user.adminLv == 5)
+            {
+                if (!player.HasData("CREATE_VEHICLE_BUSINESS"))
+                {
+                    Utilities.Notifications.SendNotificationERROR(player, "Debes usar primero /crearvehiculosnegocio en la entrada de un negocio");
+                    return;
+                }
+
+                Data.Entities.Business business = player.GetData("CREATE_VEHICLE_BUSINESS");
+
+                uint hash = NAPI.Util.GetHashKey(model);
+                Vehicle veh = NAPI.Vehicle.CreateVehicle(hash, player.Position.Subtract(new Vector3(0, 0, 1)), player.Heading, color1, color2, numberplate, 255, true, false);
+                TextLabel label = NAPI.TextLabel.CreateTextLabel($"~y~{model}~n~~w~Precio: ~g~${price}", player.Position.Subtract(new Vector3(0, 0, 1)), 3, 1, 0, new Color(255, 255, 255));
+                veh.NumberPlate = numberplate;
+
+                int vehicle_id = await World.Business.DbFunctions.CreateBusinessVehicle(business.id, model, price, color1, color2, numberplate, player.Position.X, player.Position.Y, player.Position.Z, (double)player.Heading);
+
+                bool isCompanySelling = false;
+                bool isRentSelling = false;
+                bool isNormalSelling = false;
+
+                switch (business.type)
+                {
+                    case 6:
+                        isRentSelling = true;
+                        break;
+
+                    case 7:
+                        isNormalSelling = true;
+                        break;
+
+                    case 8:
+                        isCompanySelling = true;
+                        break;
+                }
+
+                Data.Entities.VehicleBusiness vehicle = new Data.Entities.VehicleBusiness()
+                {
+                    id = vehicle_id,
+                    vehicle = veh,
+                    business = business,
+                    price = price,
+                    isCompanySelling = isCompanySelling,
+                    isRentSelling = isRentSelling,
+                    isNormalSelling = isNormalSelling,
+                    label = label
+                };
+
+                veh.SetData("VEHICLE_BUSINESS_DATA", vehicle);
             }
             else player.SendChatMessage("<font color='red'>[ERROR]</font> El comando no existe. (/ayuda para mas información)");
         }
