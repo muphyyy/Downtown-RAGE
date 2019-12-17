@@ -25,16 +25,6 @@ namespace DowntownRP.Game.Commands
             else player.SendChatMessage("<font color='red'>[ERROR]</font> El comando no existe. (/ayuda para mas información)");
         }
 
-        [Command("healthveh")]
-        public void CMD_healthveh(Client player, float health)
-        {
-            if (player.IsInVehicle)
-            {
-                Vehicle veh = player.Vehicle;
-                player.SendChatMessage($"{veh.Health}");
-            }
-        }
-
         [Command("borrarveh")]
         public void CMD_borrarveh(Client player)
         {
@@ -366,6 +356,8 @@ namespace DowntownRP.Game.Commands
                 };
 
                 veh.SetData("VEHICLE_BUSINESS_DATA", vehicle);
+
+                veh.SetSharedData("BUSINESS_VEHICLE_SHARED", veh);
             }
             else player.SendChatMessage("<font color='red'>[ERROR]</font> El comando no existe. (/ayuda para mas información)");
         }
