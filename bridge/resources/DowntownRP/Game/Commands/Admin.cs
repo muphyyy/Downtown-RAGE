@@ -370,5 +370,26 @@ namespace DowntownRP.Game.Commands
             else player.SendChatMessage("<font color='red'>[ERROR]</font> El comando no existe. (/ayuda para mas información)");
         }
 
+        [Command("borrarnegocioveh")]
+        public async Task CMD_borrarnegocioveh(Client player)
+        {
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+            if (user.adminLv == 5)
+            {
+                if (player.IsInVehicle)
+                {
+                    if (player.Vehicle.HasData("VEHICLE_BUSINESS_DATA"))
+                    {
+                        Data.Entities.VehicleBusiness veh = player.Vehicle.GetData("VEHICLE_BUSINESS_DATA");
+                        await World.Business.DbFunctions.DeleteBusinessVehicle(veh.id);
+                        player.Vehicle.Delete();
+
+                        Utilities.Notifications.SendNotificationOK(player, "Has borrado el vehículo del negocio correctamente");
+                    }
+                }
+            }
+        }
+
     }
 }

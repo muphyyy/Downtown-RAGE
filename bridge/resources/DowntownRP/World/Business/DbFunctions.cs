@@ -146,7 +146,6 @@ namespace DowntownRP.World.Business
 
         public async static Task DeleteBusiness(int id)
         {
-
             using (MySqlConnection connection = new MySqlConnection(Data.DatabaseHandler.connectionHandle))
             {
                 await connection.OpenAsync().ConfigureAwait(false);
@@ -318,6 +317,19 @@ namespace DowntownRP.World.Business
                 }
             }
             return 0;
+        }
+
+        public async static Task DeleteBusinessVehicle(int id)
+        {
+            using (MySqlConnection connection = new MySqlConnection(Data.DatabaseHandler.connectionHandle))
+            {
+                await connection.OpenAsync().ConfigureAwait(false);
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "DELETE FROM vehicles_business WHERE id = @id";
+                command.Parameters.AddWithValue("@id", id);
+
+                await command.ExecuteNonQueryAsync().ConfigureAwait(false);
+            }
         }
     }
 
