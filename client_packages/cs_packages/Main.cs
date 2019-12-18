@@ -28,6 +28,8 @@ namespace DowntownRP_cs
         private void OnGuiReadyEvent()
         {
             RAGE.Game.Streaming.RequestIpl("ex_dt1_02_office_02b");
+
+            Player.LocalPlayer.SetConfigFlag(429, true);
         }
     }
 }

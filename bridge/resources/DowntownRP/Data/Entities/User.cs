@@ -46,6 +46,7 @@ namespace DowntownRP.Data.Entities
         public bool isInCompanyExitInterior { get; set; } = false;
         public Company company { get; set; }
         public Company companyInterior { get; set; }
+        public Company companyProperty { get; set; }
 
         // Business variables
         public bool isInBusiness { get; set; } = false;

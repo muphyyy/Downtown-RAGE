@@ -112,6 +112,8 @@ namespace DowntownRP.World.Companies
 
                             company.SetData("COMPANY_CLASS", dcompany);
                             shape_interior.SetData("COMPANY_CLASS", dcompany);
+
+                            Data.Lists.Companies.Add(dcompany);
                         });
                         
 
@@ -272,6 +274,29 @@ namespace DowntownRP.World.Companies
                 command.Parameters.AddWithValue("@id", id);
 
                 await command.ExecuteNonQueryAsync().ConfigureAwait(false);
+            }
+        }
+
+        public async static Task<int> CreateCompanyVehicle(int company, string model, int color1, int color2, string numberplate, double x, double y, double z, double rot)
+        {
+            using (MySqlConnection connection = new MySqlConnection(Data.DatabaseHandler.connectionHandle))
+            {
+                await connection.OpenAsync().ConfigureAwait(false);
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "INSERT INTO vehicles_companies (company, type, color1, color2, numberplate, x, y, z, rot) VALUES (@company, @model, @color1, @color2, @numberplate, @x, @y, @z, @rot)";
+                command.Parameters.AddWithValue("@company", company);
+                command.Parameters.AddWithValue("@model", model);
+                command.Parameters.AddWithValue("@color1", color1);
+                command.Parameters.AddWithValue("@color2", color2);
+                command.Parameters.AddWithValue("@numberplate", numberplate);
+                command.Parameters.AddWithValue("@x", x);
+                command.Parameters.AddWithValue("@y", y);
+                command.Parameters.AddWithValue("@z", z);
+                command.Parameters.AddWithValue("@rot", rot);
+
+
+                await command.ExecuteNonQueryAsync().ConfigureAwait(false);
+                return (int)command.LastInsertedId;
             }
         }
 

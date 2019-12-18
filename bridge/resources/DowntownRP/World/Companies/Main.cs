@@ -131,6 +131,8 @@ namespace DowntownRP.World.Companies
                     user.company.owner = user.idpj;
                     user.company.label.Text = $"Empresa~n~~r~Cerrado~n~~p~{user.company.area}, {user.company.number}";
 
+                    user.companyProperty = user.company;
+
                     player.TriggerEvent("chat_goal", "¡Felicidades!", "Ahora eres propietario de una empresa");
                     await Task.Delay(2000);
                     Utilities.Notifications.SendNotificationINFO(player, "Entra en tu empresa (pulsa F5) para poder configurarla");
@@ -210,6 +212,8 @@ namespace DowntownRP.World.Companies
 
                         //empresa.SetExternalData<Data.Entities.Company>(0, company);
                         empresa.SetData("COMPANY_CLASS", company);
+
+                        Data.Lists.Companies.Add(company);
                     }
                 }
             }

@@ -139,6 +139,8 @@ namespace DowntownRP.Game.CharacterSelector
                     user.adminLv = 5;
                     user.inventory = await Inventory.DatabaseFunctions.SpawnInventoryItems(characterId);
 
+                    CheckIfUserHasCompany(user);
+
                     user.slot1 = await Inventory.DatabaseFunctions.SpawnCharacterItem(slot1);
                     user.slot2 = await Inventory.DatabaseFunctions.SpawnCharacterItem(slot2);
                     user.slot3 = await Inventory.DatabaseFunctions.SpawnCharacterItem(slot3);
@@ -290,6 +292,11 @@ namespace DowntownRP.Game.CharacterSelector
         public void SetPlayerAccessory(Client player, int slot, int drawable, int texture)
         {
             NAPI.Player.SetPlayerAccessory(player, slot, drawable, texture);
+        }
+        public static void CheckIfUserHasCompany(Data.Entities.User user)
+        {
+            Data.Entities.Company company = Data.Lists.Companies.Find(x => x.owner == user.idpj);
+            if (company != null) user.companyProperty = company;
         }
     }
 }

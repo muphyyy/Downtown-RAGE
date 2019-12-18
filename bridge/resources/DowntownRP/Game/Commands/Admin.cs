@@ -226,6 +226,7 @@ namespace DowntownRP.Game.Commands
                     user.company.blip.Delete();
                     user.company.marker.Delete();
                     user.company.shape.Delete();
+                    Data.Lists.Companies.Add(user.company);
                     user.company = null;
 
                     await World.Companies.DbFunctions.DeleteCompany(user.company.id);
@@ -318,7 +319,7 @@ namespace DowntownRP.Game.Commands
                 Data.Entities.Business business = player.GetData("CREATE_VEHICLE_BUSINESS");
 
                 uint hash = NAPI.Util.GetHashKey(model);
-                Vehicle veh = NAPI.Vehicle.CreateVehicle(hash, player.Position.Subtract(new Vector3(0, 0, 1)), player.Heading, color1, color2, numberplate, 255, true, false);
+                Vehicle veh = NAPI.Vehicle.CreateVehicle(hash, player.Position.Subtract(new Vector3(0, 0, 1)), player.Heading, color1, color2, numberplate, 255, false, false);
                 TextLabel label = NAPI.TextLabel.CreateTextLabel($"~y~{model}~n~~w~Precio: ~g~${price}", player.Position.Subtract(new Vector3(0, 0, 1)), 3, 1, 0, new Color(255, 255, 255));
                 veh.NumberPlate = numberplate;
 
@@ -346,6 +347,7 @@ namespace DowntownRP.Game.Commands
                 Data.Entities.VehicleBusiness vehicle = new Data.Entities.VehicleBusiness()
                 {
                     id = vehicle_id,
+                    model = model,
                     vehicle = veh,
                     business = business,
                     price = price,

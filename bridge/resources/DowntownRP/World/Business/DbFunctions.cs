@@ -245,13 +245,14 @@ namespace DowntownRP.World.Business
                         NAPI.Task.Run(() =>
                         {
                             uint hash = NAPI.Util.GetHashKey(type);
-                            Vehicle vehicle = NAPI.Vehicle.CreateVehicle(hash, position, (float)rot, color1, color2, numberplate, 255, true, false);
-                            TextLabel label = NAPI.TextLabel.CreateTextLabel($"~y~{type}~n~~w~Precio: ~g~${price}", position, 3, 1, 0, new Color(255, 255, 255));
+                            Vehicle vehicle = NAPI.Vehicle.CreateVehicle(hash, position, (float)rot, color1, color2, numberplate, 255, false, false);
+                            TextLabel label = NAPI.TextLabel.CreateTextLabel($"~y~{type}~n~~w~Precio: ~g~${price}", position, 8, 1, 0, new Color(255, 255, 255));
                             vehicle.NumberPlate = numberplate;
 
                             Data.Entities.VehicleBusiness veh = new Data.Entities.VehicleBusiness()
                             {
                                 id = id,
+                                model = type,
                                 vehicle = vehicle,
                                 business = business,
                                 price = price,
