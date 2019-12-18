@@ -47,7 +47,7 @@ namespace DowntownRP.World.Companies
 
                         int workers = GetWorkersCompany(id);
 
-                        NAPI.Task.Run(() =>
+                        NAPI.Task.Run(async () =>
                         {
                             // Exterior entities
 
@@ -114,6 +114,7 @@ namespace DowntownRP.World.Companies
                             shape_interior.SetData("COMPANY_CLASS", dcompany);
 
                             Data.Lists.Companies.Add(dcompany);
+                            await SpawnVehicleCompanies(dcompany);
                         });
                         
 
@@ -289,6 +290,77 @@ namespace DowntownRP.World.Companies
                 command.Parameters.AddWithValue("@color1", color1);
                 command.Parameters.AddWithValue("@color2", color2);
                 command.Parameters.AddWithValue("@numberplate", numberplate);
+                command.Parameters.AddWithValue("@x", x);
+                command.Parameters.AddWithValue("@y", y);
+                command.Parameters.AddWithValue("@z", z);
+                command.Parameters.AddWithValue("@rot", rot);
+
+
+                await command.ExecuteNonQueryAsync().ConfigureAwait(false);
+                return (int)command.LastInsertedId;
+            }
+        }
+
+        public static async Task SpawnVehicleCompanies(Data.Entities.Company company)
+        {
+            using (MySqlConnection connection = new MySqlConnection(Data.DatabaseHandler.connectionHandle))
+            {
+                await connection.OpenAsync().ConfigureAwait(false);
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT * FROM vehicles_companies WHERE company = @company";
+                command.Parameters.AddWithValue("@company", company.id);
+
+                DbDataReader reader = await command.ExecuteReaderAsync().ConfigureAwait(false);
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32(reader.GetOrdinal("id"));
+                        string type = reader.GetString(reader.GetOrdinal("type"));
+                        int color1 = reader.GetInt32(reader.GetOrdinal("color1"));
+                        int color2 = reader.GetInt32(reader.GetOrdinal("color2"));
+                        string numberplate = reader.GetString(reader.GetOrdinal("numberplate"));
+
+                        double x = reader.GetDouble(reader.GetOrdinal("x"));
+                        double y = reader.GetDouble(reader.GetOrdinal("y"));
+                        double z = reader.GetDouble(reader.GetOrdinal("z"));
+                        double rot = reader.GetDouble(reader.GetOrdinal("rot"));
+
+                        Vector3 position = new Vector3(x, y, z);
+
+                        NAPI.Task.Run(() =>
+                        {
+                            uint hash = NAPI.Util.GetHashKey(type);
+                            Vehicle vehicle = NAPI.Vehicle.CreateVehicle(hash, position, (float)rot, color1, color2, numberplate, 255, false, false);
+                            vehicle.NumberPlate = numberplate;
+
+                            Data.Entities.VehicleCompany veh = new Data.Entities.VehicleCompany()
+                            {
+                                id = id,
+                                model = type,
+                                vehicle = vehicle,
+                                company = company,
+                                spawn = position,
+                                spawnRot = (float)rot
+                            };
+
+                            vehicle.SetData("VEHICLE_COMPANY_DATA", veh);
+                        });
+                    }
+                }
+
+
+            }
+        }
+
+        public async static Task<int> UpdateCompanyVehicleSpawn(int vehId, double x, double y, double z, double rot)
+        {
+            using (MySqlConnection connection = new MySqlConnection(Data.DatabaseHandler.connectionHandle))
+            {
+                await connection.OpenAsync().ConfigureAwait(false);
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "UPDATE vehicles_business SET x = @x, y = @y, z = @z, rot = @rot WHERE id = vehId";
+                command.Parameters.AddWithValue("@vehId", vehId);
                 command.Parameters.AddWithValue("@x", x);
                 command.Parameters.AddWithValue("@y", y);
                 command.Parameters.AddWithValue("@z", z);
