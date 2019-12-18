@@ -19,5 +19,10 @@ namespace DowntownRP.Data.Entities
         public Marker marker { get; set; }
         public Blip blip { get; set; }
         public ColShape shape { get; set; }
+
+
+        // Vehicles carshop/rent
+        public Vector3 spawn { get; set; }
+        public float spawnRot { get; set; }
     }
 }

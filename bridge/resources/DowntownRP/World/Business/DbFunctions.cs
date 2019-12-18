@@ -115,6 +115,7 @@ namespace DowntownRP.World.Business
                             Data.Info.businessSpanwed++;
 
                             await SpawnVehicleBusiness(business);
+                            await GetBusinessVehicleSpawn(business);
                         });
                     }
                 }
@@ -330,6 +331,44 @@ namespace DowntownRP.World.Business
                 MySqlCommand command = connection.CreateCommand();
                 command.CommandText = "DELETE FROM vehicles_business WHERE id = @id";
                 command.Parameters.AddWithValue("@id", id);
+
+                await command.ExecuteNonQueryAsync().ConfigureAwait(false);
+            }
+        }
+
+        public async static Task GetBusinessVehicleSpawn(Data.Entities.Business business)
+        {
+            using (MySqlConnection connection = new MySqlConnection(Data.DatabaseHandler.connectionHandle))
+            {
+                await connection.OpenAsync().ConfigureAwait(false);
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT * FROM business_vehicle_spawn WHERE business = @id";
+                command.Parameters.AddWithValue("@id", business.id);
+
+                DbDataReader reader = await command.ExecuteReaderAsync().ConfigureAwait(false);
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        business.spawn = new Vector3(reader.GetDouble(reader.GetOrdinal("x")), reader.GetDouble(reader.GetOrdinal("y")), reader.GetDouble(reader.GetOrdinal("z")));
+                        business.spawnRot = (float)reader.GetDouble(reader.GetOrdinal("rot"));
+                    }
+                }
+            }
+        }
+
+        public async static Task CreateBusinessVehicleSpawn(int business, double x, double y, double z, double rot)
+        {
+            using (MySqlConnection connection = new MySqlConnection(Data.DatabaseHandler.connectionHandle))
+            {
+                await connection.OpenAsync().ConfigureAwait(false);
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "INSERT INTO business_vehicle_spawn (business, x, y, z, rot) VALUES (@business, @x, @y, @z, @rot)";
+                command.Parameters.AddWithValue("@business", business);
+                command.Parameters.AddWithValue("@x", x);
+                command.Parameters.AddWithValue("@y", y);
+                command.Parameters.AddWithValue("@z", z);
+                command.Parameters.AddWithValue("@rot", rot);
 
                 await command.ExecuteNonQueryAsync().ConfigureAwait(false);
             }

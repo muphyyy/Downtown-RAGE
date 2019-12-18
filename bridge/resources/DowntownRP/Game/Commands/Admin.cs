@@ -296,7 +296,7 @@ namespace DowntownRP.Game.Commands
                 if (user.isInBusiness)
                 {
                     player.SetData("CREATE_VEHICLE_BUSINESS", user.business);
-                    Utilities.Notifications.SendNotificationOK(player, "Ahora puedes usar /crearnegocioveh en el sitio donde quieras crearlo");
+                    Utilities.Notifications.SendNotificationOK(player, "Ahora puedes usar /crearnegocioveh o /crearnegociospawn en el sitio donde quieras crearlo");
                 }
                 else Utilities.Notifications.SendNotificationERROR(player, "No estás en un negocio");
             }
@@ -385,5 +385,33 @@ namespace DowntownRP.Game.Commands
             }
         }
 
+        [Command("crearnegociospawn")]
+        public async Task CMD_crearnegociospawn(Client player)
+        {
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+            if (user.adminLv == 5)
+            {
+                if (!player.HasData("CREATE_VEHICLE_BUSINESS"))
+                {
+                    Utilities.Notifications.SendNotificationERROR(player, "Debes usar primero /crearvehiculosnegocio en la entrada de un negocio");
+                    return;
+                }
+
+                Data.Entities.Business business = player.GetData("CREATE_VEHICLE_BUSINESS");
+
+                if(business.spawn != null)
+                {
+                    Utilities.Notifications.SendNotificationERROR(player, "Este negocio ya tiene punto de spawn");
+                    return;
+                }
+
+                await World.Business.DbFunctions.CreateBusinessVehicleSpawn(business.id, player.Position.X, player.Position.Y, player.Position.Z, player.Heading);
+                business.spawn = player.Position;
+                business.spawnRot = player.Heading;
+
+                Utilities.Notifications.SendNotificationOK(player, "Has creado el punto de spawn correctamente");
+            }
+        }
     }
 }
