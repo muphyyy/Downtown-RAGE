@@ -14,7 +14,7 @@ namespace DowntownRP.Data.Entities
         public int price { get; set; }
         public string area { get; set; }
         public int number { get; set; }
-        public bool isOpen { get; set; } = false;
+        public bool isOpen { get; set; } = true;
         public ColShape shape { get; set; }
         public TextLabel label { get; set; }
         public Marker marker { get; set; }
@@ -23,9 +23,11 @@ namespace DowntownRP.Data.Entities
         public int workers { get; set; }
         public int percentage { get; set; }
         public int subsidy { get; set; }
-        public bool ManualRecruitment { get; set; } = true;
+        public bool ManualRecruitment { get; set; } = false;
 
         // Interior entities
         public ColShape interior { get; set; }
+        public ColShape duty { get; set; }
+        public ColShape contract { get; set; }
     }
 }

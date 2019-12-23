@@ -11,14 +11,11 @@ namespace DowntownRP.World.Business.CompCarShop
         [ServerEvent(Event.PlayerEnterVehicle)]
         public void OnPlayerEnterVehicle(Client player, Vehicle vehicle, sbyte seatID)
         {
-            player.SendChatMessage(vehicle.Handle.Value.ToString());
-
             if (!player.HasData("USER_CLASS")) return;
             Data.Entities.User user = player.GetData("USER_CLASS");
 
             if (vehicle.HasData("VEHICLE_BUSINESS_DATA"))
             {
-                player.SendChatMessage("wtf");
                 Data.Entities.VehicleBusiness veh = vehicle.GetData("VEHICLE_BUSINESS_DATA");
 
                 if (veh.isCompanySelling)
@@ -53,7 +50,8 @@ namespace DowntownRP.World.Business.CompCarShop
                     {
                         if(await Game.Money.MoneyModel.SubMoney(player, (double)veh.price))
                         {
-                            await Task.Delay(100);
+                            player.WarpOutOfVehicle();
+                            await Task.Delay(1000);
                             NAPI.Task.Run(async () => 
                             {
                                 Vehicle new_veh = NAPI.Vehicle.CreateVehicle(NAPI.Util.GetHashKey(veh.model), veh.business.spawn, veh.business.spawnRot, 1, 1);

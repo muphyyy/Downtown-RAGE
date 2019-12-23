@@ -27,6 +27,12 @@ namespace DowntownRP.World.Companies
                     return;
                 }
 
+                if(company.contract == shape)
+                {
+                    user.isInCompanyContract = true;
+                    return;
+                }
+
                 user.isInCompany = true;
                 user.company = company;
             }
@@ -47,6 +53,12 @@ namespace DowntownRP.World.Companies
                 if (company.interior == shape)
                 {
                     user.isInCompanyExitInterior = false;
+                    return;
+                }
+
+                if (company.contract == shape)
+                {
+                    user.isInCompanyContract = false;
                     return;
                 }
 
@@ -87,7 +99,7 @@ namespace DowntownRP.World.Companies
                 {
                     if (user.company.isOpen)
                     {
-                        if (user.company.owner == user.idpj) Utilities.Notifications.SendNotificationINFO(player, "Pulsa F6 para abrir el menú de la empresa");
+                        if (user.company.owner == user.idpj) player.TriggerEvent("tipMenuEmpresa");
                         Interior.EnterCompany(player);
                     }
                     else
@@ -95,7 +107,7 @@ namespace DowntownRP.World.Companies
                         if (user.company.owner == user.idpj)
                         {
                             Interior.EnterCompany(player);
-                            Utilities.Notifications.SendNotificationINFO(player, "Pulsa F6 para abrir el menú de la empresa");
+                            player.TriggerEvent("tipMenuEmpresa");
                         }
                         else Utilities.Notifications.SendNotificationERROR(player, "Esta empresa se encuentra cerrada");
                     }
@@ -217,6 +229,68 @@ namespace DowntownRP.World.Companies
                     }
                 }
             }
+        }
+
+        [RemoteEvent("ActionSignContractCompany")]
+        public void RE_ActionSignContractCompany(Client player)
+        {
+            //var user = player.GetExternalData<Data.Entities.User>(0);
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+
+            if (user.isInCompanyContract)
+            {
+                if (user.companyInterior.owner != user.idpj)
+                {
+                    if(user.companyMember != user.companyInterior)
+                    {
+                        if (!user.companyInterior.ManualRecruitment)
+                        {
+                            if (!user.isCompanyCefOpen)
+                            {
+                                player.TriggerEvent("CreateContractCompanyBrowser");
+                                user.isCompanyCefOpen = true;
+                            }
+                            else
+                            {
+                                player.TriggerEvent("DestroyContractCompanyBrowser");
+                                user.isCompanyCefOpen = false;
+                            }
+                        }
+                        else Utilities.Notifications.SendNotificationERROR(player, "Esta empresa tiene restringidos los contratos automáticos");
+                    }
+                    else Utilities.Notifications.SendNotificationERROR(player, "Ya trabajas para esta empresa");
+                }
+                else Utilities.Notifications.SendNotificationERROR(player, "Eres el dueño de esta empresa");
+            }
+        }
+
+        [RemoteEvent("SignContractCompany")]
+        public async Task RE_SignContractCompany(Client player)
+        {
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+
+            if (user.isInCompanyContract)
+            {
+                player.TriggerEvent("DestroyContractCompanyBrowser");
+                user.isCompanyCefOpen = false;
+
+                await Game.CharacterSelector.CharacterSelector.UpdateUserCompany(user.idpj, user.companyInterior.id);
+                user.companyMember = user.companyInterior;
+
+                player.TriggerEvent("chat_goal", "¡Felicidades!", $"Has firmado un contrato de empleo con {user.companyInterior.name}");
+            }
+        }
+
+        [RemoteEvent("CloseContractCompany")]
+        public void RE_CloseContractCompany(Client player)
+        {
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+
+            player.TriggerEvent("DestroyContractCompanyBrowser");
+            user.isCompanyCefOpen = false;
         }
 
         public static string GetNameTypeCompany(int type)

@@ -89,6 +89,7 @@ mp.events.add('render', () =>
 {
 	if (player.vehicle && player.vehicle.getPedInSeat(-1) === player.handle) // Check if player is in vehicle and is driver
 	{
+		if(player.vehicle.getVariable("IS_BUSINESS_VEHICLE")) return;
 		if(sshowed === false) // Check if speedo is already showed
 		{
 			speedo = mp.browsers.new("package://statics/hud/index.html");

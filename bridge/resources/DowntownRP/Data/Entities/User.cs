@@ -22,6 +22,7 @@ namespace DowntownRP.Data.Entities
         public bool chatStatus { get; set; } = false;
         public bool isFlying { get; set; } = false;
         public Vector3 lastPositionInterior { get; set; }
+        public int job { get; set; }
 
         // Inventory
         public Inventory inventory { get; set; }
@@ -44,9 +45,11 @@ namespace DowntownRP.Data.Entities
         public bool isCompanyCefOpen { get; set; } = false;
         public bool isInCompanyInterior { get; set; } = false;
         public bool isInCompanyExitInterior { get; set; } = false;
+        public bool isInCompanyContract { get; set; } = false;
         public Company company { get; set; }
         public Company companyInterior { get; set; }
         public Company companyProperty { get; set; }
+        public Company companyMember { get; set; }
 
         // Business variables
         public bool isInBusiness { get; set; } = false;

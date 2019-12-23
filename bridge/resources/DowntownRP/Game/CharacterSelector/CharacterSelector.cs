@@ -137,9 +137,11 @@ namespace DowntownRP.Game.CharacterSelector
                     user.level = level;
                     user.exp = exp;
                     user.adminLv = 5;
+                    user.job = job;
                     user.inventory = await Inventory.DatabaseFunctions.SpawnInventoryItems(characterId);
 
                     CheckIfUserHasCompany(user);
+                    CheckIfUserWorksInCompany(user);
 
                     user.slot1 = await Inventory.DatabaseFunctions.SpawnCharacterItem(slot1);
                     user.slot2 = await Inventory.DatabaseFunctions.SpawnCharacterItem(slot2);
@@ -297,6 +299,27 @@ namespace DowntownRP.Game.CharacterSelector
         {
             Data.Entities.Company company = Data.Lists.Companies.Find(x => x.owner == user.idpj);
             if (company != null) user.companyProperty = company;
+        }
+
+        public static void CheckIfUserWorksInCompany(Data.Entities.User user)
+        {
+            Data.Entities.Company company = Data.Lists.Companies.Find(x => x.id == user.job);
+            if (company != null) user.companyMember = company;
+        }
+
+        public async static Task UpdateUserCompany(int idpj, int company)
+        {
+            using (MySqlConnection connection = new MySqlConnection(Data.DatabaseHandler.connectionHandle))
+            {
+                await connection.OpenAsync().ConfigureAwait(false);
+
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "UPDATE characters SET job = @company WHERE id = @idpj";
+                command.Parameters.AddWithValue("@idpj", idpj);
+                command.Parameters.AddWithValue("@company", company);
+
+                await command.ExecuteNonQueryAsync().ConfigureAwait(false);
+            }
         }
     }
 }

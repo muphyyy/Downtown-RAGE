@@ -267,6 +267,7 @@ namespace DowntownRP.World.Business
                             vehicle.SetData("VEHICLE_BUSINESS_DATA", veh);
 
                             vehicle.SetSharedData("BUSINESS_VEHICLE_SHARED", vehicle);
+                            vehicle.SetSharedData("IS_BUSINESS_VEHICLE", true);
                         });
                     }
                 }

@@ -360,6 +360,7 @@ namespace DowntownRP.Game.Commands
                 veh.SetData("VEHICLE_BUSINESS_DATA", vehicle);
 
                 veh.SetSharedData("BUSINESS_VEHICLE_SHARED", veh);
+                veh.SetSharedData("IS_BUSINESS_VEHICLE", true);
             }
             else player.SendChatMessage("<font color='red'>[ERROR]</font> El comando no existe. (/ayuda para mas información)");
         }

@@ -84,7 +84,15 @@ namespace DowntownRP.World.Companies
                             // Interior entities
                             TextLabel label_interior = NAPI.TextLabel.CreateTextLabel("~w~Pulsa ~y~F5 ~w~para salir", Interior.interior, 3, 1, 0, new Color(255, 255, 255));
                             label_interior.Dimension = (uint)id;
-                            ColShape shape_interior = NAPI.ColShape.CreateCylinderColShape(Interior.interior, 2, 2, (uint)id);
+                            ColShape shape_interior = NAPI.ColShape.CreateCylinderColShape(Interior.interior.Subtract(new Vector3(0, 0, 1)), 2, 2, (uint)id);
+
+                            ColShape shape_duty = NAPI.ColShape.CreateCylinderColShape(Interior.duty.Subtract(new Vector3(0, 0, 1)), 2, 2, (uint)id);
+                            TextLabel label_duty = NAPI.TextLabel.CreateTextLabel("~w~Pulsa ~y~F6 ~w~para ponerte en servicio", Interior.duty, 3, 1, 0, new Color(255, 255, 255));
+                            Marker marker_duty = NAPI.Marker.CreateMarker(1, Interior.duty.Subtract(new Vector3(0, 0, 1)), new Vector3(), new Vector3(), 1, new Color(251, 244, 1));
+
+                            ColShape shape_contract = NAPI.ColShape.CreateCylinderColShape(Interior.contract.Subtract(new Vector3(0, 0, 1)), 2, 2, (uint)id);
+                            TextLabel label_contract = NAPI.TextLabel.CreateTextLabel("~w~Pulsa ~y~F6 ~w~para firmar el contrato de empleo", Interior.contract, 3, 1, 0, new Color(255, 255, 255));
+                            Marker marker_contract = NAPI.Marker.CreateMarker(1, Interior.contract.Subtract(new Vector3(0, 0, 1)), new Vector3(), new Vector3(), 1, new Color(251, 244, 1));
 
 
                             Data.Entities.Company dcompany = new Data.Entities.Company
@@ -104,7 +112,9 @@ namespace DowntownRP.World.Companies
                                 percentage = percentage,
                                 subsidy = subsidy,
                                 interior = shape_interior,
-                                shape = company
+                                shape = company,
+                                contract = shape_contract,
+                                duty = shape_duty
                             };
 
                             //company.SetExternalData<Data.Entities.Company>(0, dcompany);
@@ -112,6 +122,7 @@ namespace DowntownRP.World.Companies
 
                             company.SetData("COMPANY_CLASS", dcompany);
                             shape_interior.SetData("COMPANY_CLASS", dcompany);
+                            shape_contract.SetData("COMPANY_CLASS", dcompany);
 
                             Data.Lists.Companies.Add(dcompany);
                             await SpawnVehicleCompanies(dcompany);
@@ -359,7 +370,7 @@ namespace DowntownRP.World.Companies
             {
                 await connection.OpenAsync().ConfigureAwait(false);
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "UPDATE vehicles_business SET x = @x, y = @y, z = @z, rot = @rot WHERE id = vehId";
+                command.CommandText = "UPDATE vehicles_companies SET x = @x, y = @y, z = @z, rot = @rot WHERE id = @vehId";
                 command.Parameters.AddWithValue("@vehId", vehId);
                 command.Parameters.AddWithValue("@x", x);
                 command.Parameters.AddWithValue("@y", y);

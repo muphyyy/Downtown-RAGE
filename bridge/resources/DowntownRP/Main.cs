@@ -13,6 +13,10 @@ namespace DowntownRP
             Utilities.Webhooks.sendWebHook(1, $"✅ [{DateTime.Now.ToString()}] {Data.Info.serverName} se ha iniciado con éxito ({Data.Info.serverVersion})");
             await Task.Delay(100);
             await SpawnDatabaseEntities();
+
+            NAPI.Server.SetGlobalServerChat(false);
+            NAPI.Server.SetGamemodeName(Data.Info.serverName + " v" + Data.Info.serverVersion);
+            NAPI.Server.SetCommandErrorMessage("<font color='red'>[ERROR]</font> El comando no existe. (/ayuda para mas información)");
         }
 
         public async Task SpawnDatabaseEntities()
