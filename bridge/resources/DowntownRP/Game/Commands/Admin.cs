@@ -205,6 +205,38 @@ namespace DowntownRP.Game.Commands
             }
             else player.SendChatMessage("<font color='red'>[ERROR]</font> El comando no existe. (/ayuda para mas información)");
         }
+        
+        [Command("bankinfo", helpText: "Usa /BankInfo [user ID] para obtener el IBAN. SOLO PARA ADMINS NIVEL +3")]
+        public static void CMD_infoBanco(Client player, int id)
+        {
+            Client target = Utilities.PlayerId.FindPlayerById(id);
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+            if (user.adminLv >= 3)
+            {
+                Data.Entities.User targetu = target.GetData("USER_CLASS");
+                
+                player.SendChatMessage("<font color='FF0000'>ADMIN </font> <font color='FFD75B'> El IBAN DE: " + target.Name + "  ES: " + targetu.IBAN + "</font>");              
+            }
+        }
+
+        [Command("resetpin", helpText: "Usa /ResetPin [user ID] [Nuevo Pin] para fijar un nuevo PIN. SOLO PARA ADMINS NIVEL +5")]
+        public static void CMD_ResetPin(Client player, int id, int newpin)
+        {
+            Client target = Utilities.PlayerId.FindPlayerById(id);
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+            if (user.adminLv >= 5)
+            {
+                Data.Entities.User targetu = target.GetData("USER_CLASS");
+
+                player.SendChatMessage("<font color='FF0000'>ADMIN </font> <font color='FFD75B'> El pin de: " + target.Name + " ha sido configurado manualmente. ");
+
+                World.Banks.DatabaseFunctions.UpdatePINBank(targetu.id, newpin);
+
+                Utilities.Webhooks.sendWebHook(1, "**" + player.SocialClubName + "**. Ha reseteado el PIN a " + target.Name+" con ID (de base de datos): "+targetu.id);
+            }
+        }
 
         // Company commands
         [Command("crearempresa")]
