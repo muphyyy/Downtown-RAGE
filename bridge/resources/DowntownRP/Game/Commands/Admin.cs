@@ -75,6 +75,23 @@ namespace DowntownRP.Game.Commands
                 }
             }
         }
+        
+        [Command("ponerropa")]
+        public async Task CMD_ponerropa(Client player, int id, int slot, int drawable, int texture)
+        {
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+            //var user = player.GetExternalData<Data.Entities.User>(0);
+            if (user.adminLv >= 1)
+            {
+                Client target = Utilities.PlayerId.FindPlayerById(id);
+                if (target == null) Utilities.Notifications.SendNotificationERROR(player, "No hay ningún jugador conectado con esta id");
+                else
+                {
+                    NAPI.Player.SetPlayerClothes(target, slot, drawable, texture);
+                }
+            }
+        }
 
         [Command("getpos")]
         public void CMD_obtenerpos(Client player)
