@@ -44,6 +44,15 @@ namespace DowntownRP.Game.Commands
                 NAPI.Chat.SendChatMessageToPlayer(players, msg);
             }
         }
+        
+        [Command("b", GreedyArg = true, Alias = "ooc")]
+        public void CMD_oc(Client player, string message)
+        {
+            var msg = "<font color='158D06'> <b>OOC-" + player.SocialClubName + ":</b> </font> <font color='808080'>" + message + "</font>";
+
+            NAPI.Chat.SendChatMessageToAll(msg);
+            Utilities.Webhooks.sendWebHook(1, "**"+player.SocialClubName+"**: "+message);
+        }
 
         [Command("estacionarveh")]
         public async Task CMD_estacionarveh(Client player)
@@ -76,6 +85,37 @@ namespace DowntownRP.Game.Commands
                 else Utilities.Notifications.SendNotificationERROR(player, "No eres dueño de una empresa");
             }
             else Utilities.Notifications.SendNotificationERROR(player, "No estás en un vehículo");
+        }
+        [Command ("panim")]
+        public async Task CMD_panim(Client player, int id = -1)
+        {
+            if (id == -1)
+            {
+                player.StopAnimation();
+            }
+            else
+            {
+                Client target = Utilities.PlayerId.FindPlayerById(id);
+                Data.Entities.User user = player.GetData("USER_CLASS");
+                if (!(target == player))
+                {
+
+                    if (!(user.adminLv == 0))
+                    {
+                        target.StopAnimation();
+                    }
+                }else
+                {
+                    player.StopAnimation();
+                }
+            }
+
+        }
+
+        [Command ("anims")]
+        public async Task CMD_anims (Client player)
+        {
+            player.TriggerEvent("CallAnimList");
         }
     }
 }
