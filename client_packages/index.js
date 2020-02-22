@@ -6,12 +6,13 @@ require('scaleform_messages/index.js');
 require('./scaleformHud');
 
 require('binds.js');
+require('./ayuda');
 require('notifications.js');
 require('voice.js');
 require('fly.js');
 
 mp.gui.chat.show(false);
-let chatbox = mp.browsers.new('package://chat_old/index.html');
+chatbox = mp.browsers.new('package://chat_old/index.html');
 chatbox.markAsChat();
 chatbox.execute('show()');
 

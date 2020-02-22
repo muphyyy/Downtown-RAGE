@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GTANetworkAPI;
+using System;
 using System.Threading.Tasks;
-using GTANetworkAPI;
 
 namespace DowntownRP.Game.Commands
 {
@@ -75,6 +73,24 @@ namespace DowntownRP.Game.Commands
                 }
             }
         }
+        
+        [Command("ponerropa")]
+        public async Task CMD_ponerropa(Client player, int id, int slot, int drawable, int texture)
+        {
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+            //var user = player.GetExternalData<Data.Entities.User>(0);
+            if (user.adminLv >= 1)
+            {
+                Client target = Utilities.PlayerId.FindPlayerById(id);
+                if (target == null) Utilities.Notifications.SendNotificationERROR(player, "No hay ningún jugador conectado con esta id");
+                else
+                {
+                    NAPI.Player.SetPlayerClothes(target, slot, drawable, texture);
+                }
+            }
+        }
+
 
         [Command("getpos")]
         public void CMD_obtenerpos(Client player)
@@ -187,6 +203,38 @@ namespace DowntownRP.Game.Commands
                 else Utilities.Notifications.SendNotificationERROR(player, "No estás en un banco");
             }
             else player.SendChatMessage("<font color='red'>[ERROR]</font> El comando no existe. (/ayuda para mas información)");
+        }
+        
+        [Command("bankinfo", helpText: "Usa /BankInfo [user ID] para obtener el IBAN. SOLO PARA ADMINS NIVEL +3")]
+        public static void CMD_infoBanco(Client player, int id)
+        {
+            Client target = Utilities.PlayerId.FindPlayerById(id);
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+            if (user.adminLv >= 3)
+            {
+                Data.Entities.User targetu = target.GetData("USER_CLASS");
+                
+                player.SendChatMessage("<font color='FF0000'>ADMIN </font> <font color='FFD75B'> El IBAN DE: " + target.Name + "  ES: " + targetu.IBAN + "</font>");              
+            }
+        }
+
+        [Command("resetpin", helpText: "Usa /ResetPin [user ID] [Nuevo Pin] para fijar un nuevo PIN. SOLO PARA ADMINS NIVEL +5")]
+        public static void CMD_ResetPin(Client player, int id, int newpin)
+        {
+            Client target = Utilities.PlayerId.FindPlayerById(id);
+            if (!player.HasData("USER_CLASS")) return;
+            Data.Entities.User user = player.GetData("USER_CLASS");
+            if (user.adminLv >= 5)
+            {
+                Data.Entities.User targetu = target.GetData("USER_CLASS");
+
+                player.SendChatMessage("<font color='FF0000'>ADMIN </font> <font color='FFD75B'> El pin de: " + target.Name + " ha sido configurado manualmente. ");
+
+                World.Banks.DatabaseFunctions.UpdatePINBank(targetu.id, newpin);
+
+                Utilities.Webhooks.sendWebHook(1, "**" + player.SocialClubName + "**. Ha reseteado el PIN a " + target.Name+" con ID (de base de datos): "+targetu.id);
+            }
         }
 
         // Company commands
@@ -413,6 +461,9 @@ namespace DowntownRP.Game.Commands
 
                 Utilities.Notifications.SendNotificationOK(player, "Has creado el punto de spawn correctamente");
             }
+
+
         }
     }
+
 }

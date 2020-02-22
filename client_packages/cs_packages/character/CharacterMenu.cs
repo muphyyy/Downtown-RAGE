@@ -83,9 +83,10 @@ namespace DowntownRP_cs.character
                     browserMenu.Destroy();
                     browserMenu = new HtmlWindow("package://statics/settings/settings.html");
                     break;
-
                 case 4:
-                    Events.CallRemote("throwNotImplemented");
+                    browserMenu.Destroy();
+                    Cursor.Visible = false;
+                    Events.CallLocal("PedirAyuda");
                     break;
             }
         }
