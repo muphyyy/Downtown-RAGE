@@ -45,6 +45,15 @@ namespace DowntownRP.Game.Commands
                 NAPI.Chat.SendChatMessageToPlayer(players, msg);
             }
         }
+        
+        [Command("b", GreedyArg = true, Alias = "ooc")]
+        public void CMD_oc(Client player, string message)
+        {
+            var msg = "<font color='158D06'> <b>OOC-" + player.SocialClubName + ":</b> </font> <font color='808080'>" + message + "</font>";
+
+            NAPI.Chat.SendChatMessageToAll(msg);
+            Utilities.Webhooks.sendWebHook(1, "**"+player.SocialClubName+"**: "+message);
+        }
 
         [Command("b", GreedyArg = true, Alias = "oc")]
         public void CMD_oc(Client player, string message)
@@ -119,7 +128,7 @@ namespace DowntownRP.Game.Commands
         {
             player.TriggerEvent("CallAnimList");
         }
-
+        
         [Command("ayuda")]
         public async Task CMD_ayuda(Client player)
         {
