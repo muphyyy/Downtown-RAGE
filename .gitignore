@@ -1,8 +1,9 @@
 server.exe
 node.dll
 bt.dat
-/bridge/resources/DowntownRP/bin/Debug/netcoreapp2.2
-/bridge/resources/DowntownRP/obj/Debug/netcoreapp2.2
-/bridge/server_logs.txt
-/bridge/server_exceptions.txt
-/bridge/resources/DowntownRP/config.json
+/dotnet/resources/DowntownRP/bin/
+/dotnet/resources/DowntownRP/obj/
+/dotnet/server_logs.txt
+/dotnet/server_exceptions.txt
+/dotnet/resources/DowntownRP/config.json
+/dotnet/runtime
