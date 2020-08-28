@@ -3,7 +3,7 @@
   <info name="Downtown" author="Muphy" type="gamemode"/>
   
   <!-- Gamemode library -->
-  <script src="bin/Debug/netcoreapp2.2/DowntownRP.dll" />
+  <script src="bin/Debug/netcoreapp3.1/DowntownRP.dll" />
 
   <!-- Database connection settings -->
 <settings>
